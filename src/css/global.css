@@ -100,6 +100,7 @@ strong[data-ngin-label-icon="done"] {
   text-decoration: none !important;
   border-bottom: none !important;
   box-shadow: none !important;
+  background-image: none !important;
   transition: color 0.25s ease;
 }
 
@@ -107,6 +108,7 @@ strong[data-ngin-label-icon="done"] {
 .header-nav-item--active {
   border-bottom: none !important;
   box-shadow: none !important;
+  background-image: none !important;
 }
 
 .header-nav-item--active::after,
