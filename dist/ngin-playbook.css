@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T18:15:57.183Z */
+/* Auto-built: 2026-03-18T18:20:33.154Z */
 
 /* === variables.css === */
 /* ============================================
@@ -128,6 +128,63 @@
   display: block !important;
   margin-right: 0;
   margin-bottom: 6px;
+}
+
+/* --- Navigation hover + active state ---
+   OBSERVED selectors: .header-nav-list, .header-menu-nav-list
+   These are standard 7.1 nav wrappers but not officially documented hooks.
+   -------------------------------------------------------------------- */
+
+/* Desktop nav links */
+.header-nav-list a {
+  position: relative;
+  text-decoration: none !important;
+  transition: color 0.25s ease;
+}
+
+/* Green underline — starts hidden, slides in on hover */
+.header-nav-list a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: #caddbb;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
+.header-nav-list a:hover::after,
+.header-nav-list a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Active state — page you're currently on */
+.header-nav-list a[aria-current="page"]::after,
+.header-nav-list a.header-nav-item--active::after {
+  transform: scaleX(1);
+  background-color: #caddbb;
+}
+
+.header-nav-list a[aria-current="page"],
+.header-nav-list a.header-nav-item--active {
+  opacity: 1 !important;
+}
+
+/* Mobile menu links — simpler left-border accent */
+.header-menu-nav-list a {
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.header-menu-nav-list a:hover {
+  padding-left: 4px;
+}
+
+.header-menu-nav-list a[aria-current="page"] {
+  border-left: 3px solid #caddbb;
+  padding-left: 8px;
 }
 
 
