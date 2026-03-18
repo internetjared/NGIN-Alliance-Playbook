@@ -80,7 +80,12 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media {
 }
 
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media-inner {
-  padding: 0 !important;
+  /* Squarespace uses padding-bottom for aspect ratio — must preserve it */
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  /* Set a fixed aspect ratio as fallback */
+  padding-bottom: 60% !important;
   border-radius: 0 !important;
 }
 
