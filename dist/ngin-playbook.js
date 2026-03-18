@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-03-18T17:24:56.458Z */
+/* Auto-built: 2026-03-18T17:27:01.102Z */
 
 /* === init.js === */
 /* ============================================
@@ -8,6 +8,15 @@
 
 (function () {
   'use strict';
+
+  // Load Material Symbols font directly into head (more reliable than CSS @import)
+  var MATERIAL_FONT_URL = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap';
+  if (!document.querySelector('link[href*="Material+Symbols"]')) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = MATERIAL_FONT_URL;
+    document.head.appendChild(link);
+  }
 
   function isEditing() {
     return document.body.classList.contains('sqs-is-page-editing') ||
