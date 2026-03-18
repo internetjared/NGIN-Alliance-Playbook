@@ -1,6 +1,42 @@
 /* ============================================
    NGIN Alliance Playbook — Section-Specific Styles
-   Scoped to manual section anchor IDs
+   Scoped to section data-section-id
    ============================================ */
 
-/* --- Section-specific styles will be added here --- */
+/* --- "Start Where You Are" pathway cards ---
+   Section: 69badb6c344ec84841fe29e2
+   Risk: medium — uses data-section-id (auto-generated, not manual anchor)
+   -------------------------------------------- */
+
+section[data-section-id="69badb6c344ec84841fe29e2"] li h2 {
+  font-weight: 700 !important;
+}
+
+section[data-section-id="69badb6c344ec84841fe29e2"] li p {
+  line-height: 1.45 !important;
+}
+
+/* --- "What's Inside the Playbook?" category labels ---
+   Section: 69badcb87603e07234d02a29
+   Turns the "core insights" / "Resource bank" / "case studies" /
+   "About the Alliance" labels into pill badges that match the
+   primary button style (green bg, white text).
+   Risk: medium — targets <p><strong> pattern inside text blocks
+   -------------------------------------------- */
+
+section[data-section-id="69badcb87603e07234d02a29"] [data-sqsp-block="text"] p:first-child {
+  display: inline-block;
+}
+
+section[data-section-id="69badcb87603e07234d02a29"] [data-sqsp-block="text"] p:first-child strong {
+  display: inline-block;
+  background-color: rgb(135, 189, 97);
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  line-height: 1.4;
+}
