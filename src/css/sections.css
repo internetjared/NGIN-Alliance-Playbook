@@ -177,10 +177,33 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button:h
 /* Reduce top padding on grid */
 body[class*="collection-type-blog"] .blog-basic-grid.collection-content-wrapper {
   padding-top: 3vw !important;
+  grid-template-rows: none !important;
+  grid-auto-rows: min-content !important;
 }
 
-/* Hide dates, author, and native meta */
-body[class*="collection-type-blog"] .blog-meta-section {
+/* Force all grid rows to auto-size to content */
+body[class*="collection-type-blog"] .blog-basic-grid.collection-content-wrapper > * {
+  grid-row: auto !important;
+}
+
+/* Hide dates, author, and native meta — high specificity to beat Squarespace */
+body[class*="collection-type-blog"] .blog-basic-grid .blog-item .blog-meta-section,
+body[class*="collection-type-blog"] .blog-meta-section,
+.blog-basic-grid .blog-meta-section,
+.blog-meta-section {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Also hide native category links and author/date that may render separately */
+body[class*="collection-type-blog"] .blog-categories-list,
+body[class*="collection-type-blog"] .blog-author,
+body[class*="collection-type-blog"] .blog-date,
+body[class*="collection-type-blog"] .blog-meta-primary {
   display: none !important;
 }
 
@@ -207,10 +230,12 @@ body[class*="collection-type-blog"] .blog-item .blog-basic-grid--text > div {
   -webkit-box-orient: unset !important;
   display: block !important;
   text-overflow: unset !important;
-  overflow: visible !important;
+  overflow: hidden !important;
   max-height: none !important;
   height: auto !important;
   overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  min-width: 0 !important;
 }
 
 body[class*="collection-type-blog"] .blog-item:hover {
@@ -220,7 +245,7 @@ body[class*="collection-type-blog"] .blog-item:hover {
 
 /* Card text area */
 body[class*="collection-type-blog"] .blog-basic-grid--text {
-  padding: 20px 22px 0 !important;
+  padding: 20px 18px 0 !important;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -228,6 +253,24 @@ body[class*="collection-type-blog"] .blog-basic-grid--text {
   height: auto !important;
   max-height: none !important;
   min-height: 0 !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure border-box on everything inside the card */
+body[class*="collection-type-blog"] .blog-item,
+body[class*="collection-type-blog"] .blog-item * {
+  box-sizing: border-box !important;
+}
+
+/* Force all text inside cards to wrap properly */
+body[class*="collection-type-blog"] .blog-basic-grid--text * {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
 }
 
 /* Tool number pill (injected by JS) */
@@ -277,7 +320,7 @@ body[class*="collection-type-blog"] .blog-basic-grid--text p strong {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 22px;
+  padding: 12px 18px;
   background: #F3F4F6;
   border-top: 1px solid #E5E7EB;
   margin-top: 16px;

@@ -54,3 +54,10 @@ const indexSrc = path.join(__dirname, 'src', 'index.html');
 if (fs.existsSync(indexSrc)) {
   fs.copyFileSync(indexSrc, path.join(DIST_DIR, 'index.html'));
 }
+
+// Write _headers for Cloudflare Pages (no-cache during active dev)
+fs.writeFileSync(path.join(DIST_DIR, '_headers'), `/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=0, must-revalidate
+`);
+console.log('✓ Built dist/_headers');
