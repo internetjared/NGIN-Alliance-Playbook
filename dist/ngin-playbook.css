@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T17:07:16.782Z */
+/* Auto-built: 2026-03-18T17:23:36.594Z */
 
 /* === variables.css === */
 /* ============================================
@@ -52,7 +52,67 @@
    Scoped to Squarespace 7.1 using official hooks
    ============================================ */
 
-/* --- Global typography refinements --- */
+/* --- Material Symbols --- */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
+
+/* --- Button icon integration --- */
+[data-sqsp-button] .ngin-icon {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+  vertical-align: middle;
+  margin-right: 6px;
+  opacity: 0.9;
+  transition: transform var(--ngin-transition);
+}
+
+/* Icon after text (e.g. arrows) */
+[data-sqsp-button] .ngin-icon-after {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+  vertical-align: middle;
+  margin-left: 6px;
+  margin-right: 0;
+  opacity: 0.9;
+  transition: transform var(--ngin-transition);
+}
+
+/* Hover nudge on trailing arrows */
+[data-sqsp-button]:hover .ngin-icon-after {
+  transform: translateX(3px);
+}
+
+/* Make sure button content aligns with icons */
+[data-sqsp-button][data-ngin-icon] {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0;
+}
 
 
 /* === components.css === */

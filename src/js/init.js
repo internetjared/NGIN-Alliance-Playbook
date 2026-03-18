@@ -13,7 +13,11 @@
 
   function initNGIN(root) {
     if (isEditing()) return;
-    // Component initializers will be called here
+
+    // Smart button icons
+    if (window.NGIN && window.NGIN.addButtonIcons) {
+      window.NGIN.addButtonIcons(root);
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {
