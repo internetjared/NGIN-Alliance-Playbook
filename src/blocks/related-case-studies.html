@@ -1,0 +1,239 @@
+<style>
+.ngin-related {
+  padding: 0;
+  margin: 0;
+}
+
+.ngin-related__heading {
+  font-family: Lora, Georgia, serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px;
+}
+
+.ngin-related__sub {
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  color: #6B7280;
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.ngin-related__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.ngin-related__card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.ngin-related__card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.ngin-related__img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+.ngin-related__body {
+  padding: 16px 18px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ngin-related__city {
+  font-family: Lora, Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px;
+}
+
+.ngin-related__theme {
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 4px;
+  line-height: 1.4;
+}
+
+.ngin-related__orgs {
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  color: #9CA3AF;
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.ngin-related__desc {
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  color: #6B7280;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+.ngin-related__link {
+  display: inline-flex;
+  align-items: center;
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: #1e2930;
+  border-radius: 6px;
+  padding: 8px 16px;
+  margin-top: 14px;
+  text-decoration: none;
+  transition: background 0.25s ease;
+  align-self: flex-start;
+}
+
+.ngin-related__link:hover {
+  background: #2a3a44;
+}
+
+.ngin-related__arrow {
+  font-family: 'Material Symbols Outlined';
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  margin-left: 8px;
+  line-height: 1;
+  transition: transform 0.25s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ngin-related__link:hover .ngin-related__arrow {
+  transform: translate(3px, -3px);
+}
+
+.ngin-related__loading {
+  text-align: center;
+  color: #9CA3AF;
+  font-size: 14px;
+  padding: 40px 0;
+}
+
+@media (max-width: 767px) {
+  .ngin-related__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+</style>
+
+<div class="ngin-related">
+  <p class="ngin-related__heading">Explore More Case Studies</p>
+  <p class="ngin-related__sub">See how other communities built their alliances.</p>
+  <div class="ngin-related__grid" id="ngin-related-grid">
+    <p class="ngin-related__loading">Loading case studies...</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var grid = document.getElementById('ngin-related-grid');
+  if (!grid) return;
+
+  var currentPath = window.location.pathname.replace(/\/$/, '');
+
+  fetch('/case-studies')
+    .then(function(r) { return r.text(); })
+    .then(function(html) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+      var items = doc.querySelectorAll('.list-item');
+      var studies = [];
+
+      items.forEach(function(li) {
+        var img = li.querySelector('.list-image');
+        var title = li.querySelector('.list-item-content__title');
+        var btn = li.querySelector('.list-item-content__button');
+        var desc = li.querySelector('.list-item-content__description');
+        if (!title) return;
+
+        var ps = desc ? desc.querySelectorAll('p') : [];
+        var theme = '', orgs = '', body = '';
+        for (var i = 0; i < ps.length; i++) {
+          if (ps[i].querySelector('strong')) theme = ps[i].textContent.trim();
+          else if (ps[i].querySelector('em')) orgs = ps[i].textContent.trim();
+          else body = ps[i].textContent.trim();
+        }
+
+        var href = btn ? btn.getAttribute('href') : '';
+        if (href && href !== '/' && href !== '' && href !== '#') {
+          var linkPath = href.replace(/\/$/, '');
+          if (linkPath === currentPath) return;
+        }
+
+        studies.push({
+          city: title.textContent.trim(),
+          theme: theme,
+          orgs: orgs,
+          desc: body,
+          img: img ? img.getAttribute('src') : '',
+          href: href || '#'
+        });
+      });
+
+      // Shuffle and pick 3
+      for (var i = studies.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = studies[i];
+        studies[i] = studies[j];
+        studies[j] = tmp;
+      }
+      var picked = studies.slice(0, 3);
+
+      grid.innerHTML = '';
+
+      picked.forEach(function(s) {
+        var card = document.createElement('div');
+        card.className = 'ngin-related__card';
+
+        var imgUrl = s.img;
+        if (imgUrl && imgUrl.indexOf('?') === -1) {
+          imgUrl += '?format=750w';
+        }
+
+        card.innerHTML =
+          (imgUrl ? '<img class="ngin-related__img" src="' + imgUrl + '" alt="' + s.city + '" loading="lazy">' : '') +
+          '<div class="ngin-related__body">' +
+            '<p class="ngin-related__city">' + s.city + '</p>' +
+            (s.theme ? '<p class="ngin-related__theme">' + s.theme + '</p>' : '') +
+            (s.orgs ? '<p class="ngin-related__orgs">' + s.orgs + '</p>' : '') +
+            (s.desc ? '<p class="ngin-related__desc">' + s.desc + '</p>' : '') +
+            '<a class="ngin-related__link" href="' + s.href + '">View Case Study <span class="ngin-related__arrow">north_east</span></a>' +
+          '</div>';
+
+        grid.appendChild(card);
+      });
+
+      if (!picked.length) {
+        grid.innerHTML = '<p class="ngin-related__loading">No other case studies found.</p>';
+      }
+    })
+    .catch(function() {
+      grid.innerHTML = '<p class="ngin-related__loading">Could not load case studies.</p>';
+    });
+})();
+</script>
