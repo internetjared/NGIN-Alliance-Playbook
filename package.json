@@ -1,0 +1,10 @@
+{
+  "name": "ngin-alliance-playbook",
+  "version": "1.0.0",
+  "description": "Custom CSS and JS for the NGIN Alliance Playbook Squarespace site",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js --watch"
+  },
+  "private": true
+}

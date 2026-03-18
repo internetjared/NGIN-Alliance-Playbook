@@ -1,0 +1,42 @@
+/* ============================================
+   NGIN Alliance Playbook — CSS Custom Properties
+   ============================================ */
+
+:root {
+  /* Brand Colors */
+  --ngin-navy: #1B3A6B;
+  --ngin-navy-light: #234B8A;
+  --ngin-navy-dark: #142D52;
+  --ngin-teal: #2E7D6B;
+  --ngin-teal-light: #3A9B84;
+  --ngin-teal-bg: #F0FBF7;
+  --ngin-amber: #D97706;
+  --ngin-amber-light: #F59E0B;
+  --ngin-amber-bg: #FFFBF0;
+
+  /* Neutrals */
+  --ngin-white: #FFFFFF;
+  --ngin-gray-50: #F9FAFB;
+  --ngin-gray-100: #F3F4F6;
+  --ngin-gray-200: #E5E7EB;
+  --ngin-gray-300: #D1D5DB;
+  --ngin-gray-400: #9CA3AF;
+  --ngin-gray-600: #4B5563;
+  --ngin-gray-700: #374151;
+  --ngin-gray-900: #111827;
+
+  /* Spacing */
+  --ngin-section-pad: clamp(40px, 6vw, 72px);
+  --ngin-content-max: 900px;
+  --ngin-sidebar-width: 230px;
+
+  /* Radius */
+  --ngin-radius-sm: 4px;
+  --ngin-radius: 6px;
+  --ngin-radius-lg: 8px;
+  --ngin-radius-xl: 12px;
+  --ngin-radius-pill: 100px;
+
+  /* Transitions */
+  --ngin-transition: 0.2s ease;
+}
