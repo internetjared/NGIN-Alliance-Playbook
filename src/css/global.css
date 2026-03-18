@@ -92,11 +92,26 @@ strong[data-ngin-label-icon="done"] {
    These are standard 7.1 nav wrappers but not officially documented hooks.
    -------------------------------------------------------------------- */
 
-/* Desktop nav links */
-.header-nav-list a {
+/* Desktop nav links — kill all Squarespace default underlines */
+.header-nav-list a,
+.header-nav-item a,
+.header-nav-item--active a {
   position: relative;
   text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
   transition: color 0.25s ease;
+}
+
+/* Kill Squarespace native active underline on parent item */
+.header-nav-item--active {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.header-nav-item--active::after,
+.header-nav-item--active::before {
+  display: none !important;
 }
 
 /* Green underline — starts hidden, slides in on hover */
