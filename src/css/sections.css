@@ -70,30 +70,36 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item:hover {
   transform: translateY(-2px);
 }
 
-/* Image: negative margins to break out of card padding, flush top/left/right */
+/* Image: break out of card padding, flush top/left/right.
+   Squarespace uses position:absolute + padding-bottom aspect ratio.
+   We override the image to position:static so it sizes naturally,
+   then use negative margins + calc width to fill the card. */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media {
   margin: -20px -20px 0 -20px !important;
   width: calc(100% + 40px) !important;
-  padding: 0 !important;
   border: none !important;
   border-radius: 0 !important;
 }
 
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media-inner {
-  /* Squarespace uses padding-bottom for aspect ratio — must preserve it */
-  padding-top: 0 !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  /* Set a fixed aspect ratio as fallback */
-  padding-bottom: 60% !important;
+  overflow: hidden !important;
   border-radius: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding-bottom: 0 !important;
+  position: relative !important;
 }
 
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-image {
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  display: block !important;
   border-radius: 0 !important;
   border: none !important;
-  width: 100% !important;
-  display: block !important;
+  object-fit: cover !important;
+  aspect-ratio: 3 / 2 !important;
 }
 
 /* Title: bold + larger, space below */
