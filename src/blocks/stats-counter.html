@@ -1,0 +1,152 @@
+<style>
+.ngin-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.ngin-stats__card {
+  background: #1B3A6B;
+  border-radius: 10px;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.ngin-stats__number {
+  font-family: Lora, Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0 0 6px;
+}
+
+.ngin-stats__label {
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 767px) {
+  .ngin-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .ngin-stats__card {
+    padding: 20px 16px;
+  }
+  .ngin-stats__number {
+    font-size: clamp(1.75rem, 6vw, 2.25rem);
+  }
+  .ngin-stats__label {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 479px) {
+  .ngin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>
+
+<div class="ngin-stats">
+  <div class="ngin-stats__card">
+    <p class="ngin-stats__number" data-ngin-count="24">0</p>
+    <p class="ngin-stats__label">Coalitions</p>
+  </div>
+  <div class="ngin-stats__card">
+    <p class="ngin-stats__number" data-ngin-count="22">0</p>
+    <p class="ngin-stats__label">Communities</p>
+  </div>
+  <div class="ngin-stats__card">
+    <p class="ngin-stats__number" data-ngin-count="64">0</p>
+    <p class="ngin-stats__label">Core Organizations</p>
+  </div>
+  <div class="ngin-stats__card">
+    <p class="ngin-stats__number" data-ngin-count="141">0</p>
+    <p class="ngin-stats__label">Orgs Trained</p>
+  </div>
+  <div class="ngin-stats__card">
+    <p class="ngin-stats__number" data-ngin-count="15">0</p>
+    <p class="ngin-stats__label">Tools</p>
+  </div>
+  <div class="ngin-stats__card">
+    <p class="ngin-stats__number" data-ngin-count="9">0</p>
+    <p class="ngin-stats__label">Case Studies</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  function animateCount(el, target, duration) {
+    var start = 0;
+    var startTime = null;
+
+    function ease(t) {
+      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var value = Math.round(ease(progress) * target);
+      el.textContent = value;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target;
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function initStats() {
+    var counters = document.querySelectorAll('[data-ngin-count]');
+    if (!counters.length) return;
+
+    // Respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      counters.forEach(function(el) {
+        el.textContent = el.getAttribute('data-ngin-count');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          if (el.dataset.nginCounted === 'done') return;
+          el.dataset.nginCounted = 'done';
+          var target = parseInt(el.getAttribute('data-ngin-count'), 10);
+          // Stagger: larger numbers take slightly longer
+          var duration = 1200 + (target * 4);
+          if (duration > 2200) duration = 2200;
+          animateCount(el, target, duration);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    counters.forEach(function(el) {
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStats);
+  } else {
+    initStats();
+  }
+})();
+</script>
