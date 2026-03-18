@@ -52,3 +52,86 @@ section[data-section-id="69badb6c344ec84841fe29e2"] .list-item-content__button:h
   padding-left: 16px;
 }
 
+/* --- Case Studies city cards ---
+   Section: 69baee0a0909bd79f56324b3
+   OBSERVED selectors: .list-item, .list-item-media, .list-item-content, etc.
+   -------------------------------------------- */
+
+/* Card: rounded corners, overflow clip for flush image */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Image: flush to card edges (top, left, right), no border/padding */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media-inner {
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-image {
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* Title: bold + larger */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__title {
+  font-weight: 700 !important;
+  font-size: 1.35em !important;
+}
+
+/* Italic text: softer gray */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__description em,
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__description i {
+  color: #9CA3AF !important;
+}
+
+/* All description text: tighter line height */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__description p {
+  line-height: 1.45 !important;
+  margin-bottom: 4px !important;
+}
+
+/* Button: green #caddbb with navy text */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button {
+  background-color: #caddbb !important;
+  color: var(--ngin-navy, #1B3A6B) !important;
+  border-color: #caddbb !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button:hover {
+  background-color: #b8d0a3 !important;
+  border-color: #b8d0a3 !important;
+}
+
+/* Arrow icon inside case study buttons */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button .ngin-icon {
+  font-size: 18px;
+  margin-left: 10px;
+  opacity: 0.8;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button:hover .ngin-icon {
+  transform: translate(3px, -3px);
+  opacity: 1;
+}
+

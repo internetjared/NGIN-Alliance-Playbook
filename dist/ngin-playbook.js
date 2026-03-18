@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-03-18T18:48:23.588Z */
+/* Auto-built: 2026-03-18T18:52:11.338Z */
 
 /* === init.js === */
 /* ============================================
@@ -69,6 +69,7 @@
 
   // All icons are placed AFTER the button text
   var ICON_RULES = [
+    { pattern: /view case stud/i,     icon: 'north_east' },
     { pattern: /explore/i,           icon: 'explore' },
     { pattern: /get started/i,       icon: 'arrow_forward' },
     { pattern: /learn more/i,        icon: 'arrow_forward' },
