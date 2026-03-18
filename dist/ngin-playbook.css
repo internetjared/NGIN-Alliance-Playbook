@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T19:09:08.640Z */
+/* Auto-built: 2026-03-18T19:11:46.851Z */
 
 /* === variables.css === */
 /* ============================================
@@ -308,10 +308,11 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-image {
   aspect-ratio: 3 / 2 !important;
 }
 
-/* Title: bold + larger, space below */
+/* Title: bold + larger, space above and below */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__title {
   font-weight: 700 !important;
   font-size: 1.35em !important;
+  margin-top: 8px !important;
   margin-bottom: 10px !important;
 }
 
