@@ -1,0 +1,96 @@
+<style>
+.ngin-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.ngin-meta__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ngin-meta__label {
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6B7280;
+  margin: 0;
+}
+
+.ngin-meta__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ngin-meta__pill {
+  display: inline-block;
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* Navy — Organizations */
+.ngin-meta__pill--navy {
+  border-color: #1B3A6B;
+  color: #1B3A6B;
+}
+
+/* Green — Building Blocks */
+.ngin-meta__pill--green {
+  border-color: #caddbb;
+  color: #1B3A6B;
+}
+
+/* Gray — Related Tools */
+.ngin-meta__pill--gray {
+  border-color: #9CA3AF;
+  color: #6B7280;
+}
+
+@media (max-width: 767px) {
+  .ngin-meta {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+</style>
+
+<div class="ngin-meta">
+  <div class="ngin-meta__group">
+    <p class="ngin-meta__label">Organizations</p>
+    <div class="ngin-meta__pills">
+      <span class="ngin-meta__pill ngin-meta__pill--navy">Maine Multicultural Center (MMCC)</span>
+      <span class="ngin-meta__pill ngin-meta__pill--navy">Eastern Maine Development Corp. (EMDC)</span>
+    </div>
+  </div>
+
+  <div class="ngin-meta__group">
+    <p class="ngin-meta__label">Building Blocks Featured</p>
+    <div class="ngin-meta__pills">
+      <span class="ngin-meta__pill ngin-meta__pill--green">Trust</span>
+      <span class="ngin-meta__pill ngin-meta__pill--green">Shared Narrative</span>
+      <span class="ngin-meta__pill ngin-meta__pill--green">Structure</span>
+    </div>
+  </div>
+
+  <div class="ngin-meta__group">
+    <p class="ngin-meta__label">Related Tools</p>
+    <div class="ngin-meta__pills">
+      <span class="ngin-meta__pill ngin-meta__pill--gray">Positionality Statement</span>
+      <span class="ngin-meta__pill ngin-meta__pill--gray">Coalition Continuity</span>
+      <span class="ngin-meta__pill ngin-meta__pill--gray">Meeting Cadence Kit</span>
+    </div>
+  </div>
+</div>
