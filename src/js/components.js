@@ -200,9 +200,62 @@
     });
   }
 
+  /* --- Case Study Meta Pills ---
+     Converts italic text in the case study info strip
+     into colored pill badges per category.
+     ------------------------------------------------ */
+
+  var PILL_COLORS = {
+    'organizations':           'navy',
+    'building blocks featured': 'green',
+    'related tools':           'gray'
+  };
+
+  function addCaseStudyPills(root) {
+    var section = root.querySelector
+      ? root.querySelector('section[data-section-id="69baf822077df3202166c679"]')
+      : null;
+    if (!section) return;
+
+    var blocks = section.querySelectorAll('[data-sqsp-block="text"]');
+    blocks.forEach(function (block) {
+      if (block.dataset.nginPills === 'done') return;
+
+      var strong = block.querySelector('strong');
+      if (!strong) return;
+      var heading = strong.textContent.trim().toLowerCase();
+      var colorKey = PILL_COLORS[heading];
+      if (!colorKey) return;
+
+      block.dataset.nginPills = 'done';
+
+      // Find the paragraph containing the italic items
+      var emParagraphs = block.querySelectorAll('p');
+      emParagraphs.forEach(function (p) {
+        var ems = p.querySelectorAll('em');
+        if (!ems.length) return;
+
+        // Build pill container
+        var container = document.createElement('div');
+        container.className = 'ngin-pill-container';
+
+        ems.forEach(function (em) {
+          var pill = document.createElement('span');
+          pill.className = 'ngin-pill ngin-pill--' + colorKey;
+          pill.textContent = em.textContent.trim();
+          container.appendChild(pill);
+        });
+
+        // Replace the paragraph with the pill container
+        p.parentNode.replaceChild(container, p);
+      });
+    });
+  }
+
   // Register with NGIN init system
   window.NGIN = window.NGIN || {};
   window.NGIN.addButtonIcons = addButtonIcons;
   window.NGIN.addLinkArrows = addLinkArrows;
   window.NGIN.addLabelIcons = addLabelIcons;
+  window.NGIN.addCaseStudyPills = addCaseStudyPills;
 })();

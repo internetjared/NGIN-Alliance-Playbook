@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T19:17:18.079Z */
+/* Auto-built: 2026-03-18T19:23:57.893Z */
 
 /* === variables.css === */
 /* ============================================
@@ -200,7 +200,43 @@ strong[data-ngin-label-icon="done"] {
    Custom modules injected into Squarespace
    ============================================ */
 
-/* --- Component styles will be added here as we build modules --- */
+/* --- Case Study Meta Pills --- */
+.ngin-pill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.ngin-pill {
+  display: inline-block;
+  font-style: normal !important;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* Navy — Organizations */
+.ngin-pill--navy {
+  border-color: var(--ngin-navy, #1B3A6B);
+  color: var(--ngin-navy, #1B3A6B);
+}
+
+/* Green — Building Blocks */
+.ngin-pill--green {
+  border-color: #caddbb;
+  color: #1B3A6B;
+}
+
+/* Gray — Related Tools */
+.ngin-pill--gray {
+  border-color: #9CA3AF;
+  color: #6B7280;
+}
 
 
 /* === sections.css === */

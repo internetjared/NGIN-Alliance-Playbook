@@ -37,6 +37,11 @@
     if (window.NGIN && window.NGIN.addLabelIcons) {
       window.NGIN.addLabelIcons(root);
     }
+
+    // Case study meta pills
+    if (window.NGIN && window.NGIN.addCaseStudyPills) {
+      window.NGIN.addCaseStudyPills(root);
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {
