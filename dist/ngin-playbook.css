@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T18:56:58.141Z */
+/* Auto-built: 2026-03-18T18:59:43.007Z */
 
 /* === variables.css === */
 /* ============================================
@@ -263,11 +263,10 @@ section[data-section-id="69badb6c344ec84841fe29e2"] .list-item-content__button:h
    OBSERVED selectors: .list-item, .list-item-media, .list-item-content, etc.
    -------------------------------------------- */
 
-/* Card: rounded corners, no padding (image goes flush), overflow clip */
+/* Card: rounded corners, overflow clip */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item {
   border-radius: 10px !important;
   overflow: hidden !important;
-  padding: 0 !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
@@ -277,13 +276,12 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item:hover {
   transform: translateY(-2px);
 }
 
-/* Image: flush to card edges (top, left, right), no border/padding */
+/* Image: negative margins to break out of card padding, flush top/left/right */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media {
+  margin: -20px -20px 0 -20px !important;
   padding: 0 !important;
-  margin: 0 !important;
   border: none !important;
   border-radius: 0 !important;
-  width: 100% !important;
 }
 
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media-inner {
@@ -296,11 +294,6 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-image {
   border: none !important;
   width: 100% !important;
   display: block !important;
-}
-
-/* Content area: add padding back for text, more space below image */
-section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content {
-  padding: 20px 20px 20px !important;
 }
 
 /* Title: bold + larger, space below */
