@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T18:42:47.852Z */
+/* Auto-built: 2026-03-18T18:44:24.418Z */
 
 /* === variables.css === */
 /* ============================================
@@ -101,12 +101,11 @@
   text-decoration: none !important;
   border-bottom: 1.5px solid currentColor;
   padding-bottom: 1px;
-  transition: border-color var(--ngin-transition), color var(--ngin-transition);
+  transition: opacity var(--ngin-transition);
 }
 
 .ngin-inline-link:hover {
-  border-bottom-color: var(--ngin-teal, #2E7D6B);
-  color: var(--ngin-teal, #2E7D6B);
+  opacity: 0.7;
 }
 
 .ngin-link-arrow {
