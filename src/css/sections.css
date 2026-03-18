@@ -132,11 +132,12 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__descript
   margin-bottom: 4px !important;
 }
 
-/* Button: dark #1e2930 with white text */
+/* Button: dark #1e2930 with white text, bold */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button {
   background-color: #1e2930 !important;
   color: #fff !important;
   border-color: #1e2930 !important;
+  font-weight: 700 !important;
   display: inline-flex !important;
   align-items: center;
   gap: 0;
