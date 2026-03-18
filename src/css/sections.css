@@ -188,20 +188,29 @@ body[class*="collection-type-blog"] .blog-meta-section {
 body[class*="collection-type-blog"] .blog-item {
   background: #fff !important;
   border-radius: 10px !important;
-  overflow: visible !important;
+  overflow: hidden !important;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
   border: 1px solid #E5E7EB !important;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   display: flex !important;
   flex-direction: column !important;
-  min-height: 0 !important;
   height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
 }
 
-/* Ensure text doesn't clip inside the card */
-body[class*="collection-type-blog"] .blog-item * {
+/* Override Squarespace line-clamp that clips text */
+body[class*="collection-type-blog"] .blog-item .blog-title,
+body[class*="collection-type-blog"] .blog-item .blog-excerpt,
+body[class*="collection-type-blog"] .blog-item .blog-basic-grid--text > div {
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  display: block !important;
+  text-overflow: unset !important;
+  overflow: visible !important;
+  max-height: none !important;
+  height: auto !important;
   overflow-wrap: break-word !important;
-  word-wrap: break-word !important;
 }
 
 body[class*="collection-type-blog"] .blog-item:hover {
@@ -215,8 +224,9 @@ body[class*="collection-type-blog"] .blog-basic-grid--text {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: visible !important;
+  overflow: hidden !important;
   height: auto !important;
+  max-height: none !important;
   min-height: 0 !important;
 }
 
