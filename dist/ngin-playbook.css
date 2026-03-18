@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T17:51:22.868Z */
+/* Auto-built: 2026-03-18T18:01:16.447Z */
 
 /* === variables.css === */
 /* ============================================
@@ -138,7 +138,6 @@
 
 /* --- "Start Where You Are" pathway cards ---
    Section: 69badb6c344ec84841fe29e2
-   Risk: medium — uses data-section-id (auto-generated, not manual anchor)
    -------------------------------------------- */
 
 section[data-section-id="69badb6c344ec84841fe29e2"] li h2 {
@@ -149,12 +148,20 @@ section[data-section-id="69badb6c344ec84841fe29e2"] li p {
   line-height: 1.45 !important;
 }
 
-/* --- "What's Inside the Playbook?" category labels ---
+/* Pathway list buttons — green #caddbb, matching primary button style */
+section[data-section-id="69badb6c344ec84841fe29e2"] .list-item-content__button {
+  background-color: #caddbb !important;
+  color: var(--ngin-navy, #1B3A6B) !important;
+  border-color: #caddbb !important;
+}
+
+section[data-section-id="69badb6c344ec84841fe29e2"] .list-item-content__button:hover {
+  background-color: #b8d0a3 !important;
+  border-color: #b8d0a3 !important;
+}
+
+/* --- "What's Inside the Playbook?" category pill badges ---
    Section: 69badcb87603e07234d02a29
-   Turns the "core insights" / "Resource bank" / "case studies" /
-   "About the Alliance" labels into pill badges that match the
-   primary button style (green bg, white text).
-   Risk: medium — targets <p><strong> pattern inside text blocks
    -------------------------------------------- */
 
 section[data-section-id="69badcb87603e07234d02a29"] [data-sqsp-block="text"] p:first-child {
@@ -163,8 +170,8 @@ section[data-section-id="69badcb87603e07234d02a29"] [data-sqsp-block="text"] p:f
 
 section[data-section-id="69badcb87603e07234d02a29"] [data-sqsp-block="text"] p:first-child strong {
   display: inline-block;
-  background-color: rgb(135, 189, 97);
-  color: #fff !important;
+  background-color: #caddbb;
+  color: var(--ngin-navy, #1B3A6B) !important;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
