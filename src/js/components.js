@@ -4,14 +4,14 @@
 
 /* --- Smart Button Icons ---
    Reads button text and injects a matching
-   Material Symbols icon before or after the label.
+   Material Symbols icon AFTER the label.
    -------------------------------------------- */
 
 (function () {
   'use strict';
 
-  // Icon placed AFTER text (trailing arrows / directional)
-  var AFTER_RULES = [
+  // All icons are placed AFTER the button text
+  var ICON_RULES = [
     { pattern: /explore/i,           icon: 'explore' },
     { pattern: /get started/i,       icon: 'arrow_forward' },
     { pattern: /learn more/i,        icon: 'arrow_forward' },
@@ -22,10 +22,6 @@
     { pattern: /next/i,              icon: 'arrow_forward' },
     { pattern: /go to/i,             icon: 'arrow_forward' },
     { pattern: /visit/i,             icon: 'open_in_new' },
-  ];
-
-  // Icon placed BEFORE text (leading icons)
-  var BEFORE_RULES = [
     { pattern: /browse/i,            icon: 'menu_book' },
     { pattern: /resource/i,          icon: 'library_books' },
     { pattern: /download/i,          icon: 'download' },
@@ -35,7 +31,7 @@
     { pattern: /filter/i,            icon: 'filter_list' },
     { pattern: /contact/i,           icon: 'mail' },
     { pattern: /email/i,             icon: 'mail' },
-    { pattern: /call/i,              icon: 'phone' },
+    { pattern: /call($|\s)/i,        icon: 'phone' },
     { pattern: /phone/i,             icon: 'phone' },
     { pattern: /sign up/i,           icon: 'person_add' },
     { pattern: /register/i,          icon: 'person_add' },
@@ -91,19 +87,18 @@
   ];
 
   function getButtonText(btn) {
-    // Get visible text, ignoring any icons we already injected
     var clone = btn.cloneNode(true);
-    var icons = clone.querySelectorAll('.ngin-icon, .ngin-icon-after');
+    var icons = clone.querySelectorAll('.ngin-icon');
     for (var i = 0; i < icons.length; i++) {
       icons[i].remove();
     }
     return (clone.textContent || '').trim();
   }
 
-  function matchIcon(text, rules) {
-    for (var i = 0; i < rules.length; i++) {
-      if (rules[i].pattern.test(text)) {
-        return rules[i].icon;
+  function matchIcon(text) {
+    for (var i = 0; i < ICON_RULES.length; i++) {
+      if (ICON_RULES[i].pattern.test(text)) {
+        return ICON_RULES[i].icon;
       }
     }
     return null;
@@ -119,30 +114,54 @@
       var text = getButtonText(btn);
       if (!text) return;
 
-      // Check trailing icon first (directional CTAs)
-      var afterIcon = matchIcon(text, AFTER_RULES);
-      if (afterIcon) {
-        var after = document.createElement('span');
-        after.className = 'ngin-icon-after';
-        after.setAttribute('aria-hidden', 'true');
-        after.textContent = afterIcon;
-        btn.appendChild(after);
-        return;
+      var icon = matchIcon(text);
+      if (icon) {
+        var span = document.createElement('span');
+        span.className = 'ngin-icon';
+        span.setAttribute('aria-hidden', 'true');
+        span.textContent = icon;
+        btn.appendChild(span);
       }
+    });
+  }
 
-      // Then check leading icon
-      var beforeIcon = matchIcon(text, BEFORE_RULES);
-      if (beforeIcon) {
-        var before = document.createElement('span');
-        before.className = 'ngin-icon';
-        before.setAttribute('aria-hidden', 'true');
-        before.textContent = beforeIcon;
-        btn.insertBefore(before, btn.firstChild);
-      }
+  /* --- Inline Link Arrows ---
+     Adds north-east arrow to links inside paragraphs
+     and text block content areas.
+     ------------------------------------------------ */
+
+  function addLinkArrows(root) {
+    // Target links inside text block content and paragraph elements
+    var selectors = [
+      '[data-sqsp-text-block-content] a',
+      '.sqs-block-content p a',
+      '.sqs-block-html p a'
+    ];
+
+    var links = root.querySelectorAll(selectors.join(', '));
+
+    links.forEach(function (link) {
+      if (link.dataset.nginArrow === 'done') return;
+      // Skip if this link is actually a button block
+      if (link.closest('[data-sqsp-block="button"]')) return;
+      // Skip nav, header, footer links
+      if (link.closest('header, footer, nav, #header, #footer')) return;
+      // Skip links that are just images
+      if (!link.textContent.trim()) return;
+
+      link.dataset.nginArrow = 'done';
+      link.classList.add('ngin-inline-link');
+
+      var arrow = document.createElement('span');
+      arrow.className = 'ngin-link-arrow';
+      arrow.setAttribute('aria-hidden', 'true');
+      arrow.textContent = 'north_east';
+      link.appendChild(arrow);
     });
   }
 
   // Register with NGIN init system
   window.NGIN = window.NGIN || {};
   window.NGIN.addButtonIcons = addButtonIcons;
+  window.NGIN.addLinkArrows = addLinkArrows;
 })();

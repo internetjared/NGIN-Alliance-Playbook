@@ -27,6 +27,11 @@
     if (window.NGIN && window.NGIN.addButtonIcons) {
       window.NGIN.addButtonIcons(root);
     }
+
+    // Inline link arrows
+    if (window.NGIN && window.NGIN.addLinkArrows) {
+      window.NGIN.addLinkArrows(root);
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {
