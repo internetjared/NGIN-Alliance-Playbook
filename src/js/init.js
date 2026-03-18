@@ -42,6 +42,11 @@
     if (window.NGIN && window.NGIN.addCaseStudyPills) {
       window.NGIN.addCaseStudyPills(root);
     }
+
+    // Resource bank search + filter
+    if (window.NGIN && window.NGIN.initResourceFilter) {
+      window.NGIN.initResourceFilter(root);
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {

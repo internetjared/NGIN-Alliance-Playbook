@@ -162,3 +162,11 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button:h
   opacity: 1;
 }
 
+/* --- Resource Bank blog page ---
+   Hide dates and blog-specific meta, clean up card presentation
+   -------------------------------------------- */
+body.collection-type-blog .blog-meta-section .blog-date,
+body.collection-type-blog .blog-meta-section .blog-author {
+  display: none !important;
+}
+

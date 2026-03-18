@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-03-18T19:58:21.628Z */
+/* Auto-built: 2026-03-18T20:16:00.722Z */
 
 /* === init.js === */
 /* ============================================
@@ -45,6 +45,11 @@
     // Case study meta pills
     if (window.NGIN && window.NGIN.addCaseStudyPills) {
       window.NGIN.addCaseStudyPills(root);
+    }
+
+    // Resource bank search + filter
+    if (window.NGIN && window.NGIN.initResourceFilter) {
+      window.NGIN.initResourceFilter(root);
     }
   }
 
@@ -314,12 +319,132 @@
     });
   }
 
+  /* --- Resource Bank Search + Filter ---
+     Injects a search bar and category pill buttons into the
+     blog collection section on /resource-bank. Reads categories
+     from blog items and filters in real-time.
+     ------------------------------------------------ */
+
+  function initResourceFilter(root) {
+    // Only run on the resource bank blog page
+    if (!document.body.classList.contains('collection-type-blog')) return;
+    if (window.location.pathname.indexOf('/resource-bank') !== 0) return;
+    // Don't run on individual post pages
+    if (document.body.classList.contains('view-item')) return;
+
+    var blogGrid = root.querySelector('.blog-basic-grid.collection-content-wrapper');
+    if (!blogGrid) return;
+    if (blogGrid.dataset.nginFilter === 'done') return;
+    blogGrid.dataset.nginFilter = 'done';
+
+    var items = blogGrid.querySelectorAll('.blog-item');
+    if (!items.length) return;
+
+    // Extract all unique categories from the blog items
+    var allCats = new Set();
+    items.forEach(function(item) {
+      var cats = item.querySelectorAll('.blog-categories');
+      cats.forEach(function(c) {
+        var t = c.textContent.trim();
+        if (t) allCats.add(t);
+      });
+    });
+    var categories = Array.from(allCats).sort();
+
+    // Build the filter UI
+    var filterBar = document.createElement('div');
+    filterBar.className = 'ngin-filter';
+    filterBar.innerHTML =
+      '<div class="ngin-filter__search-wrap">' +
+        '<span class="ngin-filter__search-icon">search</span>' +
+        '<input type="text" class="ngin-filter__search" placeholder="Search tools...">' +
+      '</div>' +
+      '<div class="ngin-filter__pills"></div>';
+
+    var pillContainer = filterBar.querySelector('.ngin-filter__pills');
+    var searchInput = filterBar.querySelector('.ngin-filter__search');
+
+    // "All" button
+    var allBtn = document.createElement('button');
+    allBtn.className = 'ngin-filter__pill ngin-filter__pill--active';
+    allBtn.textContent = 'All';
+    allBtn.dataset.cat = '';
+    pillContainer.appendChild(allBtn);
+
+    // Category buttons
+    categories.forEach(function(cat) {
+      var btn = document.createElement('button');
+      btn.className = 'ngin-filter__pill';
+      btn.textContent = cat;
+      btn.dataset.cat = cat.toLowerCase();
+      pillContainer.appendChild(btn);
+    });
+
+    // Insert before the blog grid
+    blogGrid.parentNode.insertBefore(filterBar, blogGrid);
+
+    // Sort items alphabetically by title
+    var itemsArr = Array.from(items);
+    itemsArr.sort(function(a, b) {
+      var tA = (a.querySelector('h1 a, h2 a, .blog-title a') || {}).textContent || '';
+      var tB = (b.querySelector('h1 a, h2 a, .blog-title a') || {}).textContent || '';
+      return tA.trim().localeCompare(tB.trim());
+    });
+    itemsArr.forEach(function(item) {
+      blogGrid.appendChild(item);
+    });
+
+    // Filter logic
+    var activeCat = '';
+
+    function filterItems() {
+      var query = searchInput.value.toLowerCase().trim();
+
+      itemsArr.forEach(function(item) {
+        var title = (item.querySelector('h1, h2, .blog-title') || {}).textContent || '';
+        var excerpt = (item.querySelector('.blog-excerpt, .blog-basic-grid--text p:not(.blog-meta-section *)') || {}).textContent || '';
+        var text = (title + ' ' + excerpt).toLowerCase();
+
+        // Category match
+        var catMatch = true;
+        if (activeCat) {
+          var itemCats = item.querySelectorAll('.blog-categories');
+          catMatch = false;
+          itemCats.forEach(function(c) {
+            if (c.textContent.trim().toLowerCase() === activeCat) catMatch = true;
+          });
+        }
+
+        // Search match
+        var searchMatch = !query || text.indexOf(query) !== -1;
+
+        item.style.display = (catMatch && searchMatch) ? '' : 'none';
+      });
+    }
+
+    // Pill click handler
+    pillContainer.addEventListener('click', function(e) {
+      var btn = e.target.closest('.ngin-filter__pill');
+      if (!btn) return;
+      pillContainer.querySelectorAll('.ngin-filter__pill').forEach(function(b) {
+        b.classList.remove('ngin-filter__pill--active');
+      });
+      btn.classList.add('ngin-filter__pill--active');
+      activeCat = btn.dataset.cat;
+      filterItems();
+    });
+
+    // Search input handler
+    searchInput.addEventListener('input', filterItems);
+  }
+
   // Register with NGIN init system
   window.NGIN = window.NGIN || {};
   window.NGIN.addButtonIcons = addButtonIcons;
   window.NGIN.addLinkArrows = addLinkArrows;
   window.NGIN.addLabelIcons = addLabelIcons;
   window.NGIN.addCaseStudyPills = addCaseStudyPills;
+  window.NGIN.initResourceFilter = initResourceFilter;
 })();
 
 
