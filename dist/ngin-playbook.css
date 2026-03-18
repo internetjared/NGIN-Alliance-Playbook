@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T18:10:53.532Z */
+/* Auto-built: 2026-03-18T18:13:46.898Z */
 
 /* === variables.css === */
 /* ============================================
@@ -121,11 +121,11 @@
   opacity: 1;
 }
 
-/* --- Section label icons (white, left of label text) --- */
+/* --- Section label icons (green, left of label text) --- */
 .ngin-label-icon {
-  font-size: 18px;
-  color: #fff !important;
-  margin-right: 6px;
+  font-size: 36px;
+  color: rgb(135, 189, 97) !important;
+  margin-right: 10px;
   vertical-align: middle;
 }
 
