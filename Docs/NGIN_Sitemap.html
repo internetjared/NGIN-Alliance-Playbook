@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NGIN Alliance Playbook — Site Map</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #F4F7F6;
+    color: #222;
+    padding: 48px 40px 60px;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #C9DED9;
+  }
+  .doc-title { font-size: 22px; font-weight: 700; color: #1B3A6B; }
+  .doc-sub   { font-size: 13px; color: #6B7280; margin-top: 4px; }
+  .doc-meta  { font-size: 12px; color: #6B7280; text-align: right; line-height: 1.7; }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #444;
+  }
+  .legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── Tree ── */
+  .tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* HOME */
+  .home-node {
+    background: #1B3A6B;
+    color: #fff;
+    border-radius: 8px;
+    padding: 16px 40px;
+    text-align: center;
+    position: relative;
+    min-width: 220px;
+  }
+  .home-node .page-name  { font-size: 16px; font-weight: 700; letter-spacing: 0.02em; }
+  .home-node .page-tag   { font-size: 11px; color: #C9DED9; margin-top: 4px; }
+
+  /* Vertical connector down from home */
+  .connector-v {
+    width: 2px;
+    height: 32px;
+    background: #C9DED9;
+    margin: 0 auto;
+  }
+
+  /* Horizontal bar connecting main pages */
+  .h-bar-wrap {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .h-bar {
+    position: absolute;
+    top: 0;
+    height: 2px;
+    background: #C9DED9;
+  }
+
+  /* Main nav row */
+  .nav-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding-top: 32px;
+    position: relative;
+  }
+  .nav-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(8.33% + 8px);
+    right: calc(8.33% + 8px);
+    height: 2px;
+    background: #C9DED9;
+  }
+
+  /* Column (page + children) */
+  .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+  }
+  /* tick down from the bar to each node */
+  .col::before {
+    content: '';
+    width: 2px;
+    height: 32px;
+    background: #C9DED9;
+  }
+
+  /* Page node */
+  .page-node {
+    border-radius: 8px;
+    padding: 14px 16px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+  .page-node.static   { background: #fff; border: 2px solid #2E7D6B; }
+  .page-node.template { background: #fff; border: 2px solid #D97706; }
+  .page-node.directory{ background: #fff; border: 2px solid #1B3A6B; }
+
+  .page-node .page-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1B3A6B;
+    line-height: 1.3;
+  }
+  .page-node .page-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 5px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  .tag-static    { background: #EDF4F2; color: #2E7D6B; }
+  .tag-template  { background: #FEF3C7; color: #D97706; }
+  .tag-directory { background: #E8EDF5; color: #1B3A6B; }
+
+  .page-node .page-desc {
+    font-size: 11px;
+    color: #555;
+    margin-top: 8px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  /* Children connector + grid */
+  .children-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+  }
+  .children-wrap .connector-v { height: 20px; }
+
+  /* Sub-items grid */
+  .sub-grid {
+    width: 100%;
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    padding: 10px;
+  }
+  .sub-grid-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .sub-item {
+    font-size: 11px;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.4;
+  }
+  .sub-item:last-child { margin-bottom: 0; }
+  .sub-item .num {
+    font-weight: 700;
+    color: #2E7D6B;
+    flex-shrink: 0;
+    font-size: 10px;
+    margin-top: 1px;
+  }
+  .sub-item.case .num { color: #D97706; }
+
+  /* Case sub items have amber accent */
+  .sub-grid.amber { border-color: #FDE68A; background: #FFFBF0; }
+  .sub-grid.teal  { border-color: #C9DED9; background: #EDF4F2; }
+
+  /* count badge */
+  .count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #1B3A6B;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 2px 9px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* footer */
+  .doc-footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid #C9DED9;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #9CA3AF;
+  }
+
+  @media print {
+    body { background: #fff; padding: 24px; }
+    .page-node { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="doc-header">
+  <div>
+    <div class="doc-title">NGIN Alliance Playbook — Site Map</div>
+    <div class="doc-sub">playbook.newgrowth.org &nbsp;·&nbsp; Squarespace 7.1 Microsite</div>
+  </div>
+  <div class="doc-meta">
+    Prepared by Pocketknife<br>
+    February 23, 2026
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#2E7D6B;"></div>
+    Static Page (1 of 1)
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#1B3A6B;"></div>
+    Directory / Index Page
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="background:#D97706;"></div>
+    Template-Driven Page (scalable)
+  </div>
+</div>
+
+<!-- Tree -->
+<div class="tree">
+
+  <!-- HOME -->
+  <div class="home-node">
+    <div class="page-name">Home / Landing Page</div>
+    <div class="page-tag">Static &nbsp;·&nbsp; Entry Point</div>
+  </div>
+
+  <div class="connector-v"></div>
+
+  <!-- Main nav row -->
+  <div class="nav-row">
+
+    <!-- ABOUT -->
+    <div class="col">
+      <div class="page-node static">
+        <div class="page-name">About the Playbook</div>
+        <div><span class="page-tag tag-static">Static</span></div>
+        <div class="page-desc">
+          Why the Alliance was created · Program approach · Phases 1 &amp; 2 · National reach · Program objectives
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAMEWORK -->
+    <div class="col">
+      <div class="page-node static">
+        <div class="page-name">Framework &amp; Insights</div>
+        <div><span class="page-tag tag-static">Static</span></div>
+        <div class="page-desc">
+          Four Building Blocks overview · Trust · Shared Narrative · Facilitation &amp; Project Management · Structure &amp; Shared Practice · Practice Makes Durable · 60-Day Quick Start
+        </div>
+      </div>
+    </div>
+
+    <!-- RESOURCES BANK -->
+    <div class="col">
+      <div class="page-node directory">
+        <div class="page-name">Resources Bank</div>
+        <div><span class="page-tag tag-directory">Index</span></div>
+        <div class="page-desc">
+          Filterable library of all tools &amp; templates · Organized by building block
+        </div>
+      </div>
+      <div class="children-wrap">
+        <div class="connector-v"></div>
+        <div class="sub-grid teal">
+          <div class="sub-grid-title">15 Tools &amp; Templates <span class="count-badge">15</span></div>
+          <div class="sub-item"><span class="num">1</span> Coalition Continuity Framework</div>
+          <div class="sub-item"><span class="num">2</span> Rapid Action Planning Template</div>
+          <div class="sub-item"><span class="num">3</span> Positionality Statement Dev &amp; Sharing</div>
+          <div class="sub-item"><span class="num">4</span> Power-Sharing Charter Template</div>
+          <div class="sub-item"><span class="num">5</span> Internal Alignment Self-Assessment</div>
+          <div class="sub-item"><span class="num">6</span> Convenor Selection Tool</div>
+          <div class="sub-item"><span class="num">7</span> Meeting Cadence &amp; Accountability Kit</div>
+          <div class="sub-item"><span class="num">8</span> Narrative Building Training Summary</div>
+          <div class="sub-item"><span class="num">9</span> Strategic Doing Session-in-a-Box</div>
+          <div class="sub-item"><span class="num">10</span> Partnership MOA &amp; Board-Alignment Pack</div>
+          <div class="sub-item"><span class="num">11</span> Pivot Protocol</div>
+          <div class="sub-item"><span class="num">12</span> Community Engagement SOW + Resident Council Kit</div>
+          <div class="sub-item"><span class="num">13</span> Capacity &amp; Resourcing Toolkit</div>
+          <div class="sub-item"><span class="num">14</span> Friction-to-Innovation Diagnostic</div>
+          <div class="sub-item"><span class="num">15</span> Ecosystem Mapping &amp; Alignment Toolkit</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CITIES INDEX -->
+    <div class="col">
+      <div class="page-node directory">
+        <div class="page-name">Cities Index</div>
+        <div><span class="page-tag tag-directory">Directory</span></div>
+        <div class="page-desc">
+          Map or list view of all cities · Filterable by theme or building block · Links to individual case study pages
+        </div>
+      </div>
+      <div class="children-wrap">
+        <div class="connector-v"></div>
+        <div class="sub-grid amber">
+          <div class="sub-grid-title">Case Study Pages <span class="count-badge" style="background:#D97706;">9</span></div>
+          <div class="sub-item case"><span class="num">1</span> Rural Capacity-Building through Mutual Trust &nbsp;·&nbsp; <em>Bangor, ME</em></div>
+          <div class="sub-item case"><span class="num">2</span> Legitimacy Through Visibility &nbsp;·&nbsp; <em>Omaha, NE</em></div>
+          <div class="sub-item case"><span class="num">3</span> Redevelopment with Local Leadership &nbsp;·&nbsp; <em>Honolulu, HI</em></div>
+          <div class="sub-item case"><span class="num">4</span> Designing for Collaboration &nbsp;·&nbsp; <em>Detroit, MI</em></div>
+          <div class="sub-item case"><span class="num">5</span> Rebuilding Trust through Structured Facilitation &nbsp;·&nbsp; <em>Sarasota, FL</em></div>
+          <div class="sub-item case"><span class="num">6</span> Reintroductions in Transition &nbsp;·&nbsp; <em>Cleveland, OH</em></div>
+          <div class="sub-item case"><span class="num">7</span> Building Unified Economic Mobility &nbsp;·&nbsp; <em>Shreveport, LA</em></div>
+          <div class="sub-item case"><span class="num">8</span> Building Stronger Partnerships through Communication &nbsp;·&nbsp; <em>Sacramento, CA</em></div>
+          <div class="sub-item case"><span class="num">9</span> Advancing Corridor Redevelopment through Partnership &nbsp;·&nbsp; <em>New Orleans, LA</em></div>
+          <div style="margin-top:8px; padding-top:8px; border-top:1px solid #FDE68A; font-size:10px; color:#92400E;">
+            Each page uses a standardized template: Orgs Involved · Community Context · Project Type · Alliance Interventions · Challenges · Outcomes · Lessons Learned · Do's &amp; Don'ts
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /nav-row -->
+</div><!-- /tree -->
+
+<!-- Page count summary -->
+<div style="margin-top:40px; display:flex; gap:16px; flex-wrap:wrap;">
+  <div style="background:#fff; border:1px solid #C9DED9; border-radius:8px; padding:16px 24px; text-align:center; min-width:140px;">
+    <div style="font-size:28px; font-weight:700; color:#1B3A6B;">5</div>
+    <div style="font-size:11px; color:#6B7280; margin-top:2px;">Static &amp; Index Pages</div>
+  </div>
+  <div style="background:#fff; border:1px solid #FDE68A; border-radius:8px; padding:16px 24px; text-align:center; min-width:140px;">
+    <div style="font-size:28px; font-weight:700; color:#D97706;">9</div>
+    <div style="font-size:11px; color:#6B7280; margin-top:2px;">Case Study Pages</div>
+  </div>
+  <div style="background:#fff; border:1px solid #C9DED9; border-radius:8px; padding:16px 24px; text-align:center; min-width:140px;">
+    <div style="font-size:28px; font-weight:700; color:#2E7D6B;">15</div>
+    <div style="font-size:11px; color:#6B7280; margin-top:2px;">Tools &amp; Templates</div>
+  </div>
+  <div style="background:#1B3A6B; border-radius:8px; padding:16px 24px; text-align:center; min-width:140px;">
+    <div style="font-size:28px; font-weight:700; color:#fff;">~29</div>
+    <div style="font-size:11px; color:#C9DED9; margin-top:2px;">Total Pages at Launch</div>
+  </div>
+  <div style="background:#fff; border:1px solid #E5E7EB; border-radius:8px; padding:16px 20px; flex:1; min-width:260px; display:flex; align-items:center;">
+    <div style="font-size:11px; color:#555; line-height:1.7;">
+      <strong style="color:#1B3A6B;">Platform:</strong> Squarespace 7.1<br>
+      <strong style="color:#1B3A6B;">URL:</strong> playbook.newgrowth.org<br>
+      <strong style="color:#1B3A6B;">Case Study Template:</strong> 1 template, applied to 9 pages — scalable for future additions
+    </div>
+  </div>
+</div>
+
+<div class="doc-footer">
+  <span>Pocketknife &nbsp;·&nbsp; jared@pocketknife.design</span>
+  <span>Economic Partnership Alliance Playbook &nbsp;·&nbsp; New Growth Innovation Network</span>
+</div>
+
+</body>
+</html>

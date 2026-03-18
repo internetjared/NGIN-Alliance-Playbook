@@ -188,12 +188,20 @@ body[class*="collection-type-blog"] .blog-meta-section {
 body[class*="collection-type-blog"] .blog-item {
   background: #fff !important;
   border-radius: 10px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
   border: 1px solid #E5E7EB !important;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   display: flex !important;
   flex-direction: column !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* Ensure text doesn't clip inside the card */
+body[class*="collection-type-blog"] .blog-item * {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
 }
 
 body[class*="collection-type-blog"] .blog-item:hover {
@@ -207,17 +215,26 @@ body[class*="collection-type-blog"] .blog-basic-grid--text {
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
 }
 
-/* Tool number label (injected by JS) */
+/* Tool number pill (injected by JS) */
 .ngin-tool-number {
+  display: inline-block;
   font-family: Lato, 'Helvetica Neue', sans-serif;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #6B7280;
-  margin-bottom: 4px;
+  color: #1e2930;
+  background-color: #caddbb;
+  padding: 3px 12px;
+  border-radius: 100px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  width: fit-content;
 }
 
 /* Title: bold, slightly smaller */
