@@ -2,58 +2,98 @@
 .ngin-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 14px;
   max-width: 100%;
   padding: 0;
   margin: 0;
 }
 
 .ngin-stats__card {
-  background: #1B3A6B;
+  background: #1e2b38;
   border-radius: 10px;
-  padding: 28px 24px;
+  padding: 32px 24px 28px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+/* Subtle top accent line */
+.ngin-stats__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #caddbb;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.ngin-stats__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.ngin-stats__card:hover::before {
+  transform: scaleX(1);
 }
 
 .ngin-stats__number {
   font-family: Lora, Georgia, serif;
-  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-size: clamp(2.25rem, 4.5vw, 3rem);
   font-weight: 700;
+  color: #caddbb;
+  line-height: 1;
+  margin: 0 0 8px;
+  transition: color 0.3s ease;
+}
+
+.ngin-stats__card:hover .ngin-stats__number {
   color: #fff;
-  line-height: 1.1;
-  margin: 0 0 6px;
 }
 
 .ngin-stats__label {
   font-family: Lato, 'Helvetica Neue', sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
   line-height: 1.4;
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease;
+}
+
+.ngin-stats__card:hover .ngin-stats__label {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 @media (max-width: 767px) {
   .ngin-stats {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 10px;
   }
   .ngin-stats__card {
-    padding: 20px 16px;
+    padding: 24px 16px 20px;
   }
   .ngin-stats__number {
-    font-size: clamp(1.75rem, 6vw, 2.25rem);
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
   }
   .ngin-stats__label {
-    font-size: 13px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
   }
-}
-
-@media (max-width: 479px) {
-  .ngin-stats {
-    grid-template-columns: repeat(2, 1fr);
+  /* No hover lift on touch */
+  .ngin-stats__card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .ngin-stats__card::before {
+    transform: scaleX(1);
   }
 }
 </style>
@@ -88,11 +128,10 @@
 <script>
 (function() {
   function animateCount(el, target, duration) {
-    var start = 0;
     var startTime = null;
 
     function ease(t) {
-      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
 
     function step(timestamp) {
@@ -114,7 +153,6 @@
     var counters = document.querySelectorAll('[data-ngin-count]');
     if (!counters.length) return;
 
-    // Respect reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       counters.forEach(function(el) {
         el.textContent = el.getAttribute('data-ngin-count');
@@ -128,15 +166,19 @@
           var el = entry.target;
           if (el.dataset.nginCounted === 'done') return;
           el.dataset.nginCounted = 'done';
+          var card = el.closest('.ngin-stats__card');
+          var index = card ? Array.from(card.parentElement.children).indexOf(card) : 0;
           var target = parseInt(el.getAttribute('data-ngin-count'), 10);
-          // Stagger: larger numbers take slightly longer
-          var duration = 1200 + (target * 4);
-          if (duration > 2200) duration = 2200;
-          animateCount(el, target, duration);
+          var duration = 1400 + (target * 3);
+          if (duration > 2400) duration = 2400;
+          // Stagger each card by 120ms
+          setTimeout(function() {
+            animateCount(el, target, duration);
+          }, index * 120);
           observer.unobserve(el);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
 
     counters.forEach(function(el) {
       observer.observe(el);
