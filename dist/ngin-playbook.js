@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-03-18T20:18:36.515Z */
+/* Auto-built: 2026-03-18T20:23:23.344Z */
 
 /* === init.js === */
 /* ============================================
@@ -380,8 +380,13 @@
       pillContainer.appendChild(btn);
     });
 
-    // Insert before the blog grid
-    blogGrid.parentNode.insertBefore(filterBar, blogGrid);
+    // Insert inside the blog grid, before the first blog item
+    var firstItem = blogGrid.querySelector('.blog-item');
+    if (firstItem) {
+      blogGrid.insertBefore(filterBar, firstItem);
+    } else {
+      blogGrid.appendChild(filterBar);
+    }
 
     // Sort items alphabetically by title
     var itemsArr = Array.from(items);

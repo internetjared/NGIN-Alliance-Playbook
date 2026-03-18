@@ -313,8 +313,13 @@
       pillContainer.appendChild(btn);
     });
 
-    // Insert before the blog grid
-    blogGrid.parentNode.insertBefore(filterBar, blogGrid);
+    // Insert inside the blog grid, before the first blog item
+    var firstItem = blogGrid.querySelector('.blog-item');
+    if (firstItem) {
+      blogGrid.insertBefore(filterBar, firstItem);
+    } else {
+      blogGrid.appendChild(filterBar);
+    }
 
     // Sort items alphabetically by title
     var itemsArr = Array.from(items);

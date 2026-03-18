@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T20:18:36.512Z */
+/* Auto-built: 2026-03-18T20:23:23.341Z */
 
 /* === variables.css === */
 /* ============================================
@@ -258,6 +258,8 @@ strong[data-ngin-label-icon="done"] {
 /* --- Resource Bank Filter UI --- */
 .ngin-filter {
   margin-bottom: 28px;
+  grid-column: 1 / -1;
+  width: 100%;
 }
 
 .ngin-filter__search-wrap {
