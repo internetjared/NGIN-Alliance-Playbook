@@ -41,19 +41,16 @@
   white-space: nowrap;
 }
 
-/* Navy — Organizations */
 .ngin-meta__pill--navy {
   border-color: #1B3A6B;
   color: #1B3A6B;
 }
 
-/* Green — Building Blocks */
 .ngin-meta__pill--green {
   border-color: #caddbb;
   color: #1B3A6B;
 }
 
-/* Gray — Related Tools */
 .ngin-meta__pill--gray {
   border-color: #9CA3AF;
   color: #6B7280;
@@ -67,30 +64,70 @@
 }
 </style>
 
-<div class="ngin-meta">
-  <div class="ngin-meta__group">
-    <p class="ngin-meta__label">Organizations</p>
-    <div class="ngin-meta__pills">
-      <span class="ngin-meta__pill ngin-meta__pill--navy">Maine Multicultural Center (MMCC)</span>
-      <span class="ngin-meta__pill ngin-meta__pill--navy">Eastern Maine Development Corp. (EMDC)</span>
-    </div>
-  </div>
+<div class="ngin-meta" id="ngin-meta-output"></div>
 
-  <div class="ngin-meta__group">
-    <p class="ngin-meta__label">Building Blocks Featured</p>
-    <div class="ngin-meta__pills">
-      <span class="ngin-meta__pill ngin-meta__pill--green">Trust</span>
-      <span class="ngin-meta__pill ngin-meta__pill--green">Shared Narrative</span>
-      <span class="ngin-meta__pill ngin-meta__pill--green">Structure</span>
-    </div>
-  </div>
+<script>
+(function() {
 
-  <div class="ngin-meta__group">
-    <p class="ngin-meta__label">Related Tools</p>
-    <div class="ngin-meta__pills">
-      <span class="ngin-meta__pill ngin-meta__pill--gray">Positionality Statement</span>
-      <span class="ngin-meta__pill ngin-meta__pill--gray">Coalition Continuity</span>
-      <span class="ngin-meta__pill ngin-meta__pill--gray">Meeting Cadence Kit</span>
-    </div>
-  </div>
-</div>
+  // =============================================
+  //  EDIT THIS SECTION FOR EACH CASE STUDY
+  //  Just change the text inside the quotes.
+  //  Add or remove lines as needed.
+  // =============================================
+
+  var organizations = [
+    "Maine Multicultural Center (MMCC)",
+    "Eastern Maine Development Corp. (EMDC)"
+  ];
+
+  var buildingBlocks = [
+    "Trust",
+    "Shared Narrative",
+    "Structure"
+  ];
+
+  var relatedTools = [
+    "Positionality Statement",
+    "Coalition Continuity",
+    "Meeting Cadence Kit"
+  ];
+
+  // =============================================
+  //  DO NOT EDIT BELOW THIS LINE
+  // =============================================
+
+  var groups = [
+    { label: "Organizations",           items: organizations, color: "navy"  },
+    { label: "Building Blocks Featured", items: buildingBlocks, color: "green" },
+    { label: "Related Tools",            items: relatedTools,   color: "gray"  }
+  ];
+
+  var container = document.getElementById("ngin-meta-output");
+  if (!container) return;
+
+  groups.forEach(function(group) {
+    if (!group.items.length) return;
+
+    var div = document.createElement("div");
+    div.className = "ngin-meta__group";
+
+    var label = document.createElement("p");
+    label.className = "ngin-meta__label";
+    label.textContent = group.label;
+    div.appendChild(label);
+
+    var pills = document.createElement("div");
+    pills.className = "ngin-meta__pills";
+
+    group.items.forEach(function(item) {
+      var pill = document.createElement("span");
+      pill.className = "ngin-meta__pill ngin-meta__pill--" + group.color;
+      pill.textContent = item;
+      pills.appendChild(pill);
+    });
+
+    div.appendChild(pills);
+    container.appendChild(div);
+  });
+})();
+</script>
