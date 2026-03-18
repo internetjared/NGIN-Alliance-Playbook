@@ -57,10 +57,11 @@ section[data-section-id="69badb6c344ec84841fe29e2"] .list-item-content__button:h
    OBSERVED selectors: .list-item, .list-item-media, .list-item-content, etc.
    -------------------------------------------- */
 
-/* Card: rounded corners, overflow clip for flush image */
+/* Card: rounded corners, no padding (image goes flush), overflow clip */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item {
   border-radius: 10px !important;
   overflow: hidden !important;
+  padding: 0 !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
@@ -76,6 +77,7 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media {
   margin: 0 !important;
   border: none !important;
   border-radius: 0 !important;
+  width: 100% !important;
 }
 
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media-inner {
@@ -86,21 +88,39 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media-inner {
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-image {
   border-radius: 0 !important;
   border: none !important;
+  width: 100% !important;
+  display: block !important;
 }
 
-/* Title: bold + larger */
+/* Content area: add padding back for text, more space below image */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content {
+  padding: 20px 20px 20px !important;
+}
+
+/* Title: bold + larger, space below */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__title {
   font-weight: 700 !important;
   font-size: 1.35em !important;
+  margin-bottom: 10px !important;
 }
 
-/* Italic text: softer gray */
+/* Bold text (first p): space below before italic */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__description p:first-child {
+  margin-bottom: 2px !important;
+}
+
+/* Italic text: softer gray, tight to bold text above */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__description em,
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__description i {
   color: #9CA3AF !important;
 }
 
-/* All description text: tighter line height */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__description p:nth-child(2) {
+  margin-top: 0 !important;
+  margin-bottom: 6px !important;
+}
+
+/* Normal body text: tighter line height */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__description p {
   line-height: 1.45 !important;
   margin-bottom: 4px !important;
