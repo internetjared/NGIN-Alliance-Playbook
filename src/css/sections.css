@@ -102,12 +102,19 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-image {
   aspect-ratio: 3 / 2 !important;
 }
 
-/* Title: bold + larger, space above and below */
+/* Title: bold + larger, navy color, space above and below */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__title {
   font-weight: 700 !important;
   font-size: 1.35em !important;
+  color: #1e2930 !important;
   margin-top: 16px !important;
   margin-bottom: 10px !important;
+}
+
+/* Subtitle (bold text): navy color */
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__description p:first-child strong,
+section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__description p:first-child b {
+  color: #1e2930 !important;
 }
 
 /* Bold text (first p): space below before italic */
@@ -132,27 +139,28 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__descript
   margin-bottom: 4px !important;
 }
 
-/* Button: dark #1e2930 with white text, bold */
+/* Button: green #caddbb with navy text, bold */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button {
-  background-color: #1e2930 !important;
-  color: #fff !important;
-  border-color: #1e2930 !important;
+  background-color: #caddbb !important;
+  color: #1e2930 !important;
+  border-color: #caddbb !important;
   font-weight: 700 !important;
   display: inline-flex !important;
   align-items: center;
   gap: 0;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button:hover {
-  background-color: #2a3a44 !important;
-  border-color: #2a3a44 !important;
+  background-color: #b8cfaa !important;
+  border-color: #b8cfaa !important;
 }
 
 /* Arrow icon inside case study buttons */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button .ngin-icon {
   font-size: 18px;
   margin-left: 10px;
+  color: #1e2930 !important;
   opacity: 0.8;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
