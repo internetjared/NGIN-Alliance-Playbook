@@ -132,11 +132,11 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__descript
   margin-bottom: 4px !important;
 }
 
-/* Button: green #caddbb with navy text */
+/* Button: dark #1e2930 with white text */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button {
-  background-color: #caddbb !important;
-  color: var(--ngin-navy, #1B3A6B) !important;
-  border-color: #caddbb !important;
+  background-color: #1e2930 !important;
+  color: #fff !important;
+  border-color: #1e2930 !important;
   display: inline-flex !important;
   align-items: center;
   gap: 0;
@@ -144,8 +144,8 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button {
 }
 
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button:hover {
-  background-color: #b8d0a3 !important;
-  border-color: #b8d0a3 !important;
+  background-color: #2a3a44 !important;
+  border-color: #2a3a44 !important;
 }
 
 /* Arrow icon inside case study buttons */
