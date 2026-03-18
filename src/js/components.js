@@ -260,7 +260,7 @@
 
   function initResourceFilter(root) {
     // Only run on the resource bank blog page
-    if (!document.body.classList.contains('collection-type-blog')) return;
+    if (!document.body.className.match(/collection-type-blog/)) return;
     if (window.location.pathname.indexOf('/resource-bank') !== 0) return;
     // Don't run on individual post pages
     if (document.body.classList.contains('view-item')) return;

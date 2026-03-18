@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-03-18T20:16:00.722Z */
+/* Auto-built: 2026-03-18T20:18:36.515Z */
 
 /* === init.js === */
 /* ============================================
@@ -327,7 +327,7 @@
 
   function initResourceFilter(root) {
     // Only run on the resource bank blog page
-    if (!document.body.classList.contains('collection-type-blog')) return;
+    if (!document.body.className.match(/collection-type-blog/)) return;
     if (window.location.pathname.indexOf('/resource-bank') !== 0) return;
     // Don't run on individual post pages
     if (document.body.classList.contains('view-item')) return;
