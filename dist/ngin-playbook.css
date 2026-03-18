@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T18:07:43.142Z */
+/* Auto-built: 2026-03-18T18:10:53.532Z */
 
 /* === variables.css === */
 /* ============================================
@@ -57,7 +57,8 @@
 /* --- Shared icon base (Material Symbols Outlined) --- */
 .ngin-icon,
 .ngin-icon-after,
-.ngin-link-arrow {
+.ngin-link-arrow,
+.ngin-label-icon {
   font-family: 'Material Symbols Outlined' !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -118,6 +119,14 @@
 .ngin-inline-link:hover .ngin-link-arrow {
   transform: translate(2px, -2px);
   opacity: 1;
+}
+
+/* --- Section label icons (white, left of label text) --- */
+.ngin-label-icon {
+  font-size: 18px;
+  color: #fff !important;
+  margin-right: 6px;
+  vertical-align: middle;
 }
 
 

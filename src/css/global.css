@@ -8,7 +8,8 @@
 /* --- Shared icon base (Material Symbols Outlined) --- */
 .ngin-icon,
 .ngin-icon-after,
-.ngin-link-arrow {
+.ngin-link-arrow,
+.ngin-label-icon {
   font-family: 'Material Symbols Outlined' !important;
   font-weight: normal !important;
   font-style: normal !important;
@@ -69,4 +70,12 @@
 .ngin-inline-link:hover .ngin-link-arrow {
   transform: translate(2px, -2px);
   opacity: 1;
+}
+
+/* --- Section label icons (white, left of label text) --- */
+.ngin-label-icon {
+  font-size: 18px;
+  color: #fff !important;
+  margin-right: 6px;
+  vertical-align: middle;
 }

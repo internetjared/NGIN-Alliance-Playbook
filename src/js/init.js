@@ -32,6 +32,11 @@
     if (window.NGIN && window.NGIN.addLinkArrows) {
       window.NGIN.addLinkArrows(root);
     }
+
+    // Section label icons
+    if (window.NGIN && window.NGIN.addLabelIcons) {
+      window.NGIN.addLabelIcons(root);
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {

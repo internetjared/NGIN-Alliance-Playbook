@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-03-18T18:07:43.145Z */
+/* Auto-built: 2026-03-18T18:10:53.536Z */
 
 /* === init.js === */
 /* ============================================
@@ -35,6 +35,11 @@
     // Inline link arrows
     if (window.NGIN && window.NGIN.addLinkArrows) {
       window.NGIN.addLinkArrows(root);
+    }
+
+    // Section label icons
+    if (window.NGIN && window.NGIN.addLabelIcons) {
+      window.NGIN.addLabelIcons(root);
     }
   }
 
@@ -216,10 +221,46 @@
     });
   }
 
+  /* --- Section Label Icons ---
+     Adds Material icons to the left of category labels
+     in the "What's Inside" section.
+     ------------------------------------------------ */
+
+  var LABEL_ICONS = {
+    'core insights':      'lightbulb',
+    'resource bank':      'menu_book',
+    'case studies':       'cases',
+    'about the alliance': 'hub'
+  };
+
+  function addLabelIcons(root) {
+    var section = root.querySelector
+      ? root.querySelector('section[data-section-id="69badcb87603e07234d02a29"]')
+      : null;
+    if (!section) return;
+
+    var strongs = section.querySelectorAll('[data-sqsp-block="text"] p:first-child strong');
+    strongs.forEach(function (el) {
+      if (el.dataset.nginLabelIcon === 'done') return;
+      el.dataset.nginLabelIcon = 'done';
+
+      var text = el.textContent.trim().toLowerCase();
+      var icon = LABEL_ICONS[text];
+      if (!icon) return;
+
+      var span = document.createElement('span');
+      span.className = 'ngin-label-icon';
+      span.setAttribute('aria-hidden', 'true');
+      span.textContent = icon;
+      el.insertBefore(span, el.firstChild);
+    });
+  }
+
   // Register with NGIN init system
   window.NGIN = window.NGIN || {};
   window.NGIN.addButtonIcons = addButtonIcons;
   window.NGIN.addLinkArrows = addLinkArrows;
+  window.NGIN.addLabelIcons = addLabelIcons;
 })();
 
 
