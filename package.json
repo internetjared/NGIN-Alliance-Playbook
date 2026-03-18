@@ -4,6 +4,7 @@
   "description": "Custom CSS and JS for the NGIN Alliance Playbook Squarespace site",
   "scripts": {
     "build": "node build.js",
+    "deploy": "node build.js && npx wrangler pages deploy dist --project-name ngin-alliance-playbook --branch main --commit-dirty=true",
     "dev": "node build.js --watch"
   },
   "private": true
