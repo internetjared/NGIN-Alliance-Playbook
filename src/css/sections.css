@@ -73,6 +73,7 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item:hover {
 /* Image: negative margins to break out of card padding, flush top/left/right */
 section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-media {
   margin: -20px -20px 0 -20px !important;
+  width: calc(100% + 40px) !important;
   padding: 0 !important;
   border: none !important;
   border-radius: 0 !important;
