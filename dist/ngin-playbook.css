@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T18:44:24.418Z */
+/* Auto-built: 2026-03-18T18:48:23.586Z */
 
 /* === variables.css === */
 /* ============================================
@@ -248,6 +248,14 @@ section[data-section-id="69badb6c344ec84841fe29e2"] .list-item-content__button .
 section[data-section-id="69badb6c344ec84841fe29e2"] .list-item-content__button:hover .ngin-icon {
   transform: translateX(4px);
   opacity: 1;
+}
+
+/* --- Case Studies intro callout bar ---
+   OBSERVED selector: yui block ID (fragile, re-test if content changes)
+   -------------------------------------------- */
+#block-yui_3_17_2_1_1773858190654_874 .sqs-block-content {
+  border-left: 3px solid #caddbb;
+  padding-left: 16px;
 }
 
 
