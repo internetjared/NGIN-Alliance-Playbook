@@ -321,12 +321,67 @@
       blogGrid.appendChild(filterBar);
     }
 
-    // Sort items alphabetically by title
+    // Process each card: extract tool number, build footer, style
     var itemsArr = Array.from(items);
+    itemsArr.forEach(function(item) {
+      if (item.dataset.nginCardDone === 'true') return;
+      item.dataset.nginCardDone = 'true';
+
+      var textWrap = item.querySelector('.blog-basic-grid--text');
+      if (!textWrap) return;
+
+      // Extract tool number from bold text in excerpt
+      var boldEl = textWrap.querySelector('p strong');
+      var toolNum = '';
+      var toolSortNum = 999;
+      if (boldEl) {
+        toolNum = boldEl.textContent.trim();
+        var numMatch = toolNum.match(/\d+/);
+        if (numMatch) toolSortNum = parseInt(numMatch[0], 10);
+      }
+      item.dataset.nginToolSort = toolSortNum;
+
+      // Inject tool number label above title
+      if (toolNum) {
+        var titleEl = textWrap.querySelector('.blog-title, h1, h2');
+        if (titleEl) {
+          var label = document.createElement('div');
+          label.className = 'ngin-tool-number';
+          label.textContent = toolNum;
+          titleEl.parentNode.insertBefore(label, titleEl);
+        }
+      }
+
+      // Build card footer with categories + view tool link
+      var catLinks = item.querySelectorAll('.blog-meta-primary .blog-categories');
+      var postLink = item.querySelector('h1 a, h2 a, .blog-title a');
+      var href = postLink ? postLink.getAttribute('href') : '#';
+
+      var footer = document.createElement('div');
+      footer.className = 'ngin-card-footer';
+
+      var catsDiv = document.createElement('div');
+      catsDiv.className = 'ngin-card-footer__cats';
+      var catTexts = [];
+      catLinks.forEach(function(c) {
+        var t = c.textContent.trim();
+        if (t && catTexts.indexOf(t) === -1) catTexts.push(t);
+      });
+      catsDiv.textContent = catTexts.join(', ');
+
+      var viewLink = document.createElement('a');
+      viewLink.className = 'ngin-card-footer__link';
+      viewLink.href = href;
+      viewLink.innerHTML = 'View Tool <span class="ngin-card-footer__arrow">→</span>';
+
+      footer.appendChild(catsDiv);
+      footer.appendChild(viewLink);
+      item.appendChild(footer);
+    });
+
+    // Sort by tool number
     itemsArr.sort(function(a, b) {
-      var tA = (a.querySelector('h1 a, h2 a, .blog-title a') || {}).textContent || '';
-      var tB = (b.querySelector('h1 a, h2 a, .blog-title a') || {}).textContent || '';
-      return tA.trim().localeCompare(tB.trim());
+      return (parseInt(a.dataset.nginToolSort) || 999) - (parseInt(b.dataset.nginToolSort) || 999);
     });
     itemsArr.forEach(function(item) {
       blogGrid.appendChild(item);
