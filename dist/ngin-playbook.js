@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-03-18T18:01:16.450Z */
+/* Auto-built: 2026-03-18T18:03:54.511Z */
 
 /* === init.js === */
 /* ============================================
@@ -156,25 +156,29 @@
     return null;
   }
 
+  function injectIcon(btn) {
+    if (btn.dataset.nginIcon === 'done') return;
+    btn.dataset.nginIcon = 'done';
+
+    var text = getButtonText(btn);
+    if (!text) return;
+
+    var icon = matchIcon(text);
+    if (!icon) icon = 'arrow_forward'; // default fallback for unmatched buttons
+
+    var span = document.createElement('span');
+    span.className = 'ngin-icon';
+    span.setAttribute('aria-hidden', 'true');
+    span.textContent = icon;
+    btn.appendChild(span);
+  }
+
   function addButtonIcons(root) {
-    var buttons = root.querySelectorAll('[data-sqsp-button]');
+    // Standard Squarespace button blocks
+    root.querySelectorAll('[data-sqsp-button]').forEach(injectIcon);
 
-    buttons.forEach(function (btn) {
-      if (btn.dataset.nginIcon === 'done') return;
-      btn.dataset.nginIcon = 'done';
-
-      var text = getButtonText(btn);
-      if (!text) return;
-
-      var icon = matchIcon(text);
-      if (icon) {
-        var span = document.createElement('span');
-        span.className = 'ngin-icon';
-        span.setAttribute('aria-hidden', 'true');
-        span.textContent = icon;
-        btn.appendChild(span);
-      }
-    });
+    // Auto-layout list-item buttons (e.g. "Start Where You Are" cards)
+    root.querySelectorAll('.list-item-content__button').forEach(injectIcon);
   }
 
   /* --- Inline Link Arrows ---
