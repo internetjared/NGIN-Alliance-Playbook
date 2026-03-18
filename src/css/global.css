@@ -72,10 +72,11 @@
   opacity: 1;
 }
 
-/* --- Section label icons (green, left of label text) --- */
+/* --- Section label icons (white, above label text, left-aligned) --- */
 .ngin-label-icon {
   font-size: 36px;
-  color: rgb(135, 189, 97) !important;
-  margin-right: 10px;
-  vertical-align: middle;
+  color: #fff !important;
+  display: block !important;
+  margin-right: 0;
+  margin-bottom: 6px;
 }
