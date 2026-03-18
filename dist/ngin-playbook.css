@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-03-18T17:37:50.611Z */
+/* Auto-built: 2026-03-18T17:40:37.832Z */
 
 /* === variables.css === */
 /* ============================================
@@ -54,15 +54,15 @@
 
 /* --- Material Symbols (font loaded via JS for reliability) --- */
 
-/* --- Button icon integration (always after text) --- */
-[data-sqsp-button] .ngin-icon {
-  font-family: 'Material Symbols Outlined';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 20px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
+/* --- Shared icon base (Material Symbols Outlined) --- */
+.ngin-icon,
+.ngin-link-arrow {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
@@ -72,17 +72,20 @@
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
   vertical-align: middle;
+}
+
+/* --- Button icon (always after text) --- */
+[data-sqsp-button] .ngin-icon {
+  font-size: 20px;
   margin-left: 6px;
   opacity: 0.9;
   transition: transform var(--ngin-transition);
 }
 
-/* Hover nudge on button icons */
 [data-sqsp-button]:hover .ngin-icon {
   transform: translateX(3px);
 }
 
-/* Button flexbox alignment */
 [data-sqsp-button][data-ngin-icon] {
   display: inline-flex !important;
   align-items: center;
@@ -103,22 +106,7 @@
 }
 
 .ngin-link-arrow {
-  font-family: 'Material Symbols Outlined';
-  font-weight: normal;
-  font-style: normal;
   font-size: 16px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
-  vertical-align: middle;
   margin-left: 3px;
   opacity: 0.7;
   transition: transform var(--ngin-transition), opacity var(--ngin-transition);
