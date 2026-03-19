@@ -265,6 +265,14 @@
     // Don't run on individual post pages
     if (document.body.classList.contains('view-item')) return;
 
+    // Inject critical hide CSS directly (cannot rely on external stylesheet timing)
+    if (!document.getElementById('ngin-filter-css')) {
+      var style = document.createElement('style');
+      style.id = 'ngin-filter-css';
+      style.textContent = '.ngin-hidden { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; border: 0 !important; }';
+      document.head.appendChild(style);
+    }
+
     var blogGrid = root.querySelector('.blog-basic-grid.collection-content-wrapper');
     if (!blogGrid) return;
     if (blogGrid.dataset.nginFilter === 'done') return;
@@ -398,20 +406,38 @@
         var excerpt = (item.querySelector('.blog-excerpt, .blog-basic-grid--text p:not(.blog-meta-section *)') || {}).textContent || '';
         var text = (title + ' ' + excerpt).toLowerCase();
 
-        // Category match
+        // Category match — check footer cats (has all categories) and native blog-categories
         var catMatch = true;
         if (activeCat) {
-          var itemCats = item.querySelectorAll('.blog-categories');
           catMatch = false;
-          itemCats.forEach(function(c) {
-            if (c.textContent.trim().toLowerCase() === activeCat) catMatch = true;
-          });
+          // Check our custom footer first (has complete category list)
+          var footerCats = item.querySelector('.ngin-card-footer__cats');
+          if (footerCats) {
+            var catText = footerCats.textContent.toLowerCase();
+            // Split by comma and check each individual category
+            var cats = catText.split(',').map(function(s) { return s.trim(); });
+            cats.forEach(function(c) {
+              if (c === activeCat) catMatch = true;
+            });
+          }
+          // Fallback: check native blog-categories
+          if (!catMatch) {
+            var nativeCats = item.querySelectorAll('.blog-categories');
+            nativeCats.forEach(function(c) {
+              if (c.textContent.trim().toLowerCase().indexOf(activeCat) !== -1) catMatch = true;
+            });
+          }
         }
 
         // Search match
         var searchMatch = !query || text.indexOf(query) !== -1;
 
-        item.style.display = (catMatch && searchMatch) ? '' : 'none';
+        if (catMatch && searchMatch) {
+          item.classList.remove('ngin-hidden');
+          item.style.removeProperty('display');
+        } else {
+          item.classList.add('ngin-hidden');
+        }
       });
     }
 

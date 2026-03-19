@@ -1,68 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-03-18T21:46:54.320Z */
-
-/* === init.js === */
-/* ============================================
-   NGIN Alliance Playbook — Initialization
-   ============================================ */
-
-(function () {
-  'use strict';
-
-  // Load Material Symbols font directly into head (more reliable than CSS @import)
-  var MATERIAL_FONT_URL = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap';
-  if (!document.querySelector('link[href*="Material+Symbols"]')) {
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = MATERIAL_FONT_URL;
-    document.head.appendChild(link);
-  }
-
-  function isEditing() {
-    return document.body.classList.contains('sqs-is-page-editing') ||
-           document.body.classList.contains('sqs-edit-mode-active') ||
-           document.documentElement.classList.contains('squarespace-damask');
-  }
-
-  function initNGIN(root) {
-    if (isEditing()) return;
-
-    // Smart button icons
-    if (window.NGIN && window.NGIN.addButtonIcons) {
-      window.NGIN.addButtonIcons(root);
-    }
-
-    // Inline link arrows
-    if (window.NGIN && window.NGIN.addLinkArrows) {
-      window.NGIN.addLinkArrows(root);
-    }
-
-    // Section label icons
-    if (window.NGIN && window.NGIN.addLabelIcons) {
-      window.NGIN.addLabelIcons(root);
-    }
-
-    // Case study meta pills
-    if (window.NGIN && window.NGIN.addCaseStudyPills) {
-      window.NGIN.addCaseStudyPills(root);
-    }
-
-    // Resource bank search + filter
-    if (window.NGIN && window.NGIN.initResourceFilter) {
-      window.NGIN.initResourceFilter(root);
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    initNGIN(document);
-  });
-
-  // Expose for future module use
-  window.NGIN = window.NGIN || {};
-  window.NGIN.init = initNGIN;
-  window.NGIN.isEditing = isEditing;
-})();
-
+/* Auto-built: 2026-03-19T14:39:50.081Z */
 
 /* === components.js === */
 /* ============================================
@@ -332,6 +269,14 @@
     // Don't run on individual post pages
     if (document.body.classList.contains('view-item')) return;
 
+    // Inject critical hide CSS directly (cannot rely on external stylesheet timing)
+    if (!document.getElementById('ngin-filter-css')) {
+      var style = document.createElement('style');
+      style.id = 'ngin-filter-css';
+      style.textContent = '.ngin-hidden { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; border: 0 !important; }';
+      document.head.appendChild(style);
+    }
+
     var blogGrid = root.querySelector('.blog-basic-grid.collection-content-wrapper');
     if (!blogGrid) return;
     if (blogGrid.dataset.nginFilter === 'done') return;
@@ -465,20 +410,38 @@
         var excerpt = (item.querySelector('.blog-excerpt, .blog-basic-grid--text p:not(.blog-meta-section *)') || {}).textContent || '';
         var text = (title + ' ' + excerpt).toLowerCase();
 
-        // Category match
+        // Category match — check footer cats (has all categories) and native blog-categories
         var catMatch = true;
         if (activeCat) {
-          var itemCats = item.querySelectorAll('.blog-categories');
           catMatch = false;
-          itemCats.forEach(function(c) {
-            if (c.textContent.trim().toLowerCase() === activeCat) catMatch = true;
-          });
+          // Check our custom footer first (has complete category list)
+          var footerCats = item.querySelector('.ngin-card-footer__cats');
+          if (footerCats) {
+            var catText = footerCats.textContent.toLowerCase();
+            // Split by comma and check each individual category
+            var cats = catText.split(',').map(function(s) { return s.trim(); });
+            cats.forEach(function(c) {
+              if (c === activeCat) catMatch = true;
+            });
+          }
+          // Fallback: check native blog-categories
+          if (!catMatch) {
+            var nativeCats = item.querySelectorAll('.blog-categories');
+            nativeCats.forEach(function(c) {
+              if (c.textContent.trim().toLowerCase().indexOf(activeCat) !== -1) catMatch = true;
+            });
+          }
         }
 
         // Search match
         var searchMatch = !query || text.indexOf(query) !== -1;
 
-        item.style.display = (catMatch && searchMatch) ? '' : 'none';
+        if (catMatch && searchMatch) {
+          item.classList.remove('ngin-hidden');
+          item.style.removeProperty('display');
+        } else {
+          item.classList.add('ngin-hidden');
+        }
       });
     }
 
@@ -505,6 +468,75 @@
   window.NGIN.addLabelIcons = addLabelIcons;
   window.NGIN.addCaseStudyPills = addCaseStudyPills;
   window.NGIN.initResourceFilter = initResourceFilter;
+})();
+
+
+/* === init.js === */
+/* ============================================
+   NGIN Alliance Playbook — Initialization
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  // Load Material Symbols font directly into head (more reliable than CSS @import)
+  var MATERIAL_FONT_URL = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap';
+  if (!document.querySelector('link[href*="Material+Symbols"]')) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = MATERIAL_FONT_URL;
+    document.head.appendChild(link);
+  }
+
+  function isEditing() {
+    return document.body.classList.contains('sqs-is-page-editing') ||
+           document.body.classList.contains('sqs-edit-mode-active') ||
+           document.documentElement.classList.contains('squarespace-damask');
+  }
+
+  function initNGIN(root) {
+    if (isEditing()) return;
+
+    // Smart button icons
+    if (window.NGIN && window.NGIN.addButtonIcons) {
+      window.NGIN.addButtonIcons(root);
+    }
+
+    // Inline link arrows
+    if (window.NGIN && window.NGIN.addLinkArrows) {
+      window.NGIN.addLinkArrows(root);
+    }
+
+    // Section label icons
+    if (window.NGIN && window.NGIN.addLabelIcons) {
+      window.NGIN.addLabelIcons(root);
+    }
+
+    // Case study meta pills
+    if (window.NGIN && window.NGIN.addCaseStudyPills) {
+      window.NGIN.addCaseStudyPills(root);
+    }
+
+    // Resource bank search + filter
+    if (window.NGIN && window.NGIN.initResourceFilter) {
+      window.NGIN.initResourceFilter(root);
+    }
+  }
+
+  // Run init — handle both static script tags and dynamic loading
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      initNGIN(document);
+    });
+  } else {
+    // DOM already ready (script was loaded dynamically after DOMContentLoaded)
+    initNGIN(document);
+  }
+
+  // Expose for future module use
+  window.NGIN = window.NGIN || {};
+  window.NGIN.init = initNGIN;
+  window.NGIN.isEditing = isEditing;
 })();
 
 

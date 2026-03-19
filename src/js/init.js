@@ -49,9 +49,15 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  // Run init — handle both static script tags and dynamic loading
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      initNGIN(document);
+    });
+  } else {
+    // DOM already ready (script was loaded dynamically after DOMContentLoaded)
     initNGIN(document);
-  });
+  }
 
   // Expose for future module use
   window.NGIN = window.NGIN || {};

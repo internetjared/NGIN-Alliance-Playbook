@@ -174,6 +174,17 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button:h
    Card styling, hide dates/meta, tool card design
    -------------------------------------------- */
 
+/* Filter hide class — must beat Squarespace grid display */
+.ngin-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
 /* Reduce top padding on grid */
 body[class*="collection-type-blog"] .blog-basic-grid.collection-content-wrapper {
   padding-top: 3vw !important;
@@ -249,13 +260,24 @@ body[class*="collection-type-blog"] .blog-basic-grid--text {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden !important;
+  overflow: visible !important;
   height: auto !important;
   max-height: none !important;
   min-height: 0 !important;
   min-width: 0 !important;
   width: 100% !important;
   box-sizing: border-box !important;
+}
+
+/* Force Squarespace grid to let cards size to content */
+body[class*="collection-type-blog"] .blog-basic-grid {
+  grid-template-rows: auto !important;
+}
+
+body[class*="collection-type-blog"] .blog-basic-grid .blog-basic-grid--container {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
 }
 
 /* Ensure border-box on everything inside the card */
@@ -285,7 +307,7 @@ body[class*="collection-type-blog"] .blog-basic-grid--text * {
   background-color: #caddbb;
   padding: 3px 12px;
   border-radius: 100px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   line-height: 1.4;
   width: fit-content;
 }
@@ -294,7 +316,7 @@ body[class*="collection-type-blog"] .blog-basic-grid--text * {
 body[class*="collection-type-blog"] .blog-title {
   font-size: 1.15em !important;
   font-weight: 700 !important;
-  margin-bottom: 6px !important;
+  margin-bottom: 10px !important;
 }
 
 body[class*="collection-type-blog"] .blog-title a {
@@ -305,9 +327,25 @@ body[class*="collection-type-blog"] .blog-title a {
 body[class*="collection-type-blog"] .blog-excerpt,
 body[class*="collection-type-blog"] .blog-basic-grid--text > div:not(.blog-meta-section):not(.ngin-tool-number) {
   font-size: 14px !important;
-  line-height: 1.5 !important;
+  line-height: 1.35 !important;
   color: #6B7280 !important;
   flex: 1;
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* Override Squarespace's 32px line-height on excerpt paragraphs */
+body[class*="collection-type-blog"] .blog-excerpt p,
+body[class*="collection-type-blog"] .blog-excerpt-wrapper p,
+body[class*="collection-type-blog"] .blog-excerpt-wrapper {
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+  color: #6B7280 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
 }
 
 /* Hide the bold "Tool X" text that JS extracts */

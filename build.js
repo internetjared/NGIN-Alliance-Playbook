@@ -32,8 +32,8 @@ console.log('✓ Built dist/ngin-playbook.css');
 
 // Concat JS files in order
 const jsOrder = [
-  'init.js',
-  'components.js'
+  'components.js',
+  'init.js'
 ];
 
 let js = `/* NGIN Alliance Playbook — Custom Scripts */\n/* Auto-built: ${new Date().toISOString()} */\n\n`;
@@ -58,6 +58,13 @@ if (fs.existsSync(indexSrc)) {
 // Write _headers for Cloudflare Pages (no-cache during active dev)
 fs.writeFileSync(path.join(DIST_DIR, '_headers'), `/*
   Access-Control-Allow-Origin: *
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: no-cache, no-store, must-revalidate
+  Pragma: no-cache
+  Expires: 0
 `);
+
+// Write version file for cache busting
+var version = Date.now().toString(36);
+fs.writeFileSync(path.join(DIST_DIR, 'version.txt'), version);
+console.log('✓ Version: ' + version);
 console.log('✓ Built dist/_headers');
