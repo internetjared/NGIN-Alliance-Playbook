@@ -47,28 +47,6 @@ section[data-section-id="69badb6c344ec84841fe29e2"] .list-item-content__button:h
   opacity: 1;
 }
 
-/* --- "What's Inside" category cards ---
-   Section: 69badcb87603e07234d02a29
-   White cards with navy text + icons
-   -------------------------------------------- */
-
-section[data-section-id="69badcb87603e07234d02a29"] .fe-block {
-  background: #fff !important;
-  border-radius: 10px !important;
-  padding: 24px !important;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-}
-
-section[data-section-id="69badcb87603e07234d02a29"] [data-sqsp-block="text"] h2,
-section[data-section-id="69badcb87603e07234d02a29"] [data-sqsp-block="text"] p,
-section[data-section-id="69badcb87603e07234d02a29"] [data-sqsp-block="text"] strong {
-  color: #1e2930 !important;
-}
-
-section[data-section-id="69badcb87603e07234d02a29"] .ngin-label-icon {
-  color: #1e2930 !important;
-}
-
 /* --- Case Studies intro callout bar ---
    OBSERVED selector: yui block ID (fragile, re-test if content changes)
    -------------------------------------------- */
