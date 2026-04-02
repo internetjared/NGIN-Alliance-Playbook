@@ -175,6 +175,9 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button:h
    -------------------------------------------- */
 
 /* Filter hide class — must beat Squarespace grid display */
+/* High-specificity hide — must beat Squarespace's .blog-basic-grid--container display:flex !important */
+body[class*="collection-type-blog"] .blog-basic-grid .ngin-hidden.blog-basic-grid--container,
+.ngin-hidden.blog-basic-grid--container.blog-item,
 .ngin-hidden {
   display: none !important;
   visibility: hidden !important;
@@ -185,16 +188,23 @@ section[data-section-id="69baee0a0909bd79f56324b3"] .list-item-content__button:h
   border: 0 !important;
 }
 
-/* Reduce top padding on grid */
+/* Reduce top padding on grid + override fixed grid positions for filter reflow */
 body[class*="collection-type-blog"] .blog-basic-grid.collection-content-wrapper {
   padding-top: 3vw !important;
   grid-template-rows: none !important;
   grid-auto-rows: min-content !important;
+  grid-auto-flow: dense !important;
 }
 
-/* Force all grid rows to auto-size to content */
+/* Force all grid children to auto-position so filtered cards reflow naturally */
 body[class*="collection-type-blog"] .blog-basic-grid.collection-content-wrapper > * {
   grid-row: auto !important;
+  grid-column: auto !important;
+}
+
+/* Filter bar spans full width of grid */
+body[class*="collection-type-blog"] .blog-basic-grid.collection-content-wrapper > .ngin-filter {
+  grid-column: 1 / -1 !important;
 }
 
 /* Hide dates, author, and native meta — high specificity to beat Squarespace */
