@@ -9,6 +9,7 @@
 
 section[data-section-id="69badb6c344ec84841fe29e2"] li h2 {
   font-weight: 700 !important;
+  font-size: 1.35em !important;
 }
 
 section[data-section-id="69badb6c344ec84841fe29e2"] li p {
@@ -23,6 +24,8 @@ section[data-section-id="69badb6c344ec84841fe29e2"] .list-item-content__button {
   display: inline-flex !important;
   align-items: center;
   gap: 0;
+  font-size: 16px !important;
+  padding: 14px 24px !important;
   transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
