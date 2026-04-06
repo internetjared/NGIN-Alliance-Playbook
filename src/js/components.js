@@ -469,24 +469,9 @@
     if (document.querySelector('.ngin-back-nav')) return;
 
     var CASE_STUDIES_URL = '/case-studies';
-    var LABEL = 'Back to Case Studies';
+    var LABEL = 'Back to All Case Studies';
 
-    // Top nav — subtle breadcrumb above the first section content
-    var topNav = document.createElement('div');
-    topNav.className = 'ngin-back-nav ngin-back-nav--top';
-    topNav.innerHTML =
-      '<a href="' + CASE_STUDIES_URL + '" class="ngin-back-nav__link">' +
-        '<span class="ngin-back-nav__icon" aria-hidden="true">arrow_back</span>' +
-        LABEL +
-      '</a>';
-
-    // Insert at top of first page-section inside #page
-    var firstSection = document.querySelector('#page .page-section, main .page-section');
-    if (firstSection) {
-      firstSection.parentNode.insertBefore(topNav, firstSection);
-    }
-
-    // Bottom nav — more prominent CTA after last section
+    // Bottom nav only — hero already has an "All Case Studies" button for immediate back
     var bottomNav = document.createElement('div');
     bottomNav.className = 'ngin-back-nav ngin-back-nav--bottom';
     bottomNav.innerHTML =
