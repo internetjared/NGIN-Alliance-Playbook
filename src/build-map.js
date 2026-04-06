@@ -259,47 +259,16 @@ const html = `<!DOCTYPE html>
     margin-top: 2px;
   }
 
-  /* Legend */
-  .legend {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    padding: 6px 0 0;
+  /* SVG Legend */
+  .legend-text {
+    font-family: 'Inter', system-ui, sans-serif;
     font-size: 13px;
-    color: #4a5568;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .legend-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .legend-dot--case-study {
-    background: #caddbb;
-    border: 1.5px solid #1e2930;
-  }
-
-  .legend-dot--coalition {
-    background: #1e2930;
-    border: 1.5px solid #fff;
-    box-shadow: 0 0 0 0.5px #ccc;
+    font-weight: 500;
+    fill: #4a5568;
   }
 
   /* Mobile */
   @media (max-width: 600px) {
-    .legend {
-      gap: 16px;
-      font-size: 12px;
-    }
     .tooltip {
       font-size: 12px;
       padding: 6px 10px;
@@ -317,7 +286,7 @@ const html = `<!DOCTYPE html>
 <body>
 
 <div class="map-container" id="mapContainer">
-  <svg class="map-svg" viewBox="-20 20 1000 545" xmlns="http://www.w3.org/2000/svg">
+  <svg class="map-svg" viewBox="-20 20 1000 580" xmlns="http://www.w3.org/2000/svg">
     <!-- State fills -->
     ${statePaths}
 
@@ -329,22 +298,19 @@ const html = `<!DOCTYPE html>
 
     <!-- City dots -->
     ${cityDots}
+
+    <!-- Legend (inside SVG so iframe captures it) -->
+    <g class="svg-legend" transform="translate(380, 575)">
+      <circle cx="0" cy="0" r="6" fill="#caddbb" stroke="#1e2930" stroke-width="1.5"/>
+      <text x="12" y="4" class="legend-text">Case Study City</text>
+      <circle cx="160" cy="0" r="6" fill="#1e2930" stroke="#fff" stroke-width="1.5"/>
+      <text x="172" y="4" class="legend-text">Coalition City</text>
+    </g>
   </svg>
 
   <div class="tooltip" id="tooltip">
     <span class="tooltip__label" id="tooltipLabel"></span>
     <span class="tooltip__sub" id="tooltipSub"></span>
-  </div>
-</div>
-
-<div class="legend">
-  <div class="legend-item">
-    <div class="legend-dot legend-dot--case-study"></div>
-    <span>Case Study City</span>
-  </div>
-  <div class="legend-item">
-    <div class="legend-dot legend-dot--coalition"></div>
-    <span>Coalition City</span>
   </div>
 </div>
 
