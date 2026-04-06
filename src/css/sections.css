@@ -478,9 +478,21 @@ section[data-section-id="69d42f58b25b1769041551aa"] [data-sqsp-block="text"] blo
   line-height: 1.6 !important;
 }
 
-/* Field Example — tinted background + colored heading */
+/* Field Example — colored tinted background */
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(1) [data-sqsp-block="text"] blockquote:last-of-type {
+  background: rgba(27, 58, 107, 0.08) !important;
+}
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(2) [data-sqsp-block="text"] blockquote:last-of-type {
+  background: rgba(46, 125, 107, 0.08) !important;
+}
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(3) [data-sqsp-block="text"] blockquote:last-of-type {
+  background: rgba(107, 79, 160, 0.08) !important;
+}
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(4) [data-sqsp-block="text"] blockquote:last-of-type {
+  background: rgba(196, 127, 23, 0.08) !important;
+}
+
 section[data-section-id="69d42f58b25b1769041551aa"] [data-sqsp-block="text"] blockquote:last-of-type {
-  background: #F3F4F6 !important;
   border-radius: 6px !important;
   padding: 18px 20px !important;
   margin: 20px 0 0 0 !important;
