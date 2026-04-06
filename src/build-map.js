@@ -288,7 +288,7 @@ const html = `<!DOCTYPE html>
 <body>
 
 <div class="map-container" id="mapContainer">
-  <svg class="map-svg" viewBox="-20 10 1000 585" xmlns="http://www.w3.org/2000/svg">
+  <svg class="map-svg" viewBox="-20 10 1000 610" xmlns="http://www.w3.org/2000/svg">
     <!-- State fills -->
     ${statePaths}
 
@@ -302,7 +302,7 @@ const html = `<!DOCTYPE html>
     ${cityDots}
 
     <!-- Legend (inside SVG so iframe captures it) -->
-    <g class="svg-legend" transform="translate(380, 578)">
+    <g class="svg-legend" transform="translate(380, 600)">
       <circle cx="0" cy="0" r="6" fill="#caddbb" stroke="#1e2930" stroke-width="1.5"/>
       <text x="12" y="4" class="legend-text">Case Study City</text>
       <circle cx="160" cy="0" r="6" fill="#1e2930" stroke="#fff" stroke-width="1.5"/>
