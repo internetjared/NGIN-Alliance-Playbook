@@ -70,27 +70,27 @@ const projectedCities = cities.map(city => {
 // Custom label offsets for crowded areas
 // [dx, dy, anchor] — anchor: 'start' (right of dot), 'end' (left of dot)
 const labelOffsets = {
-  'Bangor':       [9, 4, 'start'],
-  'Providence':   [9, 4, 'start'],
-  'Pottstown':    [9, -4, 'start'],
-  'Pittsburgh':   [9, 4, 'start'],
-  'Detroit':      [9, -2, 'start'],
-  'Cleveland':    [9, 4, 'start'],
-  'Milwaukee':    [9, -6, 'start'],
-  'Omaha':        [9, 4, 'start'],
-  'Memphis':      [9, 4, 'start'],
-  'Greenville':   [9, 4, 'start'],
-  'Shreveport':   [9, -2, 'start'],
-  'Baton Rouge':  [-9, -4, 'end'],
-  'New Orleans':  [9, 12, 'start'],
-  'Houston':      [-9, 4, 'end'],
-  'Tampa':        [9, -2, 'start'],
-  'Sarasota':     [9, 8, 'start'],
-  'El Paso':      [9, 4, 'start'],
-  'Santa Fe':     [9, 4, 'start'],
-  'San Diego':    [-9, 4, 'end'],
-  'Sacramento':   [-9, 4, 'end'],
-  'Honolulu':     [9, 4, 'start'],
+  'Bangor':       [-12, 5, 'end'],
+  'Providence':   [-12, 5, 'end'],
+  'Pottstown':    [-12, -4, 'end'],
+  'Pittsburgh':   [12, 5, 'start'],
+  'Detroit':      [12, -4, 'start'],
+  'Cleveland':    [12, 5, 'start'],
+  'Milwaukee':    [12, -8, 'start'],
+  'Omaha':        [12, 5, 'start'],
+  'Memphis':      [12, 5, 'start'],
+  'Greenville':   [12, 5, 'start'],
+  'Shreveport':   [12, -4, 'start'],
+  'Baton Rouge':  [-12, -6, 'end'],
+  'New Orleans':  [-12, 14, 'end'],
+  'Houston':      [-12, 5, 'end'],
+  'Tampa':        [-12, -4, 'end'],
+  'Sarasota':     [-12, 8, 'end'],
+  'El Paso':      [12, 5, 'start'],
+  'Santa Fe':     [12, 5, 'start'],
+  'San Diego':    [-12, 5, 'end'],
+  'Sacramento':   [-12, 5, 'end'],
+  'Honolulu':     [12, 5, 'start'],
 };
 
 // Generate city dot SVG
@@ -104,8 +104,8 @@ const cityDots = projectedCities.map(city => {
   const labelY = parseFloat(city.y) + dy;
   const labelCls = city.caseStudy ? 'city-label city-label--case-study' : 'city-label';
   return `<g class="dot-group" data-city="${city.name}, ${city.state}" ${dataAttrs}>
-      <circle cx="${city.x}" cy="${city.y}" r="8" class="dot-pulse"/>
-      <circle cx="${city.x}" cy="${city.y}" r="5.5" class="${cls}"/>
+      <circle cx="${city.x}" cy="${city.y}" r="12" class="dot-pulse"/>
+      <circle cx="${city.x}" cy="${city.y}" r="7.5" class="${cls}"/>
       <text x="${labelX}" y="${labelY}" class="${labelCls}" text-anchor="${anchor}">${city.name}</text>
     </g>`;
 }).join('\n    ');
@@ -143,7 +143,7 @@ const html = `<!DOCTYPE html>
   /* City labels */
   .city-label {
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 9px;
+    font-size: 13px;
     font-weight: 500;
     fill: #4a5568;
     pointer-events: none;
@@ -152,7 +152,7 @@ const html = `<!DOCTYPE html>
 
   .city-label--case-study {
     fill: #1e2930;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .dot-group:hover .city-label {
@@ -200,19 +200,19 @@ const html = `<!DOCTYPE html>
   .dot {
     fill: #1e2930;
     stroke: #fff;
-    stroke-width: 1.5;
+    stroke-width: 2;
     transition: r 0.2s ease, fill 0.2s ease;
   }
 
   .dot--case-study {
     fill: #caddbb;
     stroke: #1e2930;
-    stroke-width: 1.5;
+    stroke-width: 2;
   }
 
   .dot-group:hover .dot,
   .dot-group:focus-within .dot {
-    r: 7;
+    r: 10;
   }
 
   .dot-group[data-case-study="true"]:hover .dot,
@@ -263,7 +263,7 @@ const html = `<!DOCTYPE html>
     align-items: center;
     justify-content: center;
     gap: 24px;
-    padding: 12px 0 4px;
+    padding: 6px 0 0;
     font-size: 13px;
     color: #4a5568;
   }
@@ -315,7 +315,7 @@ const html = `<!DOCTYPE html>
 <body>
 
 <div class="map-container" id="mapContainer">
-  <svg class="map-svg" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg">
+  <svg class="map-svg" viewBox="-20 20 1000 510" xmlns="http://www.w3.org/2000/svg">
     <!-- State fills -->
     ${statePaths}
 
