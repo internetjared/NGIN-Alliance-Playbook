@@ -47,6 +47,11 @@
     if (window.NGIN && window.NGIN.initResourceFilter) {
       window.NGIN.initResourceFilter(root);
     }
+
+    // Case study back navigation
+    if (window.NGIN && window.NGIN.addCaseStudyBackNav) {
+      window.NGIN.addCaseStudyBackNav();
+    }
   }
 
   // Run init — handle both static script tags and dynamic loading

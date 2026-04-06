@@ -145,3 +145,87 @@
     padding: 10px 14px 10px 40px;
   }
 }
+
+/* --- Case Study Back Navigation --- */
+.ngin-back-nav {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Top: subtle breadcrumb */
+.ngin-back-nav--top {
+  padding: 14px 5vw;
+  background: #f7f8fa;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.ngin-back-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ngin-navy, #1B3A6B);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.ngin-back-nav__link:hover {
+  opacity: 0.7;
+}
+
+/* Bottom: prominent CTA bar */
+.ngin-back-nav--bottom {
+  padding: 40px 5vw;
+  text-align: center;
+  background: #f7f8fa;
+  border-top: 1px solid #E5E7EB;
+}
+
+.ngin-back-nav__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ngin-navy, #1B3A6B);
+  background: #caddbb;
+  border: none;
+  border-radius: 100px;
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.ngin-back-nav__btn:hover {
+  background: #b8d0a3;
+  transform: translateY(-1px);
+}
+
+/* Icon (Material Symbols) */
+.ngin-back-nav__icon {
+  font-family: 'Material Symbols Outlined' !important;
+  font-size: 20px;
+  font-weight: normal !important;
+  font-style: normal !important;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 767px) {
+  .ngin-back-nav--top {
+    padding: 12px 4vw;
+  }
+  .ngin-back-nav__link {
+    font-size: 13px;
+  }
+  .ngin-back-nav--bottom {
+    padding: 32px 4vw;
+  }
+  .ngin-back-nav__btn {
+    font-size: 15px;
+    padding: 12px 24px;
+  }
+}

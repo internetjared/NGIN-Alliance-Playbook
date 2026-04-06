@@ -457,6 +457,52 @@
     searchInput.addEventListener('input', filterItems);
   }
 
+  /* --- Case Study Back Navigation ---
+     Detects /case-studies/* pages and injects a
+     "Back to Case Studies" link at top and bottom.
+     ------------------------------------------------ */
+
+  function addCaseStudyBackNav() {
+    if (window.location.pathname.indexOf('/case-studies/') !== 0) return;
+    // Only on individual case study pages (has a sub-path after /case-studies/)
+    var slug = window.location.pathname.replace('/case-studies/', '').replace(/\/$/, '');
+    if (!slug) return;
+    if (document.querySelector('.ngin-back-nav')) return;
+
+    var CASE_STUDIES_URL = '/case-studies';
+    var LABEL = 'Back to Case Studies';
+
+    // Top nav — subtle breadcrumb above the first section content
+    var topNav = document.createElement('div');
+    topNav.className = 'ngin-back-nav ngin-back-nav--top';
+    topNav.innerHTML =
+      '<a href="' + CASE_STUDIES_URL + '" class="ngin-back-nav__link">' +
+        '<span class="ngin-back-nav__icon" aria-hidden="true">arrow_back</span>' +
+        LABEL +
+      '</a>';
+
+    // Insert at top of first page-section inside #page
+    var firstSection = document.querySelector('#page .page-section, main .page-section');
+    if (firstSection) {
+      firstSection.parentNode.insertBefore(topNav, firstSection);
+    }
+
+    // Bottom nav — more prominent CTA after last section
+    var bottomNav = document.createElement('div');
+    bottomNav.className = 'ngin-back-nav ngin-back-nav--bottom';
+    bottomNav.innerHTML =
+      '<a href="' + CASE_STUDIES_URL + '" class="ngin-back-nav__btn">' +
+        '<span class="ngin-back-nav__icon" aria-hidden="true">arrow_back</span>' +
+        LABEL +
+      '</a>';
+
+    var allSections = document.querySelectorAll('#page .page-section, main .page-section');
+    var lastSection = allSections[allSections.length - 1];
+    if (lastSection && lastSection.parentNode) {
+      lastSection.parentNode.insertBefore(bottomNav, lastSection.nextSibling);
+    }
+  }
+
   // Register with NGIN init system
   window.NGIN = window.NGIN || {};
   window.NGIN.addButtonIcons = addButtonIcons;
@@ -464,4 +510,5 @@
   window.NGIN.addLabelIcons = addLabelIcons;
   window.NGIN.addCaseStudyPills = addCaseStudyPills;
   window.NGIN.initResourceFilter = initResourceFilter;
+  window.NGIN.addCaseStudyBackNav = addCaseStudyBackNav;
 })();
