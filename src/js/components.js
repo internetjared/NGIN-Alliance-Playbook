@@ -463,10 +463,9 @@
      ------------------------------------------------ */
 
   function addCaseStudyBackNav() {
-    if (window.location.pathname.indexOf('/case-studies/') !== 0) return;
-    // Only on individual case study pages (has a sub-path after /case-studies/)
-    var slug = window.location.pathname.replace('/case-studies/', '').replace(/\/$/, '');
-    if (!slug) return;
+    // Detect case study pages by the presence of the pills section
+    var pillsSection = document.querySelector('section[data-section-id="69baf822077df3202166c679"]');
+    if (!pillsSection) return;
     if (document.querySelector('.ngin-back-nav')) return;
 
     var CASE_STUDIES_URL = '/case-studies';
