@@ -67,15 +67,46 @@ const projectedCities = cities.map(city => {
   return { ...city, x: coords[0].toFixed(1), y: coords[1].toFixed(1) };
 }).filter(Boolean);
 
+// Custom label offsets for crowded areas
+// [dx, dy, anchor] — anchor: 'start' (right of dot), 'end' (left of dot)
+const labelOffsets = {
+  'Bangor':       [9, 4, 'start'],
+  'Providence':   [9, 4, 'start'],
+  'Pottstown':    [9, -4, 'start'],
+  'Pittsburgh':   [9, 4, 'start'],
+  'Detroit':      [9, -2, 'start'],
+  'Cleveland':    [9, 4, 'start'],
+  'Milwaukee':    [9, -6, 'start'],
+  'Omaha':        [9, 4, 'start'],
+  'Memphis':      [9, 4, 'start'],
+  'Greenville':   [9, 4, 'start'],
+  'Shreveport':   [9, -2, 'start'],
+  'Baton Rouge':  [-9, -4, 'end'],
+  'New Orleans':  [9, 12, 'start'],
+  'Houston':      [-9, 4, 'end'],
+  'Tampa':        [9, -2, 'start'],
+  'Sarasota':     [9, 8, 'start'],
+  'El Paso':      [9, 4, 'start'],
+  'Santa Fe':     [9, 4, 'start'],
+  'San Diego':    [-9, 4, 'end'],
+  'Sacramento':   [-9, 4, 'end'],
+  'Honolulu':     [9, 4, 'start'],
+};
+
 // Generate city dot SVG
 const cityDots = projectedCities.map(city => {
   const cls = city.caseStudy ? 'dot dot--case-study' : 'dot';
   const dataAttrs = city.caseStudy
     ? `data-slug="${city.slug}" data-case-study="true"`
     : '';
+  const [dx, dy, anchor] = labelOffsets[city.name] || [9, 4, 'start'];
+  const labelX = parseFloat(city.x) + dx;
+  const labelY = parseFloat(city.y) + dy;
+  const labelCls = city.caseStudy ? 'city-label city-label--case-study' : 'city-label';
   return `<g class="dot-group" data-city="${city.name}, ${city.state}" ${dataAttrs}>
       <circle cx="${city.x}" cy="${city.y}" r="8" class="dot-pulse"/>
       <circle cx="${city.x}" cy="${city.y}" r="5.5" class="${cls}"/>
+      <text x="${labelX}" y="${labelY}" class="${labelCls}" text-anchor="${anchor}">${city.name}</text>
     </g>`;
 }).join('\n    ');
 
@@ -107,6 +138,26 @@ const html = `<!DOCTYPE html>
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  /* City labels */
+  .city-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    fill: #4a5568;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .city-label--case-study {
+    fill: #1e2930;
+    font-weight: 600;
+  }
+
+  .dot-group:hover .city-label {
+    fill: #1e2930;
+    font-weight: 700;
   }
 
   /* States */

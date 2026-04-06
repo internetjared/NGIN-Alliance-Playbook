@@ -27,6 +27,26 @@
     display: block;
   }
 
+  /* City labels */
+  .city-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    fill: #4a5568;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .city-label--case-study {
+    fill: #1e2930;
+    font-weight: 600;
+  }
+
+  .dot-group:hover .city-label {
+    fill: #1e2930;
+    font-weight: 700;
+  }
+
   /* States */
   .state {
     fill: #e9eef3;
@@ -246,86 +266,107 @@
     <g class="dot-group" data-city="Bangor, ME" data-slug="/case-studies/bangor-me" data-case-study="true">
       <circle cx="934.0" cy="104.7" r="8" class="dot-pulse"/>
       <circle cx="934.0" cy="104.7" r="5.5" class="dot dot--case-study"/>
+      <text x="943" y="108.7" class="city-label city-label--case-study" text-anchor="start">Bangor</text>
     </g>
     <g class="dot-group" data-city="Providence, RI" >
       <circle cx="911.8" cy="177.6" r="8" class="dot-pulse"/>
       <circle cx="911.8" cy="177.6" r="5.5" class="dot"/>
+      <text x="920.8" y="181.6" class="city-label" text-anchor="start">Providence</text>
     </g>
     <g class="dot-group" data-city="Pottstown, PA" >
       <circle cx="853.7" cy="226.8" r="8" class="dot-pulse"/>
       <circle cx="853.7" cy="226.8" r="5.5" class="dot"/>
+      <text x="862.7" y="222.8" class="city-label" text-anchor="start">Pottstown</text>
     </g>
     <g class="dot-group" data-city="Pittsburgh, PA" >
       <circle cx="783.7" cy="236.0" r="8" class="dot-pulse"/>
       <circle cx="783.7" cy="236.0" r="5.5" class="dot"/>
+      <text x="792.7" y="240" class="city-label" text-anchor="start">Pittsburgh</text>
     </g>
     <g class="dot-group" data-city="Detroit, MI" data-slug="/case-studies/detroit-mi" data-case-study="true">
       <circle cx="729.3" cy="203.0" r="8" class="dot-pulse"/>
       <circle cx="729.3" cy="203.0" r="5.5" class="dot dot--case-study"/>
+      <text x="738.3" y="201" class="city-label city-label--case-study" text-anchor="start">Detroit</text>
     </g>
     <g class="dot-group" data-city="Cleveland, OH" data-slug="/case-studies/cleveland-oh" data-case-study="true">
       <circle cx="753.1" cy="217.7" r="8" class="dot-pulse"/>
       <circle cx="753.1" cy="217.7" r="5.5" class="dot dot--case-study"/>
+      <text x="762.1" y="221.7" class="city-label city-label--case-study" text-anchor="start">Cleveland</text>
     </g>
     <g class="dot-group" data-city="Milwaukee, WI" >
       <circle cx="651.8" cy="196.2" r="8" class="dot-pulse"/>
       <circle cx="651.8" cy="196.2" r="5.5" class="dot"/>
+      <text x="660.8" y="190.2" class="city-label" text-anchor="start">Milwaukee</text>
     </g>
     <g class="dot-group" data-city="Omaha, NE" data-slug="/case-studies/omaha-ne" data-case-study="true">
       <circle cx="526.8" cy="240.1" r="8" class="dot-pulse"/>
       <circle cx="526.8" cy="240.1" r="5.5" class="dot dot--case-study"/>
+      <text x="535.8" y="244.1" class="city-label city-label--case-study" text-anchor="start">Omaha</text>
     </g>
     <g class="dot-group" data-city="Memphis, TN" >
       <circle cx="629.2" cy="369.2" r="8" class="dot-pulse"/>
       <circle cx="629.2" cy="369.2" r="5.5" class="dot"/>
+      <text x="638.2" y="373.2" class="city-label" text-anchor="start">Memphis</text>
     </g>
     <g class="dot-group" data-city="Greenville, MS" >
       <circle cx="613.5" cy="407.8" r="8" class="dot-pulse"/>
       <circle cx="613.5" cy="407.8" r="5.5" class="dot"/>
+      <text x="622.5" y="411.8" class="city-label" text-anchor="start">Greenville</text>
     </g>
     <g class="dot-group" data-city="Shreveport, LA" data-slug="/case-studies/shreveport-la" data-case-study="true">
       <circle cx="566.2" cy="428.7" r="8" class="dot-pulse"/>
       <circle cx="566.2" cy="428.7" r="5.5" class="dot dot--case-study"/>
+      <text x="575.2" y="426.7" class="city-label city-label--case-study" text-anchor="start">Shreveport</text>
     </g>
     <g class="dot-group" data-city="Baton Rouge, LA" >
       <circle cx="614.6" cy="471.6" r="8" class="dot-pulse"/>
       <circle cx="614.6" cy="471.6" r="5.5" class="dot"/>
+      <text x="605.6" y="467.6" class="city-label" text-anchor="end">Baton Rouge</text>
     </g>
     <g class="dot-group" data-city="New Orleans, LA" data-slug="/case-studies/new-orleans-la" data-case-study="true">
       <circle cx="635.8" cy="481.2" r="8" class="dot-pulse"/>
       <circle cx="635.8" cy="481.2" r="5.5" class="dot dot--case-study"/>
+      <text x="644.8" y="493.2" class="city-label city-label--case-study" text-anchor="start">New Orleans</text>
     </g>
     <g class="dot-group" data-city="Houston, TX" >
       <circle cx="537.4" cy="488.7" r="8" class="dot-pulse"/>
       <circle cx="537.4" cy="488.7" r="5.5" class="dot"/>
+      <text x="528.4" y="492.7" class="city-label" text-anchor="end">Houston</text>
     </g>
     <g class="dot-group" data-city="Tampa, FL" >
       <circle cx="782.6" cy="509.2" r="8" class="dot-pulse"/>
       <circle cx="782.6" cy="509.2" r="5.5" class="dot"/>
+      <text x="791.6" y="507.2" class="city-label" text-anchor="start">Tampa</text>
     </g>
     <g class="dot-group" data-city="Sarasota, FL" data-slug="/case-studies/sarasota-fl" data-case-study="true">
       <circle cx="783.1" cy="522.4" r="8" class="dot-pulse"/>
       <circle cx="783.1" cy="522.4" r="5.5" class="dot dot--case-study"/>
+      <text x="792.1" y="530.4" class="city-label city-label--case-study" text-anchor="start">Sarasota</text>
     </g>
     <g class="dot-group" data-city="El Paso, TX" >
       <circle cx="336.3" cy="435.3" r="8" class="dot-pulse"/>
       <circle cx="336.3" cy="435.3" r="5.5" class="dot"/>
+      <text x="345.3" y="439.3" class="city-label" text-anchor="start">El Paso</text>
     </g>
     <g class="dot-group" data-city="Santa Fe, NM" >
       <circle cx="354.3" cy="351.8" r="8" class="dot-pulse"/>
       <circle cx="354.3" cy="351.8" r="5.5" class="dot"/>
+      <text x="363.3" y="355.8" class="city-label" text-anchor="start">Santa Fe</text>
     </g>
     <g class="dot-group" data-city="San Diego, CA" >
       <circle cx="148.9" cy="383.0" r="8" class="dot-pulse"/>
       <circle cx="148.9" cy="383.0" r="5.5" class="dot"/>
+      <text x="139.9" y="387" class="city-label" text-anchor="end">San Diego</text>
     </g>
     <g class="dot-group" data-city="Sacramento, CA" data-slug="/case-studies/sacramento-ca" data-case-study="true">
       <circle cx="107.1" cy="241.6" r="8" class="dot-pulse"/>
       <circle cx="107.1" cy="241.6" r="5.5" class="dot dot--case-study"/>
+      <text x="98.1" y="245.6" class="city-label city-label--case-study" text-anchor="end">Sacramento</text>
     </g>
     <g class="dot-group" data-city="Honolulu, HI" data-slug="/case-studies/honolulu-hi" data-case-study="true">
       <circle cx="307.1" cy="526.5" r="8" class="dot-pulse"/>
       <circle cx="307.1" cy="526.5" r="5.5" class="dot dot--case-study"/>
+      <text x="316.1" y="530.5" class="city-label city-label--case-study" text-anchor="start">Honolulu</text>
     </g>
   </svg>
 
