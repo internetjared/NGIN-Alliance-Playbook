@@ -69,28 +69,30 @@ const projectedCities = cities.map(city => {
 
 // Custom label offsets for crowded areas
 // [dx, dy, anchor] — anchor: 'start' (right of dot), 'end' (left of dot)
+// Label offsets: [dx, dy, anchor]
+// Computed from projected coords to avoid overlap and edge clipping
 const labelOffsets = {
-  'Bangor':       [-12, 5, 'end'],
-  'Providence':   [-12, 5, 'end'],
-  'Pottstown':    [-12, -4, 'end'],
-  'Pittsburgh':   [12, 5, 'start'],
-  'Detroit':      [12, -4, 'start'],
-  'Cleveland':    [12, 5, 'start'],
-  'Milwaukee':    [12, -8, 'start'],
-  'Omaha':        [12, 5, 'start'],
-  'Memphis':      [12, 5, 'start'],
-  'Greenville':   [12, 5, 'start'],
-  'Shreveport':   [12, -4, 'start'],
-  'Baton Rouge':  [-12, -6, 'end'],
-  'New Orleans':  [-12, 14, 'end'],
-  'Houston':      [-12, 5, 'end'],
-  'Tampa':        [-12, -4, 'end'],
-  'Sarasota':     [-12, 8, 'end'],
-  'El Paso':      [12, 5, 'start'],
-  'Santa Fe':     [12, 5, 'start'],
-  'San Diego':    [-12, 5, 'end'],
-  'Sacramento':   [-12, 5, 'end'],
-  'Honolulu':     [12, 5, 'start'],
+  'Bangor':       [-12, -2, 'end'],       // x:934 — label left to stay in bounds
+  'Providence':   [-12, 5, 'end'],        // x:912 — label left
+  'Pottstown':    [-12, -6, 'end'],       // x:854 — label left, above to clear Providence
+  'Pittsburgh':   [12, 5, 'start'],       // x:784
+  'Detroit':      [12, -6, 'start'],      // x:729 — above to clear Cleveland
+  'Cleveland':    [12, 5, 'start'],       // x:753
+  'Milwaukee':    [12, -8, 'start'],      // x:652 — above
+  'Omaha':        [12, 5, 'start'],       // x:527
+  'Memphis':      [12, 5, 'start'],       // x:629
+  'Greenville':   [12, 5, 'start'],       // x:614
+  'Shreveport':   [12, -6, 'start'],      // x:566 — above to clear cluster
+  'Baton Rouge':  [-12, -4, 'end'],       // x:615 y:472 — left + above
+  'New Orleans':  [12, -6, 'start'],      // x:636 y:481 — right + above to clear Baton Rouge
+  'Houston':      [-12, 5, 'end'],        // x:537 y:489 — left
+  'Tampa':        [-12, -2, 'end'],       // x:783 y:509 — left + above
+  'Sarasota':     [-12, 14, 'end'],       // x:783 y:522 — left + below to clear Tampa
+  'El Paso':      [12, 5, 'start'],       // x:336
+  'Santa Fe':     [12, 5, 'start'],       // x:354
+  'San Diego':    [-12, 5, 'end'],        // x:149 — label left
+  'Sacramento':   [-12, 5, 'end'],        // x:107 — label left
+  'Honolulu':     [12, 5, 'start'],       // x:307 y:527
 };
 
 // Generate city dot SVG
@@ -315,7 +317,7 @@ const html = `<!DOCTYPE html>
 <body>
 
 <div class="map-container" id="mapContainer">
-  <svg class="map-svg" viewBox="-20 20 1000 510" xmlns="http://www.w3.org/2000/svg">
+  <svg class="map-svg" viewBox="-20 20 1000 545" xmlns="http://www.w3.org/2000/svg">
     <!-- State fills -->
     ${statePaths}
 
