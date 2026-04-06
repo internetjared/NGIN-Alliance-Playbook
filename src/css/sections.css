@@ -435,6 +435,11 @@ body[class*="collection-type-blog"] .blog-more-link {
 /* --- Case Study detail page pills ---
    Section: 69baf822077df3202166c679
    -------------------------------------------- */
+section[data-section-id="69baf822077df3202166c679"] {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
 section[data-section-id="69baf822077df3202166c679"] .code-block .sqs-block-content span,
 section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-content span {
   font-size: 15px !important;
