@@ -419,13 +419,14 @@ body[class*="collection-type-blog"] .blog-more-link {
 
 /* --- Coalition Map code block ---
    OBSERVED: yui block ID (fragile, re-test if content changes)
-   Fixes FE grid stretching the code block taller than the iframe content
+   Fixes FE grid stretching the code block taller than the iframe content.
+   align-self:start prevents the grid cell from stretching to fill its row span.
    -------------------------------------------- */
-#block-yui_3_17_2_1_1773858797485_6011 {
-  height: auto !important;
-  min-height: 0 !important;
+.fe-block-yui_3_17_2_1_1773858797485_6011 {
+  align-self: start !important;
 }
 
+#block-yui_3_17_2_1_1773858797485_6011,
 #block-yui_3_17_2_1_1773858797485_6011 .sqs-block-content {
   height: auto !important;
   min-height: 0 !important;
