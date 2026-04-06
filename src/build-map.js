@@ -72,22 +72,24 @@ const projectedCities = cities.map(city => {
 // Label offsets: [dx, dy, anchor]
 // Computed from projected coords to avoid overlap and edge clipping
 const labelOffsets = {
-  'Bangor':       [-12, -4, 'end'],       // x:934 y:105 — left to stay in bounds
+  // dy≈5 centers label vertically with dot. Alternating left/right avoids overlaps
+  // without large vertical displacement that looks disconnected.
+  'Bangor':       [-12, 5, 'end'],        // x:934 y:105 — left (near edge)
   'Providence':   [-12, 5, 'end'],        // x:912 y:178 — left
-  'Pottstown':    [12, 5, 'start'],       // x:854 y:227 — RIGHT to avoid Cleveland overlap
+  'Pottstown':    [12, 5, 'start'],       // x:854 y:227 — right
   'Pittsburgh':   [12, 5, 'start'],       // x:784 y:236 — right
-  'Detroit':      [12, -8, 'start'],      // x:729 y:203 — right + above to clear Cleveland
-  'Cleveland':    [-12, 5, 'end'],        // x:753 y:218 — LEFT to avoid Pottstown overlap
-  'Milwaukee':    [12, -8, 'start'],      // x:652 y:196 — right + above
+  'Detroit':      [12, 5, 'start'],       // x:729 y:203 — right
+  'Cleveland':    [-12, 5, 'end'],        // x:753 y:218 — left (opposite Detroit)
+  'Milwaukee':    [12, -5, 'start'],      // x:652 y:196 — right, nudged up to clear Detroit
   'Omaha':        [12, 5, 'start'],       // x:527 y:240
   'Memphis':      [12, 5, 'start'],       // x:629 y:369
-  'Greenville':   [-12, -8, 'end'],        // x:614 y:408 — LEFT to avoid Shreveport overlap
-  'Shreveport':   [12, -8, 'start'],      // x:566 y:429 — right + above to clear cluster
-  'Baton Rouge':  [-12, -12, 'end'],      // x:615 y:472 — left + well above
-  'New Orleans':  [12, 14, 'start'],      // x:636 y:481 — right + well below to clear BR
+  'Greenville':   [-12, 5, 'end'],        // x:614 y:408 — left (opposite Shreveport)
+  'Shreveport':   [12, 5, 'start'],       // x:566 y:429 — right
+  'Baton Rouge':  [-12, 5, 'end'],        // x:615 y:472 — left (opposite NO)
+  'New Orleans':  [12, 5, 'start'],       // x:636 y:481 — right
   'Houston':      [-12, 5, 'end'],        // x:537 y:489 — left
-  'Tampa':        [12, -4, 'start'],       // x:783 y:509 — RIGHT to avoid New Orleans overlap
-  'Sarasota':     [-12, 14, 'end'],       // x:783 y:522 — left + below to clear Tampa
+  'Tampa':        [12, 5, 'start'],       // x:783 y:509 — right (opposite Sarasota)
+  'Sarasota':     [-12, 5, 'end'],        // x:783 y:522 — left
   'El Paso':      [12, 5, 'start'],       // x:336 y:435
   'Santa Fe':     [12, 5, 'start'],       // x:354 y:352
   'San Diego':    [-12, 5, 'end'],        // x:149 y:383 — left
