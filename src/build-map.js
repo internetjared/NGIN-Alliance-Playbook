@@ -108,8 +108,8 @@ const cityDots = projectedCities.map(city => {
   const labelY = parseFloat(city.y) + dy;
   const labelCls = city.caseStudy ? 'city-label city-label--case-study' : 'city-label';
   return `<g class="dot-group" data-city="${city.name}, ${city.state}" ${dataAttrs}>
-      <circle cx="${city.x}" cy="${city.y}" r="12" class="dot-pulse"/>
-      <circle cx="${city.x}" cy="${city.y}" r="7.5" class="${cls}"/>
+      <circle cx="${city.x}" cy="${city.y}" r="10" class="dot-pulse"/>
+      <circle cx="${city.x}" cy="${city.y}" r="6" class="${cls}"/>
       <text x="${labelX}" y="${labelY}" class="${labelCls}" text-anchor="${anchor}">${city.name}</text>
     </g>`;
 }).join('\n    ');
@@ -218,7 +218,7 @@ const html = `<!DOCTYPE html>
 
   .dot-group:hover .dot,
   .dot-group:focus-within .dot {
-    r: 10;
+    r: 8;
   }
 
   .dot-group[data-case-study="true"]:hover .dot,
@@ -305,10 +305,10 @@ const html = `<!DOCTYPE html>
 
     <!-- Legend (inside SVG so iframe captures it) -->
     <g class="svg-legend" transform="translate(380, 625)">
-      <circle cx="0" cy="0" r="6" fill="#caddbb" stroke="#1e2930" stroke-width="1.5"/>
-      <text x="12" y="4" class="legend-text">Case Study City</text>
-      <circle cx="160" cy="0" r="6" fill="#1e2930" stroke="#fff" stroke-width="1.5"/>
-      <text x="172" y="4" class="legend-text">Coalition City</text>
+      <circle cx="0" cy="0" r="5" fill="#caddbb" stroke="#1e2930" stroke-width="1.5"/>
+      <text x="11" y="4" class="legend-text">Case Study City</text>
+      <circle cx="160" cy="0" r="5" fill="#1e2930" stroke="#fff" stroke-width="1.5"/>
+      <text x="171" y="4" class="legend-text">Coalition City</text>
     </g>
   </svg>
 
