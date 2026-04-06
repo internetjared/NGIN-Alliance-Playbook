@@ -417,3 +417,17 @@ body[class*="collection-type-blog"] .blog-more-link {
   display: none !important;
 }
 
+/* --- Coalition Map code block ---
+   OBSERVED: yui block ID (fragile, re-test if content changes)
+   Fixes FE grid stretching the code block taller than the iframe content
+   -------------------------------------------- */
+#block-yui_3_17_2_1_1773858797485_6011 {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+#block-yui_3_17_2_1_1773858797485_6011 .sqs-block-content {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
