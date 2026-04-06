@@ -123,16 +123,18 @@ const html = `<!DOCTYPE html>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
+  html, body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background: transparent;
+    margin: 0;
+    padding: 0;
+    height: auto;
     overflow: hidden;
   }
 
   .map-container {
     position: relative;
     width: 100%;
-    max-width: 960px;
     margin: 0 auto;
   }
 
@@ -286,7 +288,7 @@ const html = `<!DOCTYPE html>
 <body>
 
 <div class="map-container" id="mapContainer">
-  <svg class="map-svg" viewBox="-20 20 1000 580" xmlns="http://www.w3.org/2000/svg">
+  <svg class="map-svg" viewBox="-20 15 1000 560" xmlns="http://www.w3.org/2000/svg">
     <!-- State fills -->
     ${statePaths}
 
@@ -300,7 +302,7 @@ const html = `<!DOCTYPE html>
     ${cityDots}
 
     <!-- Legend (inside SVG so iframe captures it) -->
-    <g class="svg-legend" transform="translate(380, 575)">
+    <g class="svg-legend" transform="translate(380, 560)">
       <circle cx="0" cy="0" r="6" fill="#caddbb" stroke="#1e2930" stroke-width="1.5"/>
       <text x="12" y="4" class="legend-text">Case Study City</text>
       <circle cx="160" cy="0" r="6" fill="#1e2930" stroke="#fff" stroke-width="1.5"/>
@@ -396,6 +398,20 @@ const html = `<!DOCTYPE html>
       hideTooltip();
     }
   });
+
+  // Auto-size: tell parent iframe our actual height
+  function sendHeight() {
+    var h = document.getElementById('mapContainer').getBoundingClientRect().height;
+    if (window.parent !== window) {
+      window.parent.postMessage({ nginMapHeight: Math.ceil(h) }, '*');
+    }
+  }
+  sendHeight();
+  window.addEventListener('resize', sendHeight);
+  // Also send after fonts load
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(sendHeight);
+  }
 })();
 </script>
 
