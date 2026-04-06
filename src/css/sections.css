@@ -432,3 +432,13 @@ body[class*="collection-type-blog"] .blog-more-link {
   min-height: 0 !important;
 }
 
+/* --- Case Study detail page pills ---
+   Section: 69baf822077df3202166c679
+   -------------------------------------------- */
+section[data-section-id="69baf822077df3202166c679"] .code-block .sqs-block-content span,
+section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-content span {
+  font-size: 15px !important;
+  padding: 6px 18px !important;
+  letter-spacing: 0.04em !important;
+}
+
