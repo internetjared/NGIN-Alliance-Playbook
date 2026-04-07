@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-07T16:02:02.460Z */
+/* Auto-built: 2026-04-07T16:13:35.761Z */
 
 /* === variables.css === */
 /* ============================================
@@ -1229,9 +1229,9 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #caddbb;
-  color: var(--ngin-navy, #1B3A6B) !important;
-  border: 1px solid #caddbb;
+  background-color: var(--ngin-navy, #1B3A6B);
+  color: #ffffff !important;
+  border: 1px solid var(--ngin-navy, #1B3A6B);
   border-radius: 100px;
   font-family: Lato, 'Helvetica Neue', sans-serif;
   font-size: 16px;
@@ -1244,8 +1244,8 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
 }
 
 #block-yui_3_17_2_1_1775574705744_28790 .sqs-block-content a:hover {
-  background-color: #b8d0a3;
-  border-color: #b8d0a3;
+  background-color: #142c53;
+  border-color: #142c53;
   transform: translateY(-1px);
 }
 
