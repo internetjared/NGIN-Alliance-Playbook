@@ -474,7 +474,7 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
 .ngin-insight--operational   { --insight-color: #C47F17; --insight-bg: rgba(196, 127, 23, 0.10); }
 
 .ngin-insight__heading {
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 16px 0;
@@ -482,7 +482,7 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
 }
 
 .ngin-insight__quote {
-  border-left: 3px solid var(--insight-color);
+  border-left: 3px solid #D1D5DB;
   padding: 4px 0 4px 16px;
   margin: 0 0 20px 0;
   font-style: italic;
@@ -530,8 +530,8 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
 }
 
 @media (max-width: 640px) {
-  .ngin-insight { padding-left: 18px; }
-  .ngin-insight__heading { font-size: 1.35rem; }
+  .ngin-insight { padding: 22px 20px 22px 20px; }
+  .ngin-insight__heading { font-size: 1.6rem; }
   .ngin-insight__field { padding: 16px 18px; }
 }
 
