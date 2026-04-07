@@ -447,63 +447,88 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
   letter-spacing: 0.04em !important;
 }
 
-/* --- Core Insights Blocks ---
-   Section: 69d42f58b25b1769041551aa
-   4 text blocks, each with: heading, pull-quote blockquote,
-   body text, and field-example blockquote.
-   Position-dependent — re-test if blocks are reordered.
+/* --- Core Insight Cards (.ngin-insight) ---
+   Used inside Code Blocks for each of the 4 building-block insights.
+   Self-contained component with 4 color variants:
+     .ngin-insight--trust         (navy)
+     .ngin-insight--narrative     (teal)
+     .ngin-insight--facilitation  (purple)
+     .ngin-insight--operational   (amber)
    -------------------------------------------- */
 
-/* Color assignments — block 1 is intro (no styling), blocks 2-5 are the 4 insights */
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(2) { --insight-color: #1B3A6B; }
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(3) { --insight-color: #2E7D6B; }
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(4) { --insight-color: #6B4FA0; }
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(5) { --insight-color: #C47F17; }
-
-/* Block left border — insight blocks only */
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] {
-  border-left: 4px solid var(--insight-color, #1B3A6B) !important;
+.ngin-insight {
+  --insight-color: #1B3A6B;
+  --insight-bg: rgba(27, 58, 107, 0.10);
+  border-left: 4px solid var(--insight-color);
+  padding: 8px 0 8px 24px;
+  font-family: inherit;
+  color: #1f2937;
 }
 
-/* Pull quote = FIRST blockquote: accent left line + italic lighter text, NO background */
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:nth-of-type(1) {
-  border-left: 3px solid var(--insight-color, #1B3A6B) !important;
-  padding-left: 16px !important;
-  margin: 0 0 20px 0 !important;
-  background: transparent !important;
-  border-radius: 0 !important;
+.ngin-insight--trust         { --insight-color: #1B3A6B; --insight-bg: rgba(27, 58, 107, 0.10); }
+.ngin-insight--narrative     { --insight-color: #2E7D6B; --insight-bg: rgba(46, 125, 107, 0.10); }
+.ngin-insight--facilitation  { --insight-color: #6B4FA0; --insight-bg: rgba(107, 79, 160, 0.10); }
+.ngin-insight--operational   { --insight-color: #C47F17; --insight-bg: rgba(196, 127, 23, 0.10); }
+
+.ngin-insight__heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+  color: #1e2930;
 }
 
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:nth-of-type(1) p {
-  font-style: italic !important;
-  color: #6B7280 !important;
-  line-height: 1.6 !important;
+.ngin-insight__quote {
+  border-left: 3px solid var(--insight-color);
+  padding: 4px 0 4px 16px;
+  margin: 0 0 20px 0;
+  font-style: italic;
+  color: #6B7280;
+  line-height: 1.6;
+  font-size: 1.05rem;
 }
 
-/* Field Example = SECOND blockquote: tinted background, 10px radius, no left line */
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:nth-of-type(2) {
-  border-radius: 10px !important;
-  padding: 18px 20px !important;
-  margin: 20px 0 0 0 !important;
-  border-left: none !important;
+.ngin-insight__quote p {
+  margin: 0;
 }
 
-/* Per-block field example tint */
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(2) [data-sqsp-block="text"] blockquote:nth-of-type(2) {
-  background: rgba(27, 58, 107, 0.10) !important;
-}
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(3) [data-sqsp-block="text"] blockquote:nth-of-type(2) {
-  background: rgba(46, 125, 107, 0.10) !important;
-}
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(4) [data-sqsp-block="text"] blockquote:nth-of-type(2) {
-  background: rgba(107, 79, 160, 0.10) !important;
-}
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(5) [data-sqsp-block="text"] blockquote:nth-of-type(2) {
-  background: rgba(196, 127, 23, 0.10) !important;
+.ngin-insight__body {
+  margin: 0 0 16px 0;
+  line-height: 1.65;
+  color: #1f2937;
+  font-size: 1rem;
 }
 
-/* Field example heading "Field Example: ..." in accent color */
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:nth-of-type(2) p:first-child strong {
-  color: var(--insight-color, #1B3A6B) !important;
+.ngin-insight__body:last-of-type {
+  margin-bottom: 20px;
+}
+
+.ngin-insight__field {
+  background: var(--insight-bg);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 20px 0 0 0;
+}
+
+.ngin-insight__field-heading {
+  display: block;
+  color: var(--insight-color);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  margin: 0 0 8px 0;
+}
+
+.ngin-insight__field p {
+  margin: 0;
+  line-height: 1.6;
+  color: #1f2937;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 640px) {
+  .ngin-insight { padding-left: 18px; }
+  .ngin-insight__heading { font-size: 1.35rem; }
+  .ngin-insight__field { padding: 16px 18px; }
 }
 
