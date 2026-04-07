@@ -501,11 +501,11 @@
       mainHosts: ['newgrowth.org', 'www.newgrowth.org'],
       mainUrl: 'https://newgrowth.org/',
       mainName: 'New Growth Innovation Network',
-      mainInitials: 'NG',
+      mainLogoUrl: 'https://static1.squarespace.com/static/69bac4ee1264074d6b59d99f/t/69d521f64f84837aff7ec9d2/1775575542383/Untitled+design+-+2026-04-07T112437.104.png',
       playbookHosts: [],
       playbookUrl: '/',
       playbookName: 'The Alliance Playbook',
-      playbookInitials: 'AP',
+      playbookLogoUrl: 'https://static1.squarespace.com/static/69bac4ee1264074d6b59d99f/t/69d521f64f84837aff7ec9d2/1775575542383/Untitled+design+-+2026-04-07T112437.104.png',
       dismissDays: 30
     };
 
@@ -518,12 +518,12 @@
       mode = config.mainHosts.indexOf(host) !== -1 ? 'main' : 'playbook';
     }
 
-    var target, targetName, targetInitials, barModClass, chipModClass, barLabel;
+    var target, targetName, targetLogo, barModClass, chipModClass, barLabel;
     if (mode === 'main') {
       // On main NGIN site → link to Playbook
       target = config.playbookUrl;
       targetName = config.playbookName;
-      targetInitials = config.playbookInitials;
+      targetLogo = config.playbookLogoUrl;
       barModClass = 'ngin-crosslink--to-playbook';
       chipModClass = 'ngin-crosslink-chip--to-playbook';
       barLabel = '<span class="ngin-crosslink__label-full">New: explore </span><strong>' + targetName + '</strong>' +
@@ -532,7 +532,7 @@
       // On Playbook microsite → link to main NGIN
       target = config.mainUrl;
       targetName = config.mainName;
-      targetInitials = config.mainInitials;
+      targetLogo = config.mainLogoUrl;
       barModClass = '';
       chipModClass = '';
       barLabel = '<span class="ngin-crosslink__label-full">You\u2019re viewing the Alliance Playbook, part of </span>' +
@@ -565,7 +565,9 @@
       bar.setAttribute('aria-label', 'Related site');
       bar.innerHTML =
         '<div class="ngin-crosslink__inner">' +
-          '<span class="ngin-crosslink__mark" aria-hidden="true">' + targetInitials + '</span>' +
+          '<span class="ngin-crosslink__mark" aria-hidden="true">' +
+            '<img src="' + targetLogo + '" alt="" />' +
+          '</span>' +
           '<span class="ngin-crosslink__label">' + barLabel + '</span>' +
           '<a class="ngin-crosslink__cta" href="' + target + '">' +
             (mode === 'main' ? 'Open the Playbook' : 'Visit NGIN') +
@@ -574,12 +576,29 @@
           '<button type="button" class="ngin-crosslink__close" aria-label="Dismiss">\u00d7</button>' +
         '</div>';
 
-      // Prepend to body so it's above sticky headers
+      // Prepend to body so DOM order puts it first
       if (document.body.firstChild) {
         document.body.insertBefore(bar, document.body.firstChild);
       } else {
         document.body.appendChild(bar);
       }
+
+      // Measure and expose height so CSS can offset body + sticky header
+      function applyHeight() {
+        var h = bar.offsetHeight;
+        if (h > 0) {
+          document.documentElement.style.setProperty('--ngin-crosslink-h', h + 'px');
+          document.documentElement.classList.add('ngin-has-crosslink');
+        }
+      }
+      applyHeight();
+      // Re-measure after the logo image loads (it changes height)
+      var logoImg = bar.querySelector('img');
+      if (logoImg) {
+        if (logoImg.complete) applyHeight();
+        else logoImg.addEventListener('load', applyHeight);
+      }
+      window.addEventListener('resize', applyHeight);
 
       var closeBtn = bar.querySelector('.ngin-crosslink__close');
       closeBtn.addEventListener('click', function () {
@@ -589,6 +608,8 @@
         bar.style.transform = 'translateY(-100%)';
         setTimeout(function () {
           if (bar.parentNode) bar.parentNode.removeChild(bar);
+          document.documentElement.classList.remove('ngin-has-crosslink');
+          document.documentElement.style.removeProperty('--ngin-crosslink-h');
           renderChip();
         }, 240);
       });
@@ -602,7 +623,9 @@
       chip.setAttribute('aria-label',
         (mode === 'main' ? 'Open the Alliance Playbook' : 'Visit New Growth Innovation Network'));
       chip.innerHTML =
-        '<span class="ngin-crosslink-chip__mark" aria-hidden="true">' + targetInitials + '</span>' +
+        '<span class="ngin-crosslink-chip__mark" aria-hidden="true">' +
+          '<img src="' + targetLogo + '" alt="" />' +
+        '</span>' +
         (mode === 'main' ? 'Alliance Playbook' : 'NGIN.org') +
         ' <span aria-hidden="true">\u2192</span>';
       document.body.appendChild(chip);

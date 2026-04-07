@@ -209,10 +209,13 @@
    ============================================ */
 
 .ngin-crosslink {
-  position: relative;
-  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2147483000; /* above Squarespace sticky headers */
   width: 100%;
-  background: #1F3865;
+  background: #1d2b36;
   color: #ffffff;
   font-family: inherit;
   font-size: 14px;
@@ -221,7 +224,26 @@
 }
 
 .ngin-crosslink--to-playbook {
-  background: #1B3A6B;
+  background: #1d2b36;
+}
+
+/* Push the rest of the page down by the bar height.
+   --ngin-crosslink-h is set from JS after the bar renders. */
+html.ngin-has-crosslink body {
+  padding-top: var(--ngin-crosslink-h, 44px);
+}
+
+html.ngin-has-crosslink {
+  scroll-padding-top: var(--ngin-crosslink-h, 44px);
+}
+
+/* Offset Squarespace sticky/fixed headers by the bar height */
+html.ngin-has-crosslink #header,
+html.ngin-has-crosslink .header,
+html.ngin-has-crosslink .Header,
+html.ngin-has-crosslink .sqs-announcement-bar-dropzone,
+html.ngin-has-crosslink .header-announcement-bar-wrapper {
+  top: var(--ngin-crosslink-h, 44px) !important;
 }
 
 @keyframes nginCrosslinkSlide {
@@ -240,22 +262,16 @@
 
 .ngin-crosslink__mark {
   flex: 0 0 auto;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #86C459;
+  height: 26px;
+  width: auto;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: #1F3865;
-  font-weight: 800;
-  font-size: 11px;
-  letter-spacing: 0.02em;
 }
 
-.ngin-crosslink--to-playbook .ngin-crosslink__mark {
-  background: #caddbb;
-  color: #1B3A6B;
+.ngin-crosslink__mark img {
+  height: 26px;
+  width: auto;
+  display: block;
 }
 
 .ngin-crosslink__label {
@@ -346,7 +362,7 @@
   align-items: center;
   gap: 8px;
   padding: 9px 16px 9px 12px;
-  background: #1F3865;
+  background: #1d2b36;
   color: #ffffff;
   text-decoration: none;
   border-radius: 999px;
@@ -358,7 +374,7 @@
 }
 
 .ngin-crosslink-chip--to-playbook {
-  background: #1B3A6B;
+  background: #1d2b36;
 }
 
 .ngin-crosslink-chip:hover,
@@ -376,21 +392,16 @@
 }
 
 .ngin-crosslink-chip__mark {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #86C459;
-  color: #1F3865;
+  height: 20px;
+  width: auto;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 11px;
 }
 
-.ngin-crosslink-chip--to-playbook .ngin-crosslink-chip__mark {
-  background: #caddbb;
-  color: #1B3A6B;
+.ngin-crosslink-chip__mark img {
+  height: 20px;
+  width: auto;
+  display: block;
 }
 
 @media (max-width: 640px) {
