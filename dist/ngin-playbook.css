@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-07T15:38:43.789Z */
+/* Auto-built: 2026-04-07T15:48:06.686Z */
 
 /* === variables.css === */
 /* ============================================
@@ -1186,30 +1186,45 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
    deleted/recreated, update the selector.
    -------------------------------------------- */
 
+/* Hide the "1/2/3/4" h4 labels and render numbered circle badges
+   as ::before pseudo-elements on each building-block h3 title via a
+   CSS counter. This avoids the fragile h4-as-inline-flex approach. */
+#block-yui_3_17_2_1_1775574232499_3834 .sqs-block-content {
+  counter-reset: ngin-bb;
+}
+
 #block-yui_3_17_2_1_1775574232499_3834 h4 {
+  display: none !important;
+}
+
+#block-yui_3_17_2_1_1775574232499_3834 h3 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  counter-increment: ngin-bb;
+}
+
+#block-yui_3_17_2_1_1775574232499_3834 h3::before {
+  content: counter(ngin-bb);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.4em;
-  height: 2.4em;
-  padding: 0;
-  margin: 0 14px 12px 0;
+  flex: 0 0 auto;
+  width: 2.25em;
+  height: 2.25em;
   border-radius: 50%;
   background: #1B3A6B;
-  color: #ffffff !important;
-  font-weight: 700 !important;
-  font-size: 1.35em;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85em;
   line-height: 1;
-  text-align: center;
-  vertical-align: middle;
-  flex-shrink: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
-#block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(1) { background: #1B3A6B; } /* navy  — Trust       */
-#block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(2) { background: #2E7D6B; } /* teal  — Narrative   */
-#block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(3) { background: #6B4FA0; } /* purple— Facilitation*/
-#block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(4) { background: #C47F17; } /* amber — Operational */
+#block-yui_3_17_2_1_1775574232499_3834 h3:nth-of-type(1)::before { background: #1B3A6B; } /* navy   — Trust        */
+#block-yui_3_17_2_1_1775574232499_3834 h3:nth-of-type(2)::before { background: #2E7D6B; } /* teal   — Narrative    */
+#block-yui_3_17_2_1_1775574232499_3834 h3:nth-of-type(3)::before { background: #6B4FA0; } /* purple — Facilitation */
+#block-yui_3_17_2_1_1775574232499_3834 h3:nth-of-type(4)::before { background: #C47F17; } /* amber  — Operational  */
 
 
 /* === responsive.css === */
