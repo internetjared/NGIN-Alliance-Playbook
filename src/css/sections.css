@@ -454,52 +454,56 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
    Position-dependent — re-test if blocks are reordered.
    -------------------------------------------- */
 
-/* Color assignments per block — block 1 is intro (no styling), blocks 2-5 are the 4 insights */
+/* Color assignments — block 1 is intro (no styling), blocks 2-5 are the 4 insights */
 section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(2) { --insight-color: #1B3A6B; }
 section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(3) { --insight-color: #2E7D6B; }
 section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(4) { --insight-color: #6B4FA0; }
 section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(5) { --insight-color: #C47F17; }
 
-/* Block left border — insight blocks only (skip intro block 1) */
+/* Block left border — insight blocks only */
 section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] {
   border-left: 4px solid var(--insight-color, #1B3A6B) !important;
 }
 
-/* Quote — left line + lighter italic */
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:first-of-type {
+/* Pull quote = FIRST blockquote: accent left line + italic lighter text, NO background */
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:nth-of-type(1) {
   border-left: 3px solid var(--insight-color, #1B3A6B) !important;
   padding-left: 16px !important;
   margin: 0 0 20px 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
 }
 
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:first-of-type p {
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:nth-of-type(1) p {
   font-style: italic !important;
   color: #6B7280 !important;
   line-height: 1.6 !important;
 }
 
-/* Field Example — colored tinted background */
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(2) [data-sqsp-block="text"] blockquote:last-of-type {
-  background: rgba(27, 58, 107, 0.08) !important;
-}
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(3) [data-sqsp-block="text"] blockquote:last-of-type {
-  background: rgba(46, 125, 107, 0.08) !important;
-}
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(4) [data-sqsp-block="text"] blockquote:last-of-type {
-  background: rgba(107, 79, 160, 0.08) !important;
-}
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(5) [data-sqsp-block="text"] blockquote:last-of-type {
-  background: rgba(196, 127, 23, 0.08) !important;
-}
-
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:last-of-type {
-  border-radius: 6px !important;
+/* Field Example = SECOND blockquote: tinted background, 10px radius, no left line */
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:nth-of-type(2) {
+  border-radius: 10px !important;
   padding: 18px 20px !important;
   margin: 20px 0 0 0 !important;
   border-left: none !important;
 }
 
-section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:last-of-type p:first-child strong {
+/* Per-block field example tint */
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(2) [data-sqsp-block="text"] blockquote:nth-of-type(2) {
+  background: rgba(27, 58, 107, 0.10) !important;
+}
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(3) [data-sqsp-block="text"] blockquote:nth-of-type(2) {
+  background: rgba(46, 125, 107, 0.10) !important;
+}
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(4) [data-sqsp-block="text"] blockquote:nth-of-type(2) {
+  background: rgba(107, 79, 160, 0.10) !important;
+}
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(5) [data-sqsp-block="text"] blockquote:nth-of-type(2) {
+  background: rgba(196, 127, 23, 0.10) !important;
+}
+
+/* Field example heading "Field Example: ..." in accent color */
+section[data-section-id="69d42f58b25b1769041551aa"] .fe-block:nth-child(n+2) [data-sqsp-block="text"] blockquote:nth-of-type(2) p:first-child strong {
   color: var(--insight-color, #1B3A6B) !important;
 }
 
