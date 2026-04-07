@@ -52,6 +52,11 @@
     if (window.NGIN && window.NGIN.addCaseStudyBackNav) {
       window.NGIN.addCaseStudyBackNav();
     }
+
+    // Cross-site context bar (Playbook ↔ main NGIN)
+    if (window.NGIN && window.NGIN.initCrossSiteLink) {
+      window.NGIN.initCrossSiteLink();
+    }
   }
 
   // Run init — handle both static script tags and dynamic loading

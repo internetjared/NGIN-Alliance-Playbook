@@ -1,0 +1,144 @@
+- generic [ref=e2]:
+  - banner:
+    - generic [ref=e3]:
+      - link "Skip to Content" [ref=e4] [cursor=pointer]:
+        - /url: "#page"
+      - generic [ref=e8]:
+        - link "NGIN Alliance Playbook" [ref=e11] [cursor=pointer]:
+          - /url: /
+          - img "NGIN Alliance Playbook" [ref=e12]
+        - navigation [ref=e15]:
+          - link "Core Insights" [ref=e17] [cursor=pointer]:
+            - /url: /core-insights
+          - link "Resource Bank" [ref=e19] [cursor=pointer]:
+            - /url: /resource-bank
+          - link "Case Studies" [ref=e21] [cursor=pointer]:
+            - /url: /case-studies
+          - link "About" [ref=e23] [cursor=pointer]:
+            - /url: /about
+  - main [ref=e24]:
+    - article [ref=e25]:
+      - generic [ref=e31]:
+        - generic [ref=e36]:
+          - paragraph [ref=e37]:
+            - strong [ref=e38]: Resource Bank
+          - heading "Tools & Templates" [level=1] [ref=e39]:
+            - strong [ref=e40]: Tools & Templates
+        - paragraph [ref=e46]: 15 practical tools coalitions can adapt at any stage, from continuity planning and narrative development to conflict resolution and ecosystem mapping. All free to download.
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - generic: search
+            - textbox "Search tools..." [ref=e54]
+          - generic [ref=e55]:
+            - button "All" [ref=e56] [cursor=pointer]
+            - button "Facilitation" [ref=e57] [cursor=pointer]
+            - button "Structure" [ref=e58] [cursor=pointer]
+            - button "Trust" [ref=e59] [cursor=pointer]
+        - article [ref=e60]:
+          - generic [ref=e61]:
+            - generic [ref=e62]: Tool 1
+            - heading "Coalition Continuity Framework" [level=1] [ref=e63]:
+              - link "Coalition Continuity Framework" [ref=e64] [cursor=pointer]:
+                - /url: /resource-bank/coalition-continuity-framework
+            - generic [ref=e66]:
+              - paragraph
+              - paragraph [ref=e67]: Keep work moving through leadership changes by documenting purpose, roles, agreements, and deliverables.
+          - generic [ref=e68]:
+            - generic [ref=e69]: Trust, Structure
+            - link "View Tool →" [ref=e70] [cursor=pointer]:
+              - /url: /resource-bank/coalition-continuity-framework
+              - text: View Tool
+              - generic [ref=e71]: →
+        - article [ref=e72]:
+          - generic [ref=e73]:
+            - generic [ref=e74]: Tool 2
+            - heading "Rapid Action Planning Template" [level=1] [ref=e75]:
+              - link "Rapid Action Planning Template" [ref=e76] [cursor=pointer]:
+                - /url: /resource-bank/coalition-continuity-framework-s35ky
+            - generic [ref=e78]:
+              - paragraph
+              - paragraph [ref=e79]: Move from discussion to action with short-term pilots designed to build momentum in 3–6 months.
+          - generic [ref=e80]:
+            - generic [ref=e81]: Trust, Structure, Facilitation
+            - link "View Tool →" [ref=e82] [cursor=pointer]:
+              - /url: /resource-bank/coalition-continuity-framework-s35ky
+              - text: View Tool
+              - generic [ref=e83]: →
+        - article [ref=e84]:
+          - generic [ref=e85]:
+            - generic [ref=e86]: Tool 3
+            - heading "Positionality Statement Development" [level=1] [ref=e87]:
+              - link "Positionality Statement Development" [ref=e88] [cursor=pointer]:
+                - /url: /resource-bank/positionality-statement-development
+            - generic [ref=e90]:
+              - paragraph
+              - paragraph [ref=e91]: Build trust by naming how each person and organization shows up, what shapes their perspective, and how power influences decisions.
+          - generic [ref=e92]:
+            - generic [ref=e93]: Trust
+            - link "View Tool →" [ref=e94] [cursor=pointer]:
+              - /url: /resource-bank/positionality-statement-development
+              - text: View Tool
+              - generic [ref=e95]: →
+        - article [ref=e96]:
+          - generic [ref=e97]:
+            - generic [ref=e98]: Tool 4
+            - heading "Power-Sharing Charter Template" [level=1] [ref=e99]:
+              - link "Power-Sharing Charter Template" [ref=e100] [cursor=pointer]:
+                - /url: /resource-bank/power-sharing-charter-template
+            - generic [ref=e102]:
+              - paragraph
+              - paragraph [ref=e103]: A written agreement that makes decision-making, voice, resource flow, and accountability visible and intentional.
+          - generic [ref=e104]:
+            - generic [ref=e105]: Structure
+            - link "View Tool →" [ref=e106] [cursor=pointer]:
+              - /url: /resource-bank/power-sharing-charter-template
+              - text: View Tool
+              - generic [ref=e107]: →
+        - article [ref=e108]:
+          - generic [ref=e109]:
+            - generic [ref=e110]: Tool 5
+            - heading "Internal Alignment Self-Assessment" [level=1] [ref=e111]:
+              - link "Internal Alignment Self-Assessment" [ref=e112] [cursor=pointer]:
+                - /url: /resource-bank/internal-alignment-self-assessment
+            - generic [ref=e114]:
+              - paragraph
+              - paragraph [ref=e115]: Examine your organization's readiness, capacity, and coherence before or during coalition work.
+          - generic [ref=e116]:
+            - generic [ref=e117]: Structure
+            - link "View Tool →" [ref=e118] [cursor=pointer]:
+              - /url: /resource-bank/internal-alignment-self-assessment
+              - text: View Tool
+              - generic [ref=e119]: →
+        - article [ref=e120]:
+          - generic [ref=e121]:
+            - generic [ref=e122]: Tool 6
+            - heading "Convenor Selection Tool" [level=1] [ref=e123]:
+              - link "Convenor Selection Tool" [ref=e124] [cursor=pointer]:
+                - /url: /resource-bank/convenor-selection-tool
+            - generic [ref=e126]:
+              - paragraph
+              - paragraph [ref=e127]: Assess which partner is best suited to serve as the coalition backbone.
+          - generic [ref=e128]:
+            - generic [ref=e129]: Facilitation
+            - link "View Tool →" [ref=e130] [cursor=pointer]:
+              - /url: /resource-bank/convenor-selection-tool
+              - text: View Tool
+              - generic [ref=e131]: →
+  - contentinfo [ref=e132]:
+    - generic [ref=e138]:
+      - paragraph [ref=e151]: Core Insights
+      - paragraph [ref=e157]: Case Studies
+      - paragraph [ref=e163]: Resource Bank
+      - paragraph [ref=e169]: About
+      - paragraph [ref=e175]: Contact
+      - navigation [ref=e180]:
+        - link "Facebook" [ref=e181] [cursor=pointer]:
+          - /url: http://www.facebook.com
+          - img [ref=e183]
+        - link "Instagram" [ref=e186] [cursor=pointer]:
+          - /url: http://www.instagram.com
+          - img [ref=e188]
+        - link "LinkedIn" [ref=e191] [cursor=pointer]:
+          - /url: http://www.linkedin.com
+          - img [ref=e193]

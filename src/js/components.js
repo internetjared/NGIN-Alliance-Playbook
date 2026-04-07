@@ -487,6 +487,128 @@
     }
   }
 
+  /* --- Cross-Site Context Bar ---
+     Shows a dismissible top bar linking between the
+     Playbook microsite and the main NGIN site.
+     Mode auto-detected by hostname, overridable via
+     window.NGIN_CROSSLINK_CONFIG = { mode: 'playbook' | 'main', ... }
+     ------------------------------------------------ */
+
+  function initCrossSiteLink() {
+    if (document.querySelector('.ngin-crosslink, .ngin-crosslink-chip')) return;
+
+    var defaults = {
+      mainHosts: ['newgrowth.org', 'www.newgrowth.org'],
+      mainUrl: 'https://newgrowth.org/',
+      mainName: 'New Growth Innovation Network',
+      mainInitials: 'NG',
+      playbookHosts: [],
+      playbookUrl: '/',
+      playbookName: 'The Alliance Playbook',
+      playbookInitials: 'AP',
+      dismissDays: 30
+    };
+
+    var config = Object.assign({}, defaults, window.NGIN_CROSSLINK_CONFIG || {});
+
+    // Determine mode: 'playbook' (we're on microsite, link to main) or 'main'
+    var mode = (window.NGIN_CROSSLINK_CONFIG && window.NGIN_CROSSLINK_CONFIG.mode) || null;
+    if (!mode) {
+      var host = location.hostname.toLowerCase();
+      mode = config.mainHosts.indexOf(host) !== -1 ? 'main' : 'playbook';
+    }
+
+    var target, targetName, targetInitials, barModClass, chipModClass, barLabel;
+    if (mode === 'main') {
+      // On main NGIN site → link to Playbook
+      target = config.playbookUrl;
+      targetName = config.playbookName;
+      targetInitials = config.playbookInitials;
+      barModClass = 'ngin-crosslink--to-playbook';
+      chipModClass = 'ngin-crosslink-chip--to-playbook';
+      barLabel = '<span class="ngin-crosslink__label-full">New: explore </span><strong>' + targetName + '</strong>' +
+                 '<span class="ngin-crosslink__label-full"> — a living field guide for coalitions.</span>';
+    } else {
+      // On Playbook microsite → link to main NGIN
+      target = config.mainUrl;
+      targetName = config.mainName;
+      targetInitials = config.mainInitials;
+      barModClass = '';
+      chipModClass = '';
+      barLabel = '<span class="ngin-crosslink__label-full">You\u2019re viewing the Alliance Playbook, part of </span>' +
+                 '<strong>' + targetName + '</strong>';
+    }
+
+    // Check dismissal
+    var STORAGE_KEY = 'ngin-crosslink-dismissed-' + mode;
+    var dismissed = false;
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        var ts = parseInt(raw, 10);
+        var ageMs = Date.now() - ts;
+        var maxMs = config.dismissDays * 24 * 60 * 60 * 1000;
+        if (!isNaN(ts) && ageMs < maxMs) dismissed = true;
+      }
+    } catch (e) { /* storage blocked — show bar */ }
+
+    if (dismissed) {
+      renderChip();
+    } else {
+      renderBar();
+    }
+
+    function renderBar() {
+      var bar = document.createElement('aside');
+      bar.className = 'ngin-crosslink ' + barModClass;
+      bar.setAttribute('role', 'complementary');
+      bar.setAttribute('aria-label', 'Related site');
+      bar.innerHTML =
+        '<div class="ngin-crosslink__inner">' +
+          '<span class="ngin-crosslink__mark" aria-hidden="true">' + targetInitials + '</span>' +
+          '<span class="ngin-crosslink__label">' + barLabel + '</span>' +
+          '<a class="ngin-crosslink__cta" href="' + target + '">' +
+            (mode === 'main' ? 'Open the Playbook' : 'Visit NGIN') +
+            ' <span class="ngin-crosslink__cta-arrow" aria-hidden="true">\u2192</span>' +
+          '</a>' +
+          '<button type="button" class="ngin-crosslink__close" aria-label="Dismiss">\u00d7</button>' +
+        '</div>';
+
+      // Prepend to body so it's above sticky headers
+      if (document.body.firstChild) {
+        document.body.insertBefore(bar, document.body.firstChild);
+      } else {
+        document.body.appendChild(bar);
+      }
+
+      var closeBtn = bar.querySelector('.ngin-crosslink__close');
+      closeBtn.addEventListener('click', function () {
+        try { localStorage.setItem(STORAGE_KEY, String(Date.now())); } catch (e) {}
+        bar.style.transition = 'opacity 220ms ease, transform 220ms ease';
+        bar.style.opacity = '0';
+        bar.style.transform = 'translateY(-100%)';
+        setTimeout(function () {
+          if (bar.parentNode) bar.parentNode.removeChild(bar);
+          renderChip();
+        }, 240);
+      });
+    }
+
+    function renderChip() {
+      if (document.querySelector('.ngin-crosslink-chip')) return;
+      var chip = document.createElement('a');
+      chip.className = 'ngin-crosslink-chip ' + chipModClass;
+      chip.href = target;
+      chip.setAttribute('aria-label',
+        (mode === 'main' ? 'Open the Alliance Playbook' : 'Visit New Growth Innovation Network'));
+      chip.innerHTML =
+        '<span class="ngin-crosslink-chip__mark" aria-hidden="true">' + targetInitials + '</span>' +
+        (mode === 'main' ? 'Alliance Playbook' : 'NGIN.org') +
+        ' <span aria-hidden="true">\u2192</span>';
+      document.body.appendChild(chip);
+    }
+  }
+
   // Register with NGIN init system
   window.NGIN = window.NGIN || {};
   window.NGIN.addButtonIcons = addButtonIcons;
@@ -495,4 +617,5 @@
   window.NGIN.addCaseStudyPills = addCaseStudyPills;
   window.NGIN.initResourceFilter = initResourceFilter;
   window.NGIN.addCaseStudyBackNav = addCaseStudyBackNav;
+  window.NGIN.initCrossSiteLink = initCrossSiteLink;
 })();

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NGIN Alliance Playbook — Wireframes</title>
+<style>
+:root{--navy:#1B3A6B;--teal:#2E7D6B;--amber:#D97706;--g50:#F9FAFB;--g100:#F3F4F6;--g200:#E5E7EB;--g300:#D1D5DB;--g400:#9CA3AF;--g600:#4B5563;--g700:#374151;--g900:#111827;--radius:6px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#E5E7EB;color:var(--g900)}
+
+/* === DOCUMENT SHELL === */
+.doc-wrap{max-width:1440px;margin:0 auto;padding:32px 24px}
+.doc-title{text-align:center;padding:32px 0 8px;color:var(--navy);font-size:28px;font-weight:800}
+.doc-sub{text-align:center;color:var(--g400);font-size:14px;margin-bottom:40px}
+
+/* === WIREFRAME CARD === */
+.wf-card{margin-bottom:56px;border-radius:10px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.12)}
+.wf-card-hdr{background:var(--navy);padding:14px 24px;display:flex;align-items:center;gap:16px;color:#fff}
+.wf-card-hdr .num{background:rgba(255,255,255,.15);padding:3px 10px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.04em}
+.wf-card-hdr h2{font-size:17px;font-weight:700;flex:1}
+.wf-card-hdr .url{font-family:monospace;font-size:11px;color:var(--amber);opacity:.9}
+/* browser chrome */
+.chrome{background:#F0F2F5;padding:8px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--g200)}
+.chrome .dots{display:flex;gap:5px}
+.chrome .dots i{width:10px;height:10px;border-radius:50%;display:block}
+.chrome .dots i:nth-child(1){background:#EF4444}
+.chrome .dots i:nth-child(2){background:#EAB308}
+.chrome .dots i:nth-child(3){background:#22C55E}
+.chrome .bar{flex:1;max-width:420px;background:#fff;border:1px solid var(--g200);border-radius:4px;padding:4px 12px;font-family:monospace;font-size:11px;color:var(--g600);margin-left:8px}
+/* page canvas */
+.page{background:#fff}
+
+/* === SITE NAV (inside each wireframe) === */
+.site-nav{background:var(--navy);padding:0 40px;display:flex;align-items:center;height:52px}
+.site-nav .logo{color:#fff;font-size:13px;font-weight:700;letter-spacing:.02em;margin-right:auto;opacity:.9}
+.site-nav a{color:rgba(255,255,255,.7);font-size:12.5px;text-decoration:none;padding:0 14px;height:52px;display:inline-flex;align-items:center;border-bottom:2px solid transparent;transition:.15s}
+.site-nav a:hover{color:#fff}
+.site-nav a.on{color:#fff;border-bottom-color:var(--teal)}
+
+/* === HERO === */
+.hero{padding:56px 48px 48px;position:relative}
+.hero.teal{background:linear-gradient(135deg,#E8F5F0 0%,#D1EDE4 100%)}
+.hero.navy{background:linear-gradient(135deg,#1B3A6B 0%,#15305A 100%);color:#fff}
+.hero.amber{background:linear-gradient(135deg,#FEF9EE 0%,#FDF0D5 100%)}
+.hero .eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.hero.navy .eyebrow{color:var(--amber)}
+.hero.amber .eyebrow{color:var(--amber)}
+.hero h1{font-size:34px;font-weight:800;line-height:1.2;margin-bottom:14px;max-width:680px}
+.hero .lead{font-size:17px;line-height:1.65;max-width:620px;margin-bottom:24px;color:var(--g700)}
+.hero.navy .lead{color:rgba(255,255,255,.85)}
+.hero .btns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* === BUTTONS === */
+.btn{display:inline-flex;align-items:center;padding:10px 22px;border-radius:var(--radius);font-size:14px;font-weight:600;text-decoration:none;cursor:default;transition:.15s;border:2px solid transparent}
+.btn-primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.btn-secondary{background:#fff;color:var(--navy);border-color:var(--navy)}
+.btn-teal{background:var(--teal);color:#fff;border-color:var(--teal)}
+.btn-sm{padding:7px 14px;font-size:13px}
+.btn-ghost{background:transparent;color:var(--teal);border-color:transparent;padding:7px 0}
+
+/* === SECTION === */
+.section{padding:56px 48px}
+.section+.section{border-top:1px solid var(--g200)}
+.section.gray{background:var(--g50)}
+.section.teal-light{background:#F0FBF7}
+.section .inner{max-width:1000px}
+.section h2{font-size:26px;font-weight:700;margin-bottom:8px;color:var(--g900)}
+.section .section-lead{font-size:15px;color:var(--g600);margin-bottom:28px;max-width:700px;line-height:1.6}
+.section p{font-size:15px;line-height:1.7;color:var(--g700);margin-bottom:14px}
+
+/* === IMAGE PLACEHOLDER === */
+.img-ph{background:var(--g100);background-image:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(0,0,0,.04) 12px,rgba(0,0,0,.04) 13px);border:1.5px dashed var(--g300);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--g400);font-size:13px;font-style:italic}
+
+/* === GRID === */
+.grid{display:grid;gap:20px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-23{grid-template-columns:2fr 1fr}
+.grid-32{grid-template-columns:1fr 2fr}
+
+/* === CARD === */
+.card{border:1.5px solid var(--g200);border-radius:8px;overflow:hidden;background:#fff;transition:.15s}
+.card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06);border-color:var(--g300)}
+.card-img{height:100px}
+.card-body{padding:18px 20px}
+.card-eyebrow{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.card-title{font-size:16px;font-weight:700;margin-bottom:6px;color:var(--g900);line-height:1.35}
+.card-desc{font-size:13.5px;color:var(--g600);line-height:1.55;margin-bottom:12px}
+.card-meta{font-size:12px;color:var(--g400);margin-bottom:10px;font-style:italic}
+.card-link{font-size:13px;font-weight:600;color:var(--teal);text-decoration:none}
+
+/* Building-block cards */
+.bb-card{border-left:4px solid var(--teal);border-radius:0 8px 8px 0;padding:28px 28px;background:#fff;border-top:1px solid var(--g200);border-right:1px solid var(--g200);border-bottom:1px solid var(--g200)}
+.bb-card h3{font-size:20px;font-weight:700;margin-bottom:10px;color:var(--navy)}
+.bb-card .bb-lead{font-size:15px;font-style:italic;color:var(--g600);line-height:1.6;margin-bottom:14px;border-left:3px solid var(--g200);padding-left:14px}
+.bb-card p{font-size:14px;line-height:1.65;color:var(--g700);margin-bottom:10px}
+
+/* Tool card */
+.tool-card{border:1.5px solid var(--g200);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.tool-card-top{padding:16px 18px;flex:1}
+.tool-card-num{font-size:11px;font-weight:700;color:var(--teal);margin-bottom:4px}
+.tool-card-name{font-size:14.5px;font-weight:700;color:var(--g900);margin-bottom:6px;line-height:1.3}
+.tool-card-desc{font-size:13px;color:var(--g600);line-height:1.5}
+.tool-card-foot{padding:10px 18px;background:var(--g50);border-top:1px solid var(--g200);display:flex;justify-content:space-between;align-items:center}
+.tool-card-tag{font-size:11px;color:var(--teal);font-weight:600}
+.tool-card-link{font-size:12px;color:var(--teal);font-weight:600;text-decoration:none}
+
+/* City card */
+.city-card{border:1.5px solid var(--g200);border-radius:8px;overflow:hidden}
+.city-card-img{height:80px}
+.city-card-body{padding:16px 18px}
+.city-card-name{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.city-card-theme{font-size:12px;color:var(--amber);font-weight:600;margin-bottom:8px}
+.city-card-orgs{font-size:12px;color:var(--g400);margin-bottom:8px;font-style:italic}
+.city-card-desc{font-size:13px;color:var(--g600);line-height:1.5;margin-bottom:12px}
+
+/* Info strip */
+.info-strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1.5px solid var(--g200)}
+.info-strip>div{padding:16px 24px;border-right:1px solid var(--g200)}
+.info-strip>div:last-child{border-right:none;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.info-strip .label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--g400);margin-bottom:6px}
+.info-strip .tags{display:flex;flex-wrap:wrap;gap:4px}
+.info-strip .tag{font-size:11px;padding:2px 8px;border-radius:100px;border:1px solid var(--g300);color:var(--g600)}
+.info-strip .tag.teal{border-color:var(--teal);color:var(--teal)}
+.info-strip .tag.amber{border-color:var(--amber);color:var(--amber)}
+
+/* Steps */
+.steps{display:flex;flex-direction:column;gap:16px}
+.step{display:flex;gap:16px;align-items:flex-start}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h4{font-size:15px;font-weight:700;margin-bottom:4px}
+.step-body p{font-size:14px;color:var(--g600);line-height:1.55;margin:0}
+
+/* Callout */
+.callout{border-left:3px solid var(--teal);background:#F0FBF7;padding:16px 20px;border-radius:0 var(--radius) var(--radius) 0}
+.callout.amber{border-left-color:var(--amber);background:#FFFBF0}
+.callout strong{color:var(--g900);font-size:14px}
+.callout p{font-size:14px;color:var(--g700);line-height:1.6;margin:6px 0 0}
+
+/* Accordion */
+.acc{border:1px solid var(--g200);border-radius:var(--radius);margin-bottom:8px;overflow:hidden}
+.acc-hdr{padding:14px 20px;background:var(--g50);font-size:14px;font-weight:600;color:var(--g700);display:flex;justify-content:space-between;cursor:default}
+.acc-body{padding:14px 20px;font-size:14px;color:var(--g600);line-height:1.6}
+
+/* Two-col utility */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.two-col.wide-left{grid-template-columns:3fr 2fr}
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.do-dont .col h4{font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.do-dont .col ul{list-style:none;font-size:14px;color:var(--g600);line-height:1.6}
+.do-dont .col ul li{padding:5px 0;border-bottom:1px solid var(--g100)}
+.do-dont .col ul li::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:8px}
+.do-dont .do-col ul li::before{background:var(--teal)}
+.do-dont .dont-col ul li::before{background:#EF4444}
+
+/* Metric row */
+.metrics{display:flex;gap:12px;flex-wrap:wrap}
+.metric{flex:1;min-width:100px;border:1.5px solid var(--g200);border-radius:var(--radius);padding:14px;text-align:center}
+.metric .val{font-size:24px;font-weight:800;color:var(--navy);display:block}
+.metric .lbl{font-size:11px;color:var(--g400)}
+
+/* Stats bar (homepage) */
+.stats-bar{display:flex;justify-content:center;gap:40px;padding:20px 48px;background:var(--navy)}
+.stats-bar .stat{text-align:center;color:#fff}
+.stats-bar .stat .val{font-size:22px;font-weight:800;display:block}
+.stats-bar .stat .lbl{font-size:11px;opacity:.65}
+
+/* Filter bar */
+.filter-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.filter-tag{padding:5px 14px;border-radius:100px;font-size:12px;font-weight:600;border:1.5px solid var(--g300);color:var(--g600);cursor:default}
+.filter-tag.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* Search */
+.search-box{border:1.5px solid var(--g300);border-radius:var(--radius);padding:10px 16px;font-size:14px;color:var(--g400);margin-bottom:16px;display:flex;align-items:center;gap:8px;background:#fff}
+
+/* Footer */
+.site-footer{background:var(--navy);padding:28px 48px;display:flex;align-items:center;justify-content:space-between}
+.site-footer .ft-logo{color:#fff;font-size:12px;font-weight:700;opacity:.7}
+.site-footer .ft-links{display:flex;gap:20px}
+.site-footer .ft-links span{font-size:11px;color:rgba(255,255,255,.45)}
+.site-footer .ft-copy{font-size:11px;color:rgba(255,255,255,.35)}
+
+/* Pathway cards */
+.pathway{border:1.5px solid var(--g200);border-radius:8px;padding:24px;text-align:center;background:#fff}
+.pathway .emoji{font-size:28px;margin-bottom:10px}
+.pathway h4{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--navy)}
+.pathway p{font-size:13.5px;color:var(--g600);line-height:1.55}
+</style>
+</head>
+<body>
+<div class="doc-wrap">
+  <h1 class="doc-title">NGIN Alliance Playbook — Wireframes</h1>
+  <p class="doc-sub">7 page templates covering all 29 pages of playbook.newgrowth.org &nbsp;·&nbsp; Real content throughout &nbsp;·&nbsp; Prepared by Pocketknife</p>
+  <div class="wf-card">
+<div class="wf-card-hdr"><span class="num">PAGE 1</span><h2>Home Page</h2><span class="url">playbook.newgrowth.org</span></div>
+<div class="chrome"><div class="dots"><i></i><i></i><i></i></div><span class="bar">playbook.newgrowth.org</span></div>
+<div class="page"><div class="site-nav"><span class="logo">NGIN Alliance Playbook</span><a>Core Insights</a><a>Case Studies</a><a>Resource Bank</a><a>About</a></div>
+<div class="hero navy">
+  <div class="eyebrow">New Growth Innovation Network</div>
+  <h1>Economic Partnership Alliance Playbook</h1>
+  <p class="lead">A practical guide and resource hub for leaders working at the intersection of community and economic development.</p>
+  <div class="btns"><a class="btn btn-teal">Explore Core Insights</a><a class="btn btn-secondary" style="color:#fff;border-color:rgba(255,255,255,.4)">Browse the Resource Bank</a></div>
+</div>
+
+<div class="section">
+  <div class="two-col wide-left">
+    <div>
+      <h2>Building Civic Infrastructure That Lasts</h2>
+      <p>Economic transformation of a community or neighborhood is a result of intentional work of leaders uniting behind a shared, bold vision, and working together to make that vision a reality. Community and economic leaders are catalysts for opportunity – sparking growth and investment, creating jobs, supporting small businesses, building childcare centers or whatever other gaps exist in the community. They know how to design initiatives, secure funding, and deliver visible results.</p>
+      <p>What is harder, and what this Playbook addresses, is the behind-the-scenes work that makes those results possible - building and sustaining the civic infrastructure that keeps progress moving long after a single grant or project ends. Achieving lasting economic progress, especially in communities facing persistent distress demands collaboration, not just good programs. It requires durable cross sector partnerships built on shared decision making, mutual accountability, and the agility to adapt as conditions change.</p>
+      <p>Cross sector partnerships are force multipliers and essential to long term local and regional prosperity. They can multiply impact, build economic stability and strength, and drive innovation in ways that no single organization can accomplish alone. These partnerships between organizations that usually work in different domains, such as local governments, economic development agencies, nonprofit service providers, workforce development organizations, and neighborhood associations bring together different resources and perspectives. Together, they can take on challenges that are too complex for one type of organization to solve on its own.</p>
+    </div>
+    <div><div class="img-ph" style="height:220px">Illustration: Cross-Sector Partnership Diagram</div></div>
+  </div>
+</div>
+
+<div class="section gray">
+  <h2>Start Where You Are</h2>
+  <p class="section-lead">Whether you're launching a new coalition or strengthening an existing one, the Playbook meets you where you are.</p>
+  <div class="grid grid-3">
+<div class="pathway"><div class="emoji">🧭</div><h4>New to Partnerships?</h4><p>Start with Core Insights to learn the four building blocks of durable cross-sector collaboration.</p><div style="margin-top:14px"><a class="btn btn-sm btn-ghost">Explore Core Insights →</a></div></div>
+<div class="pathway"><div class="emoji">🛠</div><h4>Looking for Practical Tools?</h4><p>Go to the Resource Bank for 15 downloadable templates, worksheets, and guides you can adapt today.</p><div style="margin-top:14px"><a class="btn btn-sm btn-ghost">Browse Resource Bank →</a></div></div>
+<div class="pathway"><div class="emoji">🏙</div><h4>Want to See Real Examples?</h4><p>Explore 9 City Case Studies from communities across the country that have built alliances.</p><div style="margin-top:14px"><a class="btn btn-sm btn-ghost">View Case Studies →</a></div></div>
+</div>
+</div>
+
+<div class="section">
+  <h2>What's Inside the Playbook</h2>
+  <p class="section-lead">The Economic Partnership Alliance Playbook distills the experience of these partnerships into a set of lessons, tools, and examples that others can learn from and apply. It is organized into three sections:</p>
+  <div class="grid grid-2">
+<div class="card"><div class="card-body"><div class="card-eyebrow">Core Insights</div><div class="card-title">Four Building Blocks of Durable Partnerships</div><div class="card-desc">Trust, Shared Narrative, Facilitation &amp; Project Management, and Structure &amp; Shared Practice — practical patterns from 24 coalitions.</div><a class="card-link">Explore Framework →</a></div></div>
+<div class="card"><div class="card-body"><div class="card-eyebrow">Case Studies</div><div class="card-title">9 Communities, 9 Stories</div><div class="card-desc">From rural Maine to urban Detroit to coastal Hawaiʻi — profiles of how partnerships formed and what they learned.</div><a class="card-link">Browse Case Studies →</a></div></div>
+<div class="card"><div class="card-body"><div class="card-eyebrow">Resource Bank</div><div class="card-title">15 Tools &amp; Templates</div><div class="card-desc">Continuity frameworks, action planning templates, MOA packs, conflict protocols, and more — all free to download and adapt.</div><a class="card-link">View Resource Bank →</a></div></div>
+<div class="card"><div class="card-body"><div class="card-eyebrow">About the Alliance</div><div class="card-title">The National Initiative Behind This Playbook</div><div class="card-desc">Led by NGIN with IEDC, LISC, and HBCU CDAC, with support from the U.S. EDA — 24 coalitions across 22 communities.</div><a class="card-link">Learn More →</a></div></div>
+</div>
+</div>
+
+<div class="stats-bar"><div class="stat"><span class="val">24</span><span class="lbl">Coalitions</span></div><div class="stat"><span class="val">22</span><span class="lbl">Communities</span></div><div class="stat"><span class="val">64</span><span class="lbl">Core Organizations</span></div><div class="stat"><span class="val">141</span><span class="lbl">Organizations Trained</span></div><div class="stat"><span class="val">15</span><span class="lbl">Tools</span></div><div class="stat"><span class="val">9</span><span class="lbl">Case Studies</span></div></div>
+<div class="site-footer"><span class="ft-logo">NGIN Alliance Playbook</span><div class="ft-links"><span>Core Insights</span><span>Case Studies</span><span>Resource Bank</span><span>About</span><span>Contact</span></div><span class="ft-copy">playbook.newgrowth.org &middot; New Growth Innovation Network</span></div></div>
+</div><div class="wf-card">
+<div class="wf-card-hdr"><span class="num">PAGE 2</span><h2>About the Alliance</h2><span class="url">playbook.newgrowth.org/about</span></div>
+<div class="chrome"><div class="dots"><i></i><i></i><i></i></div><span class="bar">playbook.newgrowth.org/about</span></div>
+<div class="page"><div class="site-nav"><span class="logo">NGIN Alliance Playbook</span><a>Core Insights</a><a>Case Studies</a><a>Resource Bank</a><a class="on">About</a></div>
+<div class="hero teal">
+  <div class="eyebrow">About the Alliance</div>
+  <h1>The National Initiative Behind This Playbook</h1>
+  <p class="lead">How 24 coalitions across 22 communities built durable partnerships — and what they produced for others to use.</p>
+</div>
+
+<div class="section">
+  <div class="two-col wide-left">
+    <div>
+      <h2>What Is the Economic Partnership Alliance?</h2>
+      <p>The Economic Partnership Alliance is a national initiative led by New Growth Innovation Network (NGIN) in partnership with the International Economic Development Council (IEDC), the Local Initiatives Support Corporation (LISC), and the HBCU Community Development Action Coalition (HBCU CDAC), with support from the U.S. Economic Development Administration (EDA).</p>
+      <p>The initiative was created from a central recognition: sustainable regional growth requires both institutional expertise and community knowledge. No single organization—public, private, or nonprofit—has the complete set of relationships, technical skills, and infrastructure needed to meet today’s economic opportunities and challenges. By linking the strengths of community-based organizations and economic development organizations, the Alliance built durable partnerships that delivered regional economic prosperity for all residents.</p>
+    </div>
+    <div><div class="img-ph" style="height:200px">National Reach Map: 22 Communities</div></div>
+  </div>
+</div>
+
+<div class="section gray">
+  <h2>Why the Alliance Was Created</h2>
+  <p>Across the country, community-based organizations and economic development organizations often work in parallel. Economic development organizations typically focus on infrastructure, local and regional competitiveness, and business attraction. Community based organizations typically focus on neighborhood priorities, small business support, and resident engagement. Each create value, but disconnected systems lead to duplication, uneven access to resources, and missed opportunities for growth.</p>
+  <p>The Alliance was established to close this gap by building structured, well supported partnerships that can deliver economic prosperity – quality jobs, vibrant small businesses, revitalized commercial corridors, affordable housing, training opportunities – for their communities, over and over again, through partnerships that endure beyond a single project or grant. Sustained collaboration requires more than goodwill. It depends on mutual trust, shared understanding of community challenges, collective vision, role clarity, reliable processes for decision making, and resource sharing.</p>
+</div>
+
+<div class="section">
+  <h2>The Alliance Approach</h2>
+  <p class="section-lead">The program brought together 24 coalitions of community based and economic development organizations in 22 locations, across two cohorts. Each received a package of supports:</p>
+  <div class="grid grid-2">
+    <div class="callout"><strong>Customized Training for EDOs and CBOs</strong><p>Training modules on the history of community and economic development, barriers to collaboration, and frameworks for building durable partnerships, delivered to EDOs and CBOs separately.</p></div>
+    <div class="callout"><strong>Facilitation</strong><p>Skilled process support to help partners navigate differences, clarify expectations, and resolve conflict.</p></div>
+    <div class="callout"><strong>Technical Assistance</strong><p>Guidance on project design, power mapping, role definition, and investment alignment, with applied modules in storytelling, data, policy, funding, and relationship building.</p></div>
+    <div class="callout"><strong>Peer Learning</strong><p>A national network for exchanging lessons, strategies, and resources.</p></div>
+  </div>
+  <p style="margin-top:16px">Together, these supports enabled coalitions to align local priorities with regional strategies, combine assets, and create measurable results.</p>
+</div>
+
+<div class="section gray">
+  <h2>Program Phases</h2>
+  <div class="two-col">
+    <div class="bb-card"><h3>Phase One: Training and Capacity Building</h3><p>The Alliance trained more than 140 organizations on partnership building, why collaboration is difficult, and how it can be structured for long term success. EDOs and CBOs received separate customized trainings to learn about how to make partnerships successful while working with different types of organizations. This phase built the foundation for moving from informal cooperation to sustained partnership.</p><p>Anyone interested in trainings offered by the Alliance program had to apply as a pair of at least one EDO and one CBO working in the same community. This was important to ensure that potential coalition partners in Phase two had the same grounding and training, and had the opportunity to start building relationships if they were new to each other.</p></div>
+    <div class="bb-card"><h3>Phase Two: Technical Assistance</h3><p>Phase one participants were invited to apply to Phase two through another competitive process. 64 organizations, across 24 coalitions were selected for Phase two. Many sites expanded to include additional agencies, anchor institutions, and nonprofit partners, bringing the extended network to more than 70 organizations nationwide.</p><p>The Alliance provided each coalition with tailored support adapted to their local and regional context. Activities included trust building, positionality and power sharing sessions, structured role assessments, monthly facilitations, and full cohort convenings. By the end of this phase, many sites had expanded their coalitions, put governance systems in place, conducted assessments, developed plans, secured funding from multiple sources, and embedded community-based organizations into regional economic development planning and implementation.</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Program Objectives</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Expand CBO Participation</h4><p>Expand the participation of organizations with deep community ties in regional economic development planning and implementation.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Strengthen Future EDA Awardees</h4><p>Strengthen future potential EDA awardees’ ability to meet investment priorities by broadening local reach and leveraging complementary expertise.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Produce Reusable Tools</h4><p>Produce tools, templates, and case studies that can be adapted and applied in other regions.</p></div></div>
+  </div>
+</div>
+
+<div class="site-footer"><span class="ft-logo">NGIN Alliance Playbook</span><div class="ft-links"><span>Core Insights</span><span>Case Studies</span><span>Resource Bank</span><span>About</span><span>Contact</span></div><span class="ft-copy">playbook.newgrowth.org &middot; New Growth Innovation Network</span></div></div>
+</div><div class="wf-card">
+<div class="wf-card-hdr"><span class="num">PAGE 3</span><h2>Framework & Insights</h2><span class="url">playbook.newgrowth.org/framework</span></div>
+<div class="chrome"><div class="dots"><i></i><i></i><i></i></div><span class="bar">playbook.newgrowth.org/framework</span></div>
+<div class="page"><div class="site-nav"><span class="logo">NGIN Alliance Playbook</span><a class="on">Core Insights</a><a>Case Studies</a><a>Resource Bank</a><a>About</a></div>
+<div class="hero teal">
+  <div class="eyebrow">Core Insights</div>
+  <h1>Four Building Blocks of Durable Partnerships</h1>
+  <p class="lead">Practical patterns visible across communities as varied as rural Maine, urban Detroit, and coastal Puerto Rico. Practiced repeatedly, these blocks enabled coalitions to operate like durable civic infrastructure.</p>
+</div>
+
+<div class="section">
+  <div class="two-col wide-left">
+    <div>
+      <h2>How the Framework Works</h2>
+      <p>The Alliance surfaced four building blocks that consistently appeared across very different places and projects. These were not theories or isolated lessons but practical patterns visible in communities as varied as rural Maine, urban Detroit, and coastal Puerto Rico. Practiced repeatedly, these building blocks enabled coalitions to operate like durable civic infrastructure: steady during uncertainty, flexible when conditions changed, and able to deliver value long after a single grant cycle.</p>
+      <p>The four building blocks are trust, shared narrative, expert facilitation, and structure and shared practice. Each block connects directly to the work of community and economic development. Trust allows community-based organizations and economic development organizations to confront local challenges together and align around projects with credibility. A shared narrative gives partners a clear story that links their work to local and regional priorities and communicates effectively to residents, funders, and policymakers. Expert facilitation provides the process backbone that keeps coalitions moving forward in complex settings, from workforce training to commercial corridor revitalization. Structure and shared practice transform collaboration into durable systems so that progress can last beyond a single project or leader.</p>
+      <p>Across both phases the work moved in cycles, not in a straight line. Teams returned to trust, narrative, facilitation, and structure repeatedly, each time at greater depth, allowing partnerships to mature from fragile collaborations into durable platforms for economic growth.</p>
+    </div>
+    <div><div class="img-ph" style="height:200px">Building Blocks Diagram: Trust → Narrative → Facilitation → Structure → Loop</div></div>
+  </div>
+</div>
+
+<div class="section gray">
+  <h2>The Four Building Blocks</h2>
+  <p class="section-lead">Each building block is essential. Together they form a repeating loop that coalitions practice continuously.</p>
+
+  <div style="display:flex;flex-direction:column;gap:24px">
+    <div class="bb-card" style="border-left-color:var(--teal)">
+      <h3>1. Trust</h3>
+      <div class="bb-lead">"Trust is the repeated and predictable experience of partners doing what they commit to do, even under difficult conditions."</div>
+      <p>Trust is both personal (knowing that an individual has the character and integrity to do what they say they will) and institutional (knowing that the institution will continue to deliver on their vision and mission even through inevitable leadership transitions). It is not built through vision statements but through consistent follow-through. In practice, trust looks like an organization submitting promised data on time, hosting a community meeting as scheduled, or contributing resources as agreed. Trust-building exercises are rarely easy. They require candid conversations, acknowledgment of past failures, and recognition of power imbalances. Yet coalitions that work through these hard moments often see breakthroughs in alignment, credibility, and long-term capacity.</p>
+      <p><strong>A practical sequence:</strong> Surface positions and power → Agree on values and red lines → Prove it in small 30–60 day cycles → Make trust durable with quarterly checks → Practice relationship building outside formal settings.</p>
+      <div class="callout" style="margin-top:14px"><strong>Field Example — Sarasota, FL:</strong><p>In Sarasota, decades of broken promises had eroded confidence between city agencies and neighborhood residents. The City’s Office of Economic Development partnered with the Amaryllis Park Neighborhood Association to change that dynamic. Regular meetings, coaching on topics like Strategic Doing, and interactions between residents and officials catalyzed the process of rebuilding credibility. A small grant from a local foundation for the neighborhood leader signaled respect for her time and reinforced the value of community leadership.</p></div>
+    </div>
+
+    <div class="bb-card" style="border-left-color:var(--amber)">
+      <h3>2. Shared Narrative</h3>
+      <div class="bb-lead">"A coalition cannot rely on trust alone. Partners also need to explain to themselves, to their communities, and to funders why their work matters. Narrative is not simply publicity or messaging but core strategy."</div>
+      <p>Narrative performs three essential jobs: <strong>Internal alignment</strong> — when disagreements arise, partners can return to the story and ask whether a choice fits the agreed narrative. <strong>Public legitimacy</strong> — a credible narrative acknowledges history and constraints, creating confidence that the coalition is serious about follow-through. <strong>Investment case</strong> — a strong narrative connects preparatory work to potential outcomes and aligns it with funder priorities such as job creation, infrastructure investment, and economic stability and strength.</p>
+      <div class="callout amber" style="margin-top:14px"><strong>Field Example — Bangor, ME:</strong><p>The coalition linked regional demographic changes to workforce development needs, reframing population shifts as an asset that could strengthen the labor force and support business retention. This framing resonated with state officials and industry leaders.</p></div>
+    </div>
+
+    <div class="bb-card" style="border-left-color:var(--navy)">
+      <h3>3. Facilitation &amp; Project Management</h3>
+      <div class="bb-lead">"Coalitions are often judged by the projects they complete. In reality, their ability to deliver depends on whether partners can stay aligned through difficult conversations, uneven pacing, and shifting priorities. Facilitation is what makes this possible."</div>
+      <p>Good facilitation, when paired with capable project management, demonstrated five essential capabilities: <strong>Navigation</strong> — facilitators and project managers helped partners frame choices, weigh trade-offs, and recognize thresholds. <strong>Convening</strong> — facilitation ensured that the right people were in the room; project managers made sure those meetings were scheduled, prepared, and followed by clear documentation. <strong>Pacing</strong> — facilitation slowed the process when reflection was needed, while project managers created realistic timelines. <strong>Conflict work</strong> — facilitation normalized tension and made space for hard conversations; project managers recorded outcomes and followed up. <strong>Codification</strong> — facilitation captured the spirit of agreements; project managers institutionalized them.</p>
+      <div class="callout" style="margin-top:14px"><strong>Field Example — Sarasota, FL:</strong><p>Independent facilitation created structured agendas, transparent articulation of goals, and visible responsiveness to resident concerns. This shifted the tone of public meetings, producing applause not because every issue was resolved but because the process was credible. The county supported with a small grant for the neighborhood leader, effectively resourcing her as a project manager for community engagement.</p></div>
+    </div>
+
+    <div class="bb-card" style="border-left-color:#8B5CF6">
+      <h3>4. Structure &amp; Shared Practice</h3>
+      <div class="bb-lead">"Coalitions that survive beyond the energy of launch to become durable partnerships are the ones that invest in structure and shared practice. Trust, narrative, and facilitation and project management are necessary, but without operational discipline they cannot hold."</div>
+      <p>Five core elements: <strong>Governance</strong> — coalitions must establish decision protocols, clarify scope and escalation paths, and set rules for quorum and consent. <strong>Cadence</strong> — predictable rhythms keep coalitions alive: regular meetings, quarterly retrospectives, and annual trust or narrative refreshes. <strong>Documentation</strong> — living agreements, such as MOAs or MOUs, create accountability; action logs, shared vocabulary, and asset or role maps reinforce continuity. <strong>Adaptation</strong> — effective structures are flexible and can change rules when context changes without requiring the coalition to restart. <strong>Right-sized discipline</strong> — the best structures are lean enough to allow movement but firm enough to hold.</p>
+      <div class="callout" style="margin-top:14px;border-left-color:#8B5CF6;background:#F5F3FF"><strong>Field Example — Cleveland, OH:</strong><p>MetroHealth and Metro West Community Development Organization had a long-standing relationship, but continuity was tested by fluctuations in city engagement and political support. Regularized practices—predictable meetings, consistent documentation, and clear priorities—allowed the coalition to stay on track. Their ability to carry forward neighborhood priorities even through external instability demonstrated the stabilizing force of shared practice.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="section teal-light">
+  <h2>Practice Makes Durable</h2>
+  <p>Durability does not come from a single decision or the launch of a promising project. It comes from repetition. The four building blocks of partnership—trust, narrative, facilitation, and structure—form a loop that coalitions must return to again and again. Each reinforces the others. Trust creates the foundation for honest collaboration. Narrative provides alignment and a story that carries the coalition through uncertainty. Facilitation turns friction into progress and keeps momentum steady. Structure and shared practice transform these elements into systems that survive leadership changes, board transitions, and shifting political or economic conditions.</p>
+  <div class="two-col" style="margin-top:24px">
+    <div>
+      <h3>Monthly Rotation</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num" style="background:var(--teal)">1</div><div class="step-body"><h4>Month 1 — Trust</h4><p>Strengthen trust by running a positionality exercise, reviewing a values charter, or holding a session that surfaces roles and constraints.</p></div></div>
+        <div class="step"><div class="step-num" style="background:var(--amber)">2</div><div class="step-body"><h4>Month 2 — Narrative</h4><p>Revisit narrative by drafting or refreshing a one-page story spine that explains the problem, the stakes, the coalition’s approach, and why this particular group of partners is the right vehicle.</p></div></div>
+        <div class="step"><div class="step-num" style="background:var(--navy)">3</div><div class="step-body"><h4>Month 3 — Facilitation</h4><p>Fine tune facilitation by clarifying facilitator and project manager roles, testing a new agenda format, or piloting a conflict protocol.</p></div></div>
+        <div class="step"><div class="step-num" style="background:#8B5CF6">4</div><div class="step-body"><h4>Month 4 — Structure</h4><p>Update structure by revising an MOA, refreshing a cadence calendar, or creating an onboarding packet for new members. Then schedule a quarterly loop review and begin again.</p></div></div>
+      </div>
+    </div>
+    <div>
+      <h3>60-Day Quick Start</h3>
+      <div class="callout"><strong>For coalitions that want to begin immediately:</strong>
+        <p><strong>Start with trust:</strong> Draft positionality statements or run a short trust-building exercise.</p>
+        <p><strong>Move to narrative:</strong> Create a simple story spine that partners can use to explain the coalition’s purpose in consistent terms.</p>
+        <p><strong>Add facilitation:</strong> Adopt an agenda and action-item tracker that captures decisions and keeps commitments visible.</p>
+        <p><strong>Close with structure:</strong> Sign a basic MOA or set a cadence calendar that ensures meetings and check-ins will continue.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="text-align:center;padding:40px 48px">
+  <h2>See These Principles in Action</h2>
+  <p style="max-width:500px;margin:0 auto 20px">Explore how 9 communities applied these building blocks in practice — from rural Maine to the Claiborne Corridor in New Orleans.</p>
+  <a class="btn btn-primary">Browse Case Studies →</a>
+</div>
+
+<div class="site-footer"><span class="ft-logo">NGIN Alliance Playbook</span><div class="ft-links"><span>Core Insights</span><span>Case Studies</span><span>Resource Bank</span><span>About</span><span>Contact</span></div><span class="ft-copy">playbook.newgrowth.org &middot; New Growth Innovation Network</span></div></div>
+</div><div class="wf-card">
+<div class="wf-card-hdr"><span class="num">PAGE 4</span><h2>Resource Bank</h2><span class="url">playbook.newgrowth.org/resources</span></div>
+<div class="chrome"><div class="dots"><i></i><i></i><i></i></div><span class="bar">playbook.newgrowth.org/resources</span></div>
+<div class="page"><div class="site-nav"><span class="logo">NGIN Alliance Playbook</span><a>Core Insights</a><a>Case Studies</a><a class="on">Resource Bank</a><a>About</a></div>
+<div class="hero navy">
+  <div class="eyebrow">Resource Bank</div>
+  <h1>Tools &amp; Templates</h1>
+  <p class="lead">A curated set of practical materials coalitions can adapt at any stage, including continuity planning guides, narrative development tools, alignment and role-clarity assessments, facilitator selection criteria, meeting and cadence templates, MOA/MOU samples, conflict resolution protocols, onboarding packets, and fillable worksheets.</p>
+</div>
+
+<div class="section">
+  <div class="search-box">🔍 &nbsp;Search tools and templates…</div>
+  <div class="filter-bar">
+    <span class="filter-tag on">All Tools</span>
+    <span class="filter-tag">Trust</span>
+    <span class="filter-tag">Narrative</span>
+    <span class="filter-tag">Facilitation</span>
+    <span class="filter-tag">Structure</span>
+    <span class="filter-tag">Governance</span>
+    <span class="filter-tag">Planning</span>
+  </div>
+  <div class="grid grid-3"><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 1</div><div class="tool-card-name">Coalition Continuity Framework</div><div class="tool-card-desc">Keep work moving through leadership changes by documenting purpose, roles, agreements, and deliverables.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Trust, Structure</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 2</div><div class="tool-card-name">Rapid Action Planning Template</div><div class="tool-card-desc">Move from discussion to action with short-term pilots designed to build momentum in 3–6 months.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Facilitation</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 3</div><div class="tool-card-name">Positionality Statement Development</div><div class="tool-card-desc">Build trust by naming how each person and organization shows up, what shapes their perspective, and how power influences decisions.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Trust</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 4</div><div class="tool-card-name">Power-Sharing Charter Template</div><div class="tool-card-desc">A written agreement that makes decision-making, voice, resource flow, and accountability visible and intentional.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Structure</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 5</div><div class="tool-card-name">Internal Alignment Self-Assessment</div><div class="tool-card-desc">Examine your organization's readiness, capacity, and coherence before or during coalition work.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Structure</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 6</div><div class="tool-card-name">Convenor Selection Tool</div><div class="tool-card-desc">Assess which partner is best suited to serve as the coalition backbone.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Facilitation</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 7</div><div class="tool-card-name">Meeting Cadence & Accountability Kit</div><div class="tool-card-desc">Design meeting rhythms that clarify decisions, track commitments, and make accountability visible.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Structure</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 8</div><div class="tool-card-name">Narrative Building Training Summary</div><div class="tool-card-desc">Core storytelling principles: framing, strength-based messaging, and audience strategy.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Narrative</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 9</div><div class="tool-card-name">Strategic Doing Session-in-a-Box</div><div class="tool-card-desc">A structured method for turning broad goals into focused 30–60 day commitments.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Facilitation</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 10</div><div class="tool-card-name">Partnership MOA & Board-Alignment Pack</div><div class="tool-card-desc">Templates for memoranda of agreement, roles matrices, board briefings, and public execution.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Structure</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 11</div><div class="tool-card-name">Pivot Protocol</div><div class="tool-card-desc">Identify triggers, weigh options, make decisions, and communicate changes when projects need to shift.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Facilitation</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 12</div><div class="tool-card-name">Community Engagement SOW + Starter Kit</div><div class="tool-card-desc">Scope of work templates, resident engagement activities, stipend policies, and council bylaws.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Trust, Facilitation</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 13</div><div class="tool-card-name">Capacity & Resourcing Toolkit</div><div class="tool-card-desc">Phased workplans, micro-grant models, decision trees for 'who pays,' and fundraising tactics.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Structure</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 14</div><div class="tool-card-name">Friction-to-Innovation Diagnostic</div><div class="tool-card-desc">Map friction points in your coalition and design small experiments to turn tensions into breakthroughs.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Facilitation</span><a class="tool-card-link">View Tool →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 15</div><div class="tool-card-name">Ecosystem Mapping & Alignment Toolkit</div><div class="tool-card-desc">Stakeholder inventory, initiative crosswalk, asset mapping, gap analysis, and alignment pathways.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Structure</span><a class="tool-card-link">View Tool →</a></div></div></div>
+</div>
+
+<div class="site-footer"><span class="ft-logo">NGIN Alliance Playbook</span><div class="ft-links"><span>Core Insights</span><span>Case Studies</span><span>Resource Bank</span><span>About</span><span>Contact</span></div><span class="ft-copy">playbook.newgrowth.org &middot; New Growth Innovation Network</span></div></div>
+</div><div class="wf-card">
+<div class="wf-card-hdr"><span class="num">PAGE 5</span><h2>Cities Index</h2><span class="url">playbook.newgrowth.org/cities</span></div>
+<div class="chrome"><div class="dots"><i></i><i></i><i></i></div><span class="bar">playbook.newgrowth.org/cities</span></div>
+<div class="page"><div class="site-nav"><span class="logo">NGIN Alliance Playbook</span><a>Core Insights</a><a class="on">Case Studies</a><a>Resource Bank</a><a>About</a></div>
+<div class="hero amber">
+  <div class="eyebrow">City Case Studies</div>
+  <h1>9 Communities, 9 Stories</h1>
+  <p class="lead">How communities across the country built Economic Partnership Alliances — and what they learned along the way.</p>
+</div>
+
+<div class="section">
+  <div class="two-col wide-left" style="margin-bottom:36px">
+    <div>
+      <p>Profiles of selected sites that show how partnerships formed, implemented projects, and created conditions for durable outcomes in different local contexts. Each case study documents the organizations involved, the community context, the type of project, Alliance interventions, challenges faced, successes and outcomes, and lessons learned.</p>
+    </div>
+    <div><div class="img-ph" style="height:100px">U.S. Map: 22 Communities</div></div>
+  </div>
+  <div class="grid grid-3"><div class="city-card"><div class="city-card-img img-ph">Bangor, ME</div><div class="city-card-body"><div class="city-card-name">Bangor, ME</div><div class="city-card-theme">Rural Capacity-Building through Mutual Trust</div><div class="city-card-orgs">Maine Multicultural Center + Eastern Maine Development Corp.</div><div class="city-card-desc">Building a regional workforce and entrepreneurship hub through trust and structured collaboration in rural Maine.</div><a class="card-link">View Case Study →</a></div></div><div class="city-card"><div class="city-card-img img-ph">Omaha, NE</div><div class="city-card-body"><div class="city-card-name">Omaha, NE</div><div class="city-card-theme">Legitimacy Through Visibility</div><div class="city-card-orgs">LEDC + Metropolitan Area Planning Agency</div><div class="city-card-desc">Embedding community-based business support into regional planning and investment systems.</div><a class="card-link">View Case Study →</a></div></div><div class="city-card"><div class="city-card-img img-ph">Honolulu, HI</div><div class="city-card-body"><div class="city-card-name">Honolulu, HI</div><div class="city-card-theme">Redevelopment with Local Leadership</div><div class="city-card-orgs">Hawaiʻi Good Food Alliance + Kōkua Kalihi Valley</div><div class="city-card-desc">Community-led revitalization ensuring residents lead and shape a resilient future at Kuhio Park Terrace.</div><a class="card-link">View Case Study →</a></div></div><div class="city-card"><div class="city-card-img img-ph">Detroit, MI</div><div class="city-card-body"><div class="city-card-name">Detroit, MI</div><div class="city-card-theme">Designing for Collaboration</div><div class="city-card-orgs">DDP + DEGC + Live6 Alliance</div><div class="city-card-desc">Structured alignment to support commercial corridor revitalization and alternative tenanting strategies.</div><a class="card-link">View Case Study →</a></div></div><div class="city-card"><div class="city-card-img img-ph">Sarasota, FL</div><div class="city-card-body"><div class="city-card-name">Sarasota, FL</div><div class="city-card-theme">Rebuilding Trust through Structured Facilitation</div><div class="city-card-orgs">City OED + Amaryllis Park Neighborhood Assoc.</div><div class="city-card-desc">Creating a durable framework for joint decision-making after decades of broken promises in Newtown.</div><a class="card-link">View Case Study →</a></div></div><div class="city-card"><div class="city-card-img img-ph">Cleveland, OH</div><div class="city-card-body"><div class="city-card-name">Cleveland, OH</div><div class="city-card-theme">Reintroductions in Transition</div><div class="city-card-orgs">MetroHealth + Metro West CDO</div><div class="city-card-desc">Renewing collaboration around the Clark-Fulton Master Plan through leadership transitions.</div><a class="card-link">View Case Study →</a></div></div><div class="city-card"><div class="city-card-img img-ph">Shreveport, LA</div><div class="city-card-body"><div class="city-card-name">Shreveport, LA</div><div class="city-card-theme">Building Unified Economic Mobility</div><div class="city-card-orgs">6-partner SEPA coalition</div><div class="city-card-desc">Building a modular platform to document progress and organize tools for regional economic mobility.</div><a class="card-link">View Case Study →</a></div></div><div class="city-card"><div class="city-card-img img-ph">Sacramento, CA</div><div class="city-card-body"><div class="city-card-name">Sacramento, CA</div><div class="city-card-theme">Stronger Partnerships through Communication</div><div class="city-card-orgs">City OED + Mutual Assistance Network + 3 partners</div><div class="city-card-desc">Treating the partnership itself as the primary intervention for Del Paso Heights neighborhoods.</div><a class="card-link">View Case Study →</a></div></div><div class="city-card"><div class="city-card-img img-ph">New Orleans, LA</div><div class="city-card-body"><div class="city-card-name">New Orleans, LA</div><div class="city-card-theme">Advancing Corridor Redevelopment</div><div class="city-card-orgs">Ujamaa EDC + Greater Treme Consortium + City OED</div><div class="city-card-desc">Coordinating business support along the Claiborne Corridor through structure and shared leadership.</div><a class="card-link">View Case Study →</a></div></div></div>
+</div>
+
+<div class="site-footer"><span class="ft-logo">NGIN Alliance Playbook</span><div class="ft-links"><span>Core Insights</span><span>Case Studies</span><span>Resource Bank</span><span>About</span><span>Contact</span></div><span class="ft-copy">playbook.newgrowth.org &middot; New Growth Innovation Network</span></div></div>
+</div><div style="max-width:1440px;margin:0 auto;padding:0 24px"><div style="background:#FEF9EE;border:1px solid #FCD34D;border-radius:6px;padding:10px 16px;font-size:12px;color:var(--g700);margin-bottom:-20px"><strong style="color:#D97706">Template applies to all 9 city pages:</strong> Bangor, ME · Omaha, NE · Honolulu, HI · Detroit, MI · Sarasota, FL · Cleveland, OH · Shreveport, LA · Sacramento, CA · New Orleans, LA</div></div><div class="wf-card">
+<div class="wf-card-hdr"><span class="num">PAGE 6</span><h2>Case Study Template</h2><span class="url">playbook.newgrowth.org/cities/bangor-me</span></div>
+<div class="chrome"><div class="dots"><i></i><i></i><i></i></div><span class="bar">playbook.newgrowth.org/cities/bangor-me</span></div>
+<div class="page"><div class="site-nav"><span class="logo">NGIN Alliance Playbook</span><a>Core Insights</a><a class="on">Case Studies</a><a>Resource Bank</a><a>About</a></div>
+<div class="hero amber">
+  <div class="eyebrow">City Case Study</div>
+  <h1>Rural Capacity-Building through Mutual Trust in Bangor, Maine</h1>
+  <p class="lead">Trust and structured collaboration as foundations for rural economic development</p>
+  <div class="btns"><a class="btn btn-primary">↓ Download Case Study</a><a class="btn btn-secondary">← All Case Studies</a></div>
+</div>
+
+<div class="info-strip">
+  <div><span class="label">Organizations</span><div class="tags"><span class="tag">Maine Multicultural Center (MMCC)</span><span class="tag">Eastern Maine Development Corp. (EMDC)</span></div></div>
+  <div><span class="label">Building Blocks Featured</span><div class="tags"><span class="tag teal">Trust</span><span class="tag teal">Shared Narrative</span><span class="tag teal">Structure</span></div></div>
+  <div><span class="label">Related Tools</span><div class="tags"><span class="tag">Positionality Statement</span><span class="tag">Coalition Continuity</span><span class="tag">Meeting Cadence Kit</span></div></div>
+  <div><a class="btn btn-teal btn-sm" style="width:100%">↓ Download PDF</a><span style="font-size:11px;color:var(--g400);margin-top:4px">Free · No login required</span></div>
+</div>
+
+<div class="section">
+  <h2>Organizations Involved</h2>
+  <p>The coalition in Bangor paired the Maine Multicultural Center (MMCC), a small but influential community-based organization with a trusted role in connecting residents from different backgrounds to resources and opportunities, and the Eastern Maine Development Corporation (EMDC), a federally designated economic development district with planning expertise, technical capacity, and connections to state and federal systems. The organizations had a history of collaboration, including joint grant applications, board participation, and shared office space. The partnership through the Alliance allowed them to strengthen this existing relationship.</p>
+</div>
+
+<div class="section gray">
+  <h2>Community Context</h2>
+  <div class="two-col wide-left">
+    <div>
+      <p>Bangor serves as a hub for surrounding rural communities. It faces workforce shortages, demographic changes, and the practical challenges of integrating new residents into the local economy. Its organizational ecosystem is small, with limited resources and overlapping networks. In this context, success depends on predictability, trust, and shared responsibility.</p>
+      <p>The coalition also gained visibility beyond Bangor, including hosting a listening session with the Governor’s office during the rollout of the new Office of New Americans. This effort drew wide participation, left a strong impression on state leaders, and led to recognition for the coalition’s work.</p>
+    </div>
+    <div><div class="img-ph" style="height:180px">Photo: Bangor, Maine Community</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Type of Project</h2>
+  <p>The coalition focused on one project that was to unite both their organizational missions: a regional center that would concentrate workforce and entrepreneurship services under one roof. The goal was to create a reliable framework for ongoing collaboration that could strengthen workforce participation, expand opportunities for new residents, and improve regional competitiveness. As the work progressed, the partners demonstrated flexibility by adapting their approach as larger needs emerged and by intentionally expanding the coalition to bring in like-minded partners who could strengthen the collaborative effort. Over the duration of the Alliance and as the coalition expanded, the partners also began identifying additional goals, such as finding a permanent home for a regional center, building new strategic partnerships, hiring a regional coordinator, and securing funding to sustain the work.</p>
+</div>
+
+<div class="section gray">
+  <h2>Alliance Interventions</h2>
+  <p>The Alliance provided structured facilitation that gave the coalition a steady rhythm of engagement. Regular meetings, role clarification, and documentation of responsibilities helped transform ad hoc cooperation into intentional joint planning. The facilitated sessions also guided the partners in developing a shared value statement, which served as a touchstone for their work.</p>
+</div>
+
+<div class="section">
+  <h2>Challenges Faced</h2>
+  <p>The coalition faced several significant challenges throughout their work together. Time commitment proved demanding for both organizations, particularly for EMDC as they took on administrative responsibilities to support the partnership. Both organizations underestimated the amount of preparation, follow-up, and sustained effort required to keep momentum, and over time they learned to build this workload into their planning.</p>
+  <p>The most significant challenge came from external circumstances beyond either organization’s control. The coalition worked for close to a year to plan, design and apply for external funding that would have brought new resources to the community. However, the funding landscape changed, making it unfeasible for them to apply. Despite the partners’ commitment and the strong foundation they had built, external factors altered the trajectory of the regional center project.</p>
+</div>
+
+<div class="section gray">
+  <h2>Successes &amp; Outcomes</h2>
+  <p>While the original regional center project did not proceed as planned due to external circumstances, the partnership yielded meaningful and lasting outcomes. MMCC gained valuable experience and confidence in partnership collaboration, skills that continue to benefit their work with other organizations. The deepened relationships between organizational leaders and community members created lasting channels for connecting residents to resources.</p>
+  <p>The coalition’s work led to new opportunities and collaborations that evolved from the foundation built through this partnership. MMCC now participates at more regional tables than before and has developed greater skill in opening doors for the community-based organization perspective. One tangible result was a partnership with United Way that grew from relationships developed during this work and has since received grant funding.</p>
+  <p>Most importantly, circumstances change, and rigid adherence to a single course of action does not always serve the community’s best interests. While this specific collaborative project has concluded, MMCC continues to apply the lessons learned about effective partnership to current and future collaborations, demonstrating that the true value of the Alliance work extended beyond any single project outcome.</p>
+</div>
+
+<div class="section">
+  <h2>Lessons Learned</h2>
+  <p>The Bangor experience demonstrates that rural development requires approaches suited to local scale and the realities of changing external conditions. Small organizations often take on multiple roles, and personal trust can be as important as technical planning. When differences in organizational perspectives are addressed openly through structured dialogue, and when partnerships remain flexible enough to adapt to emerging needs, collaboration can build capacity even when specific projects face obstacles.</p>
+  <p>For practitioners, the lesson is that building trust, developing partnership skills, and creating networks of relationships can have value that extends beyond any single initiative. Success should be measured not only by completed projects but also by increased organizational capacity, expanded connections, and the ability to leverage partnership experience in future work.</p>
+  <div class="callout" style="margin-top:16px"><strong>For funders:</strong><p>Financial investment alone is not enough, and even well-planned initiatives can be disrupted by political and economic shifts beyond local control. Rural collaborations require flexible timelines, recognition of the full costs of participation, and support for organizations that are often stretched thin. Additionally, larger organizations need education about the value of horizontal relationships with community-based organizations and the importance of elevating CBO voices at decision-making tables.</p></div>
+</div>
+
+<div class="section gray">
+  <h2>Do's and Don'ts</h2>
+  <div class="do-dont">
+    <div class="col do-col">
+      <h4 style="color:var(--teal)">✓ Do</h4>
+      <ul>
+        <li>Build predictability into partnerships through regular meetings and clear role setting</li>
+        <li>Use facilitated dialogue to address differences openly rather than avoiding them</li>
+        <li>Recognize that proximity and shared space can strengthen daily collaboration</li>
+        <li>Provide flexible support and timelines to accommodate the realities of smaller organizations</li>
+        <li>Leverage opportunities for visibility, such as state-level engagement, to strengthen credibility</li>
+        <li>Intentionally expand coalitions to bring in like-minded partners who can strengthen the work</li>
+        <li>Remain flexible and adapt projects as larger community needs emerge</li>
+        <li>Educate larger organizations about the value of horizontal relationships with CBOs</li>
+        <li>Celebrate capacity-building outcomes, including increased skills and expanded networks, even when specific projects face obstacles</li>
+      </ul>
+    </div>
+    <div class="col dont-col">
+      <h4 style="color:#EF4444">✗ Don't</h4>
+      <ul>
+        <li>Assume urban models or metrics apply directly in rural settings</li>
+        <li>Underestimate the time commitment required to sustain collaboration, particularly administrative work</li>
+        <li>Avoid difficult conversations about priorities and roles; avoidance undermines trust</li>
+        <li>Expect rapid or large-scale projects without first building durable collaboration structures</li>
+        <li>Overlook the impact of external political and funding shifts on local collaborative work</li>
+        <li>Measure success solely by completion of original project goals without recognizing capacity-building and relationship outcomes</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>More Case Studies</h2>
+  <div class="grid grid-3">
+    <div class="city-card"><div class="city-card-img img-ph">Omaha, NE</div><div class="city-card-body"><div class="city-card-name">Omaha, NE</div><div class="city-card-theme">Legitimacy Through Visibility</div><a class="card-link">View Case Study →</a></div></div><div class="city-card"><div class="city-card-img img-ph">Honolulu, HI</div><div class="city-card-body"><div class="city-card-name">Honolulu, HI</div><div class="city-card-theme">Redevelopment with Local Leadership</div><a class="card-link">View Case Study →</a></div></div><div class="city-card"><div class="city-card-img img-ph">Detroit, MI</div><div class="city-card-body"><div class="city-card-name">Detroit, MI</div><div class="city-card-theme">Designing for Collaboration</div><a class="card-link">View Case Study →</a></div></div>
+  </div>
+</div>
+
+<div class="site-footer"><span class="ft-logo">NGIN Alliance Playbook</span><div class="ft-links"><span>Core Insights</span><span>Case Studies</span><span>Resource Bank</span><span>About</span><span>Contact</span></div><span class="ft-copy">playbook.newgrowth.org &middot; New Growth Innovation Network</span></div></div>
+</div><div style="max-width:1440px;margin:0 auto;padding:0 24px"><div style="background:#F0FBF7;border:1px solid #2E7D6B;border-radius:6px;padding:10px 16px;font-size:12px;color:var(--g700);margin-bottom:-20px"><strong style="color:#2E7D6B">Template applies to all 15 tools:</strong> Tool 1: Coalition Continuity Framework · Tool 2: Rapid Action Planning Template · Tool 3: Positionality Statement Development · Tool 4: Power-Sharing Charter Template · Tool 5: Internal Alignment Self-Assessment · Tool 6: Convenor Selection Tool · Tool 7: Meeting Cadence & Accountability Kit · Tool 8: Narrative Building Training Summary · Tool 9: Strategic Doing Session-in-a-Box · Tool 10: Partnership MOA & Board-Alignment Pack · Tool 11: Pivot Protocol · Tool 12: Community Engagement SOW + Starter Kit · Tool 13: Capacity & Resourcing Toolkit · Tool 14: Friction-to-Innovation Diagnostic · Tool 15: Ecosystem Mapping & Alignment Toolkit</div></div><div class="wf-card">
+<div class="wf-card-hdr"><span class="num">PAGE 7</span><h2>Tool Page Template</h2><span class="url">playbook.newgrowth.org/resources/positionality-statement</span></div>
+<div class="chrome"><div class="dots"><i></i><i></i><i></i></div><span class="bar">playbook.newgrowth.org/resources/positionality-statement</span></div>
+<div class="page"><div class="site-nav"><span class="logo">NGIN Alliance Playbook</span><a>Core Insights</a><a>Case Studies</a><a class="on">Resource Bank</a><a>About</a></div>
+<div class="hero teal">
+  <div class="eyebrow">Tool 3 of 15 &middot; Resource Bank</div>
+  <h1>Positionality Statement Development &amp; Sharing</h1>
+  <p class="lead">A structured way for coalition partners to build trust by naming how each person and organization shows up in the work, what shapes their perspectives, and how power influences decisions.</p>
+  <div class="btns"><a class="btn btn-primary" style="background:#fff;color:var(--teal);border-color:#fff">↓ Download Template</a><a class="btn btn-ghost" style="color:var(--navy)">← Back to Resource Bank</a></div>
+</div>
+
+<div class="info-strip">
+  <div><span class="label">Building Block</span><div class="tags"><span class="tag teal">Trust</span></div></div>
+  <div><span class="label">Cities That Used This</span><div class="tags"><span class="tag amber">Bangor, ME</span><span class="tag amber">Sarasota, FL</span><span class="tag amber">Cleveland, OH</span></div></div>
+  <div><span class="label">Related Tools</span><div class="tags"><span class="tag">Power-Sharing Charter</span><span class="tag">Internal Alignment Self-Assessment</span></div></div>
+  <div><a class="btn btn-teal btn-sm" style="width:100%">↓ Download (.docx)</a><span style="font-size:11px;color:var(--g400);margin-top:4px">Free · No login required</span></div>
+</div>
+
+<div class="section">
+  <h2>Overview</h2>
+  <p>Positionality is the understanding of self and organization, recognizing the personal journeys, roles, identities, and sources of authority that shape how each partner approaches the work. At the individual level, positionality involves reflecting on personal background, lived experience, and the perspective those experiences bring to coalition decisions. At the institutional level, positionality acknowledges the formal power, resources, and reach that an organization contributes.</p>
+  <p>A positionality statement is one way to make this visible. These statements describe how a person or organization relates to the work at hand. They outline what authority or perspective someone brings, what experiences shape their understanding, and how the community may view them. A nonprofit may highlight its history in the neighborhood. An economic development district may note its statutory role and responsibilities. By putting these reflections on the table, partners can surface assumptions, build empathy, and establish shared ground.</p>
+  <div class="callout" style="margin-top:16px"><strong>When shared openly, positionality statements help coalitions:</strong><p>Reduce misunderstandings and hidden assumptions · Surface power dynamics early and productively · Create a foundation for more effective collaboration · Strengthen shared accountability over time.</p></div>
+</div>
+
+<div class="section gray">
+  <h2>When to Use This Tool</h2>
+  <div class="grid grid-3">
+    <div class="card"><div class="card-body"><div class="card-title" style="color:var(--teal)">Coalition Formation</div><div class="card-desc">During the early stages when norms and trust are still being established between new partners.</div></div></div>
+    <div class="card"><div class="card-body"><div class="card-title" style="color:var(--navy)">Transitions &amp; Expansion</div><div class="card-desc">At moments of transition such as onboarding new partners, welcoming new staff, or leadership changes.</div></div></div>
+    <div class="card"><div class="card-body"><div class="card-title" style="color:var(--amber)">Tension &amp; Misalignment</div><div class="card-desc">When a coalition is facing stalled decision-making, unresolved tension, or unclear power dynamics.</div></div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>How to Use It — Step by Step</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Set the Context</h4><p>Explain that positionality statements are about transparency and relationship-building, not guilt or justification. Establish norms: listen without interruption, assume good intent, respect confidentiality. The facilitator should share their own statement first.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Individual Reflection &amp; Writing</h4><p>Each participant takes 15–20 minutes to draft a short statement. Write in the first person, focus on clarity rather than polish. Statements are typically 1–2 pages or 5–7 minutes when read aloud.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Share with the Coalition</h4><p>Invite each participant to share verbally with the full group. Ask the group to listen for values, commitments, and areas of learning. Avoid debate or critique in the moment — allow time for reflection after each statement.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Connect to Power &amp; Practice</h4><p>Guide group discussion: Where do we see concentrations of power, resources, or influence? How can those be used more intentionally? Where might additional safeguards or shared decision-making structures be needed?</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Revisit &amp; Repeat</h4><p>Positionality work is not one-and-done. Revisit statements during key transitions. Invite new members to complete the exercise as part of onboarding. Reflect periodically on how positionality is shaping decisions.</p></div></div>
+  </div>
+</div>
+
+<div class="section gray">
+  <h2>Template Sections</h2>
+  <p class="section-lead">The downloadable template guides participants through five reflection areas:</p>
+  <div class="acc"><div class="acc-hdr">Section I: Experiences &amp; Perspective <span>▾</span></div><div class="acc-body">What lived and learned experiences shape how I understand community and economic development? How have those experiences influenced my professional path and decision-making?</div></div>
+  <div class="acc"><div class="acc-hdr">Section II: Training, Discipline &amp; Role <span>▾</span></div><div class="acc-body">In what discipline or field was I trained? How does that shape my worldview? What role do I currently play in this coalition? In what ways do I uphold, question, or seek to change common practices in my field?</div></div>
+  <div class="acc"><div class="acc-hdr">Section III: Values &amp; Motivation <span>▾</span></div><div class="acc-body">What values guide my work? What do I hope to achieve — personally and collectively — through this coalition? What does success look like to me, and who defines it?</div></div>
+  <div class="acc"><div class="acc-hdr">Section IV: Organizational History &amp; Assets <span>▾</span></div><div class="acc-body">How has my organization engaged in community and economic development in the past? What lessons, resources, credibility, skills, or relationships does my organization bring to this coalition?</div></div>
+  <div class="acc"><div class="acc-hdr">Section V: Limits, Gaps &amp; Growth <span>▾</span></div><div class="acc-body">Where has my organization fallen short? How might community members view or experience my organization today? What commitments am I — or is my organization — making to do things differently in this coalition?</div></div>
+</div>
+
+<div class="section">
+  <h2>Tips for Facilitators</h2>
+  <div class="grid grid-2">
+    <div class="callout"><strong>Normalize discomfort</strong><p>Positionality work can feel vulnerable. Acknowledge this openly and create space for it.</p></div>
+    <div class="callout"><strong>Protect psychological safety</strong><p>Make participation expected but not punitive. Allow flexibility in how much is shared publicly.</p></div>
+    <div class="callout"><strong>Document insights</strong><p>Capture themes (not personal details) that can inform coalition norms, governance, and decision-making.</p></div>
+    <div class="callout"><strong>Link to action</strong><p>Revisit positionality insights when designing funding decisions, leadership roles, or accountability structures.</p></div>
+  </div>
+</div>
+
+<div class="section gray">
+  <h2 style="text-align:center">Download This Template</h2>
+  <p style="text-align:center;max-width:500px;margin:0 auto 20px">Ready to use with your coalition. Includes all five reflection sections, facilitator guidance, and suggested practices.</p>
+  <div style="text-align:center"><a class="btn btn-teal">↓ Download Positionality Statement Template (.docx)</a></div>
+</div>
+
+<div class="section">
+  <h2>More Tools in the Resource Bank</h2>
+  <div class="grid grid-3">
+    <div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 1</div><div class="tool-card-name">Coalition Continuity Framework</div><div class="tool-card-desc">Keep work moving through leadership changes by documenting purpose, roles, agreements, and deliverables.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Trust, Structure</span><a class="tool-card-link">View →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 2</div><div class="tool-card-name">Rapid Action Planning Template</div><div class="tool-card-desc">Move from discussion to action with short-term pilots designed to build momentum in 3–6 months.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Facilitation</span><a class="tool-card-link">View →</a></div></div><div class="tool-card"><div class="tool-card-top"><div class="tool-card-num">Tool 3</div><div class="tool-card-name">Positionality Statement Development</div><div class="tool-card-desc">Build trust by naming how each person and organization shows up, what shapes their perspective, and how power influences decisions.</div></div><div class="tool-card-foot"><span class="tool-card-tag">Trust</span><a class="tool-card-link">View →</a></div></div>
+  </div>
+</div>
+
+<div class="site-footer"><span class="ft-logo">NGIN Alliance Playbook</span><div class="ft-links"><span>Core Insights</span><span>Case Studies</span><span>Resource Bank</span><span>About</span><span>Contact</span></div><span class="ft-copy">playbook.newgrowth.org &middot; New Growth Innovation Network</span></div></div>
+</div>
+</div>
+</body>
+</html>
