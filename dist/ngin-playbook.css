@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-07T15:52:17.324Z */
+/* Auto-built: 2026-04-07T16:02:02.460Z */
 
 /* === variables.css === */
 /* ============================================
@@ -1221,6 +1221,33 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
 #block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(2)::before { background: #2E7D6B; } /* teal   — Narrative    */
 #block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(3)::before { background: #6B4FA0; } /* purple — Facilitation */
 #block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(4)::before { background: #C47F17; } /* amber  — Operational  */
+
+/* --- Browse Case Studies inline link → primary button ---
+   OBSERVED selector: yui block ID (fragile)
+   -------------------------------------------- */
+#block-yui_3_17_2_1_1775574705744_28790 .sqs-block-content a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #caddbb;
+  color: var(--ngin-navy, #1B3A6B) !important;
+  border: 1px solid #caddbb;
+  border-radius: 100px;
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 14px 24px;
+  text-decoration: none !important;
+  background-image: none !important;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+#block-yui_3_17_2_1_1775574705744_28790 .sqs-block-content a:hover {
+  background-color: #b8d0a3;
+  border-color: #b8d0a3;
+  transform: translateY(-1px);
+}
 
 
 /* === responsive.css === */
