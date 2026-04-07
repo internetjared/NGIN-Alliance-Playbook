@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-07T15:30:37.784Z */
+/* Auto-built: 2026-04-07T15:38:43.789Z */
 
 /* === variables.css === */
 /* ============================================
@@ -1174,6 +1174,42 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
   .ngin-insight__field { padding: 16px 18px; }
 }
 
+
+
+/* --- Numbered H4 circle badges ---
+   Target block on /core-insights listing the 4 building
+   blocks. Each H4 ("1", "2", "3", "4") becomes a solid
+   colored circle with white numeral, matching the 4
+   Core Insight accent colors.
+
+   OBSERVED: yui auto-generated block ID. If the block is
+   deleted/recreated, update the selector.
+   -------------------------------------------- */
+
+#block-yui_3_17_2_1_1775574232499_3834 h4 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4em;
+  height: 2.4em;
+  padding: 0;
+  margin: 0 14px 12px 0;
+  border-radius: 50%;
+  background: #1B3A6B;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1.35em;
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+#block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(1) { background: #1B3A6B; } /* navy  — Trust       */
+#block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(2) { background: #2E7D6B; } /* teal  — Narrative   */
+#block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(3) { background: #6B4FA0; } /* purple— Facilitation*/
+#block-yui_3_17_2_1_1775574232499_3834 h4:nth-of-type(4) { background: #C47F17; } /* amber — Operational */
 
 
 /* === responsive.css === */
