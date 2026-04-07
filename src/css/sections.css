@@ -617,9 +617,9 @@ section[data-section-id="69badcb87603e07234d02a29"] .sqs-block-content a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: var(--ngin-navy, #1B3A6B);
-  color: #ffffff !important;
-  border: 1px solid var(--ngin-navy, #1B3A6B);
+  background-color: #caddbb;
+  color: var(--ngin-navy, #1B3A6B) !important;
+  border: 1px solid #caddbb;
   border-radius: 8px;
   font-family: Lato, 'Helvetica Neue', sans-serif;
   font-size: 16px;
@@ -632,7 +632,7 @@ section[data-section-id="69badcb87603e07234d02a29"] .sqs-block-content a {
 }
 
 section[data-section-id="69badcb87603e07234d02a29"] .sqs-block-content a:hover {
-  background-color: #142c53;
-  border-color: #142c53;
+  background-color: #b8d0a3;
+  border-color: #b8d0a3;
   transform: translateY(-1px);
 }
