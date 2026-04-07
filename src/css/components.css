@@ -220,7 +220,7 @@
   font-family: inherit;
   font-size: 14px;
   line-height: 1.4;
-  animation: nginCrosslinkSlide 0.35s ease-out;
+  animation: nginCrosslinkFade 0.3s ease-out;
 }
 
 .ngin-crosslink--to-playbook {
@@ -246,9 +246,9 @@ html.ngin-has-crosslink .header-announcement-bar-wrapper {
   top: var(--ngin-crosslink-h, 44px) !important;
 }
 
-@keyframes nginCrosslinkSlide {
-  from { transform: translateY(-100%); opacity: 0; }
-  to   { transform: translateY(0);      opacity: 1; }
+@keyframes nginCrosslinkFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .ngin-crosslink__inner {

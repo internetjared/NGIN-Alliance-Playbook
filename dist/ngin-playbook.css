@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-07T15:27:57.935Z */
+/* Auto-built: 2026-04-07T15:30:37.784Z */
 
 /* === variables.css === */
 /* ============================================
@@ -434,7 +434,7 @@ strong[data-ngin-label-icon="done"] {
   font-family: inherit;
   font-size: 14px;
   line-height: 1.4;
-  animation: nginCrosslinkSlide 0.35s ease-out;
+  animation: nginCrosslinkFade 0.3s ease-out;
 }
 
 .ngin-crosslink--to-playbook {
@@ -460,9 +460,9 @@ html.ngin-has-crosslink .header-announcement-bar-wrapper {
   top: var(--ngin-crosslink-h, 44px) !important;
 }
 
-@keyframes nginCrosslinkSlide {
-  from { transform: translateY(-100%); opacity: 0; }
-  to   { transform: translateY(0);      opacity: 1; }
+@keyframes nginCrosslinkFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .ngin-crosslink__inner {
