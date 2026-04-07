@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-07T16:13:35.761Z */
+/* Auto-built: 2026-04-07T17:10:40.954Z */
 
 /* === variables.css === */
 /* ============================================
@@ -1244,6 +1244,33 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
 }
 
 #block-yui_3_17_2_1_1775574705744_28790 .sqs-block-content a:hover {
+  background-color: #142c53;
+  border-color: #142c53;
+  transform: translateY(-1px);
+}
+
+/* --- What's Inside the Playbook — card CTA links → primary buttons ---
+   Rounded corners (not pill), navy bg, white text.
+   -------------------------------------------- */
+section[data-section-id="69badcb87603e07234d02a29"] .sqs-block-content a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--ngin-navy, #1B3A6B);
+  color: #ffffff !important;
+  border: 1px solid var(--ngin-navy, #1B3A6B);
+  border-radius: 8px;
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 14px 24px;
+  text-decoration: none !important;
+  background-image: none !important;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+section[data-section-id="69badcb87603e07234d02a29"] .sqs-block-content a:hover {
   background-color: #142c53;
   border-color: #142c53;
   transform: translateY(-1px);
