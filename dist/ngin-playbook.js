@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-04-07T15:50:33.372Z */
+/* Auto-built: 2026-04-07T15:52:17.326Z */
 
 /* === components.js === */
 /* ============================================
@@ -645,6 +645,26 @@
   window.NGIN.initResourceFilter = initResourceFilter;
   window.NGIN.addCaseStudyBackNav = addCaseStudyBackNav;
   window.NGIN.initCrossSiteLink = initCrossSiteLink;
+
+  /* --- Strip leading digits from Building Blocks h4 titles ---
+     CSS counter renders the circle badge; the original "1 " / "2 "
+     etc. in the heading text is no longer needed.
+     -------------------------------------------------------------- */
+  function stripBuildingBlockNumbers(root) {
+    root = root || document;
+    var block = root.querySelector('#block-yui_3_17_2_1_1775574232499_3834');
+    if (!block) return;
+    block.querySelectorAll('h4').forEach(function (h4) {
+      if (h4.dataset.nginStripped === 'true') return;
+      var original = h4.textContent;
+      var cleaned = original.replace(/^\s*\d+\s*[.)\-:]?\s*/, '');
+      if (cleaned !== original) {
+        h4.textContent = cleaned;
+      }
+      h4.dataset.nginStripped = 'true';
+    });
+  }
+  window.NGIN.stripBuildingBlockNumbers = stripBuildingBlockNumbers;
 })();
 
 
@@ -707,6 +727,10 @@
     // Cross-site context bar (Playbook ↔ main NGIN)
     if (window.NGIN && window.NGIN.initCrossSiteLink) {
       window.NGIN.initCrossSiteLink();
+    }
+
+    if (window.NGIN && window.NGIN.stripBuildingBlockNumbers) {
+      window.NGIN.stripBuildingBlockNumbers(root);
     }
   }
 

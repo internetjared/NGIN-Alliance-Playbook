@@ -57,6 +57,10 @@
     if (window.NGIN && window.NGIN.initCrossSiteLink) {
       window.NGIN.initCrossSiteLink();
     }
+
+    if (window.NGIN && window.NGIN.stripBuildingBlockNumbers) {
+      window.NGIN.stripBuildingBlockNumbers(root);
+    }
   }
 
   // Run init — handle both static script tags and dynamic loading
