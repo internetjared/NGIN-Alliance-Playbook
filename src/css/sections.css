@@ -460,7 +460,10 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
   --insight-color: #1B3A6B;
   --insight-bg: rgba(27, 58, 107, 0.10);
   border-left: 4px solid var(--insight-color);
-  padding: 8px 0 8px 24px;
+  background: #ffffff;
+  padding: 28px 32px 28px 28px;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.05);
   font-family: inherit;
   color: #1f2937;
 }
