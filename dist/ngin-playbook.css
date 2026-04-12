@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-12T21:40:19.131Z */
+/* Auto-built: 2026-04-12T21:51:10.758Z */
 
 /* === variables.css === */
 /* ============================================
@@ -421,9 +421,7 @@ strong[data-ngin-label-icon="done"] {
    ============================================ */
 
 .ngin-resource-back {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 24px 5vw 0;
+  padding: 24px 0 0;
 }
 
 .ngin-resource-back__link {

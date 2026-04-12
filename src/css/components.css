@@ -207,9 +207,7 @@
    ============================================ */
 
 .ngin-resource-back {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 24px 5vw 0;
+  padding: 24px 0 0;
 }
 
 .ngin-resource-back__link {
