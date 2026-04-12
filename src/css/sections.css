@@ -622,6 +622,11 @@ body[class*="collection-type-blog"].view-item .header-title-logo {
   background-image: url('https://static1.squarespace.com/static/69bac4ee1264074d6b59d99f/t/69dc0fe813de4b38c85c3768/1776029672534/NGIN%2BLOGO.webp') !important;
 }
 
+/* --- Blog / Resource Bank pagination — match paragraph font size --- */
+body[class*="collection-type-blog"] .item-pagination {
+  font-size: 1rem;
+}
+
 /* --- What's Inside the Playbook — card CTA links → primary buttons ---
    Rounded corners (not pill), navy bg, white text.
    -------------------------------------------- */
