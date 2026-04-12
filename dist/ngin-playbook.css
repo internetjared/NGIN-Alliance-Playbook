@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-07T17:13:19.270Z */
+/* Auto-built: 2026-04-12T19:14:52.820Z */
 
 /* === variables.css === */
 /* ============================================
@@ -470,6 +470,7 @@ html.ngin-has-crosslink .header-announcement-bar-wrapper {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
   padding: 9px 16px 9px 20px;
 }
@@ -489,7 +490,7 @@ html.ngin-has-crosslink .header-announcement-bar-wrapper {
 }
 
 .ngin-crosslink__label {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.92);
 }
@@ -533,6 +534,7 @@ html.ngin-has-crosslink .header-announcement-bar-wrapper {
 
 .ngin-crosslink__close {
   flex: 0 0 auto;
+  margin-left: auto;
   background: transparent;
   border: 0;
   color: rgba(255, 255, 255, 0.7);
