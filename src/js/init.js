@@ -53,6 +53,11 @@
       window.NGIN.addCaseStudyBackNav();
     }
 
+    // Resource bank back breadcrumb
+    if (window.NGIN && window.NGIN.addResourceBackNav) {
+      window.NGIN.addResourceBackNav();
+    }
+
     // Cross-site context bar (Playbook ↔ main NGIN)
     if (window.NGIN && window.NGIN.initCrossSiteLink) {
       window.NGIN.initCrossSiteLink();

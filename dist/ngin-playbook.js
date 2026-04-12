@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-04-12T21:38:38.226Z */
+/* Auto-built: 2026-04-12T21:40:19.134Z */
 
 /* === components.js === */
 /* ============================================
@@ -644,6 +644,41 @@
   window.NGIN.addCaseStudyPills = addCaseStudyPills;
   window.NGIN.initResourceFilter = initResourceFilter;
   window.NGIN.addCaseStudyBackNav = addCaseStudyBackNav;
+
+  /* --- Resource Bank back breadcrumb ---
+     Injects a "← Back to Resource Bank" link above the
+     blog post title on resource-bank item pages.
+     ------------------------------------------------ */
+  function addResourceBackNav() {
+    if (!document.body.className.match(/collection-type-blog/) ||
+        !document.body.classList.contains('view-item')) return;
+    if (document.querySelector('.ngin-resource-back')) return;
+
+    var articleHeader = document.querySelector('.blog-item-top-wrapper') ||
+                        document.querySelector('.entry-header') ||
+                        document.querySelector('article header') ||
+                        document.querySelector('.blog-item-wrapper h1');
+
+    // Find the best insertion target
+    var target = articleHeader;
+    if (!target) {
+      // Fallback: first h1 inside main content
+      var h1 = document.querySelector('#page h1, main h1');
+      if (h1) target = h1;
+    }
+    if (!target) return;
+
+    var nav = document.createElement('div');
+    nav.className = 'ngin-resource-back';
+    nav.innerHTML =
+      '<a href="/resource-bank" class="ngin-resource-back__link">' +
+        '<span class="ngin-resource-back__icon" aria-hidden="true">arrow_back</span>' +
+        'Back to Resource Bank' +
+      '</a>';
+
+    target.parentNode.insertBefore(nav, target);
+  }
+  window.NGIN.addResourceBackNav = addResourceBackNav;
   window.NGIN.initCrossSiteLink = initCrossSiteLink;
 
   /* --- Strip leading digits from Building Blocks h4 titles ---
@@ -722,6 +757,11 @@
     // Case study back navigation
     if (window.NGIN && window.NGIN.addCaseStudyBackNav) {
       window.NGIN.addCaseStudyBackNav();
+    }
+
+    // Resource bank back breadcrumb
+    if (window.NGIN && window.NGIN.addResourceBackNav) {
+      window.NGIN.addResourceBackNav();
     }
 
     // Cross-site context bar (Playbook ↔ main NGIN)

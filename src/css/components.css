@@ -203,6 +203,42 @@
 
 
 /* ============================================
+   Resource Bank — Back Breadcrumb
+   ============================================ */
+
+.ngin-resource-back {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 5vw 0;
+}
+
+.ngin-resource-back__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ngin-navy, #1B3A6B);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.ngin-resource-back__link:hover {
+  opacity: 1;
+}
+
+.ngin-resource-back__icon {
+  font-family: 'Material Symbols Outlined' !important;
+  font-size: 18px;
+  font-weight: normal !important;
+  font-style: normal !important;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
    Cross-Site Context Bar (.ngin-crosslink)
    Shown on Playbook microsite and main NGIN site.
    Mode determined by window.NGIN_CROSSLINK_CONFIG.
