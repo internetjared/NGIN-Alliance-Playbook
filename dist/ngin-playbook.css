@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-12T21:56:29.947Z */
+/* Auto-built: 2026-04-12T22:04:37.203Z */
 
 /* === variables.css === */
 /* ============================================
@@ -208,6 +208,18 @@ strong[data-ngin-label-icon="done"] {
 .header-menu-nav-list a[aria-current="page"] {
   border-left: 3px solid #caddbb;
   padding-left: 8px;
+}
+
+/* --- Footer links: white, no underline, green on hover --- */
+#footer a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  background-image: none !important;
+  transition: color 0.2s ease;
+}
+
+#footer a:hover {
+  color: #caddbb !important;
 }
 
 

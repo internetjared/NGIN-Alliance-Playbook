@@ -160,3 +160,15 @@ strong[data-ngin-label-icon="done"] {
   border-left: 3px solid #caddbb;
   padding-left: 8px;
 }
+
+/* --- Footer links: white, no underline, green on hover --- */
+#footer a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  background-image: none !important;
+  transition: color 0.2s ease;
+}
+
+#footer a:hover {
+  color: #caddbb !important;
+}
