@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-12T21:51:10.758Z */
+/* Auto-built: 2026-04-12T21:53:58.088Z */
 
 /* === variables.css === */
 /* ============================================
@@ -905,7 +905,8 @@ body[class*="collection-type-blog"] .blog-meta-section,
 body[class*="collection-type-blog"] .blog-categories-list,
 body[class*="collection-type-blog"] .blog-author,
 body[class*="collection-type-blog"] .blog-date,
-body[class*="collection-type-blog"] .blog-meta-primary {
+body[class*="collection-type-blog"] .blog-meta-primary,
+.blog-meta-item--tags {
   display: none !important;
 }
 
