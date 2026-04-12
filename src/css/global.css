@@ -162,13 +162,13 @@ strong[data-ngin-label-icon="done"] {
 }
 
 /* --- Footer links: white, no underline, green on hover --- */
-#footer a {
+#footer-sections a {
   color: #ffffff !important;
   text-decoration: none !important;
   background-image: none !important;
   transition: color 0.2s ease;
 }
 
-#footer a:hover {
+#footer-sections a:hover {
   color: #caddbb !important;
 }
