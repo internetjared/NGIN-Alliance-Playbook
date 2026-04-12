@@ -48,6 +48,11 @@
       window.NGIN.initResourceFilter(root);
     }
 
+    // Make full resource cards clickable
+    if (window.NGIN && window.NGIN.makeResourceCardsClickable) {
+      window.NGIN.makeResourceCardsClickable(root);
+    }
+
     // Case study back navigation
     if (window.NGIN && window.NGIN.addCaseStudyBackNav) {
       window.NGIN.addCaseStudyBackNav();

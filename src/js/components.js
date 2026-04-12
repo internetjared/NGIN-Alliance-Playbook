@@ -638,6 +638,32 @@
   window.NGIN.addLinkArrows = addLinkArrows;
   window.NGIN.addLabelIcons = addLabelIcons;
   window.NGIN.addCaseStudyPills = addCaseStudyPills;
+  /* --- Make full resource card clickable ---
+     Finds the first link inside each blog-item card and
+     navigates on click anywhere on the card.
+     ------------------------------------------------ */
+  function makeResourceCardsClickable(root) {
+    root = root || document;
+    if (!document.body.className.match(/collection-type-blog/)) return;
+    if (document.body.classList.contains('view-item')) return;
+
+    root.querySelectorAll('.blog-item').forEach(function (card) {
+      if (card.dataset.nginClickable === 'true') return;
+      card.dataset.nginClickable = 'true';
+
+      card.addEventListener('click', function (e) {
+        // Don't hijack clicks on existing links or buttons
+        if (e.target.closest('a, button')) return;
+
+        var link = card.querySelector('a[href]');
+        if (link) {
+          window.location.href = link.href;
+        }
+      });
+    });
+  }
+  window.NGIN.makeResourceCardsClickable = makeResourceCardsClickable;
+
   window.NGIN.initResourceFilter = initResourceFilter;
   window.NGIN.addCaseStudyBackNav = addCaseStudyBackNav;
 

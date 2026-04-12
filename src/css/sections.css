@@ -263,6 +263,10 @@ body[class*="collection-type-blog"] .blog-item .blog-basic-grid--text > div {
   min-width: 0 !important;
 }
 
+body[class*="collection-type-blog"] .blog-item {
+  cursor: pointer;
+}
+
 body[class*="collection-type-blog"] .blog-item:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
   transform: translateY(-2px);
