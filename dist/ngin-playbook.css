@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-12T19:16:39.111Z */
+/* Auto-built: 2026-04-12T19:17:59.519Z */
 
 /* === variables.css === */
 /* ============================================
@@ -466,14 +466,14 @@ html.ngin-has-crosslink .header-announcement-bar-wrapper {
 }
 
 .ngin-crosslink__inner {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
-  padding: 9px 40px;
+  padding: 9px 48px;
   position: relative;
+  text-align: center;
 }
 
 .ngin-crosslink__mark {
