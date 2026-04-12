@@ -610,6 +610,18 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
   transform: translateY(-1px);
 }
 
+/* --- Resource Bank tool pages: swap header logo to NGIN logo ---
+   Targets blog item (view-item) pages under the resource-bank collection.
+   -------------------------------------------- */
+body[class*="collection-type-blog"].view-item .header-title-logo img {
+  content: url('https://static1.squarespace.com/static/69bac4ee1264074d6b59d99f/t/69dc0fe813de4b38c85c3768/1776029672534/NGIN%2BLOGO.webp');
+}
+
+/* Fallback: if header uses background-image instead of img */
+body[class*="collection-type-blog"].view-item .header-title-logo {
+  background-image: url('https://static1.squarespace.com/static/69bac4ee1264074d6b59d99f/t/69dc0fe813de4b38c85c3768/1776029672534/NGIN%2BLOGO.webp') !important;
+}
+
 /* --- What's Inside the Playbook — card CTA links → primary buttons ---
    Rounded corners (not pill), navy bg, white text.
    -------------------------------------------- */
