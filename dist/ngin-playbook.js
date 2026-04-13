@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-04-13T14:33:30.668Z */
+/* Auto-built: 2026-04-13T14:36:36.104Z */
 
 /* === components.js === */
 /* ============================================
@@ -659,7 +659,19 @@
         // Don't hijack clicks on existing links or buttons
         if (e.target.closest('a, button')) return;
 
-        var link = card.querySelector('a[href]');
+        // Target the post title link or View Tool button, NOT category links
+        var link = card.querySelector('.blog-title a[href], h1.blog-title a[href], .ngin-card-footer__link[href], .blog-more-link[href]');
+        if (!link) {
+          // Fallback: find any link that points to a blog item (contains /resource-bank/)
+          var allLinks = card.querySelectorAll('a[href]');
+          for (var i = 0; i < allLinks.length; i++) {
+            var href = allLinks[i].getAttribute('href') || '';
+            if (href.indexOf('/resource-bank/') !== -1 && href.length > '/resource-bank/'.length + 1) {
+              link = allLinks[i];
+              break;
+            }
+          }
+        }
         if (link) {
           window.location.href = link.href;
         }
