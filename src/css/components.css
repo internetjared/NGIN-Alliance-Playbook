@@ -208,6 +208,7 @@
 
 .ngin-resource-back {
   padding: 24px 0 0;
+  margin-left: var(--sqs-site-gutter, 4vw);
 }
 
 .ngin-resource-back__link {
