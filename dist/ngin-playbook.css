@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-13T15:55:08.282Z */
+/* Auto-built: 2026-04-13T16:11:00.038Z */
 
 /* === variables.css === */
 /* ============================================
@@ -487,18 +487,14 @@ strong[data-ngin-label-icon="done"] {
   background: #1d2b36;
 }
 
-/* Push the rest of the page down by the bar height.
-   --ngin-crosslink-h is ALWAYS set by JS before the class is added,
-   so we use 0px as fallback to avoid a flash of wrong padding. */
-html.ngin-has-crosslink body {
-  padding-top: var(--ngin-crosslink-h, 0px);
-}
-
+/* The crosslink bar is position:fixed, so it overlays the page.
+   We do NOT add body padding-top because the hero runs edge-to-edge
+   and padding would create a white gap.
+   Instead, just offset the Squarespace header so nav links clear the bar. */
 html.ngin-has-crosslink {
   scroll-padding-top: var(--ngin-crosslink-h, 0px);
 }
 
-/* Offset Squarespace sticky/fixed headers by the bar height */
 html.ngin-has-crosslink #header,
 html.ngin-has-crosslink .header,
 html.ngin-has-crosslink .Header,
