@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-13T20:22:46.328Z */
+/* Auto-built: 2026-04-13T20:27:46.824Z */
 
 /* === variables.css === */
 /* ============================================
@@ -436,7 +436,8 @@ strong[data-ngin-label-icon="done"] {
 
 /* Injected into #siteWrapper after #header.
    The header is position:absolute so it overlays this banner.
-   No extra margin/padding needed — it naturally fills full width. */
+   Pull the hero up so it sits flush under the crosslink bar,
+   ignoring the header's margin-top offset. */
 .ngin-resource-hero {
   position: relative;
   width: 100%;
@@ -445,6 +446,7 @@ strong[data-ngin-label-icon="done"] {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin-top: 0;
 }
 
 .ngin-resource-hero__bg {
@@ -474,7 +476,8 @@ strong[data-ngin-label-icon="done"] {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 120px 5vw 60px;
+  /* Top padding accounts for header + crosslink bar */
+  padding: calc(120px + var(--ngin-crosslink-h, 0px)) 5vw 60px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -522,7 +525,7 @@ strong[data-ngin-label-icon="done"] {
     min-height: 360px;
   }
   .ngin-resource-hero__content {
-    padding: 100px 6vw 48px;
+    padding: calc(100px + var(--ngin-crosslink-h, 0px)) 6vw 48px;
     gap: 16px;
   }
 }
@@ -597,6 +600,15 @@ html.ngin-has-crosslink #header,
 html.ngin-has-crosslink .header,
 html.ngin-has-crosslink .Header {
   margin-top: var(--ngin-crosslink-h, 0px);
+}
+
+/* On resource tool pages the hero banner sits right after the header
+   in #siteWrapper. The header margin-top (crosslink offset) would create
+   a gap above the hero. Cancel it — use top offset instead so the
+   absolute-positioned header clears the crosslink bar without affecting flow. */
+.ngin-has-crosslink [class*="collection-type-blog"].view-item #header {
+  margin-top: 0;
+  top: var(--ngin-crosslink-h, 0px);
 }
 
 @keyframes nginCrosslinkFade {
@@ -1405,6 +1417,17 @@ body[class*="collection-type-blog"].view-item .header-nav-list a {
 
 body[class*="collection-type-blog"].view-item .header-nav-list a::after {
   background-color: #ffffff;
+}
+
+/* Remove the section top-padding on tool item pages —
+   the injected hero banner handles the header clearance. */
+body[class*="collection-type-blog"].view-item .page-section {
+  padding-top: 0 !important;
+}
+
+/* Give blog content a comfortable top margin below the hero */
+body[class*="collection-type-blog"].view-item .blog-item-inner-wrapper {
+  padding-top: 40px;
 }
 
 /* --- Blog / Resource Bank pagination — match paragraph font size --- */

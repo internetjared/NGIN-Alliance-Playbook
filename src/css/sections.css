@@ -624,6 +624,17 @@ body[class*="collection-type-blog"].view-item .header-nav-list a::after {
   background-color: #ffffff;
 }
 
+/* Remove the section top-padding on tool item pages —
+   the injected hero banner handles the header clearance. */
+body[class*="collection-type-blog"].view-item .page-section {
+  padding-top: 0 !important;
+}
+
+/* Give blog content a comfortable top margin below the hero */
+body[class*="collection-type-blog"].view-item .blog-item-inner-wrapper {
+  padding-top: 40px;
+}
+
 /* --- Blog / Resource Bank pagination — match paragraph font size --- */
 body[class*="collection-type-blog"] .item-pagination,
 body[class*="collection-type-blog"] .item-pagination a,
