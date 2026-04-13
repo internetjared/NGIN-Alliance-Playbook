@@ -768,17 +768,15 @@
             '<h1 class="ngin-resource-hero__title">' + titleText + '</h1>' +
           '</div>';
 
-        // Insert before the blog article content
-        var article = document.querySelector('article.hentry') ||
-                      document.querySelector('.blog-item-wrapper') ||
-                      document.querySelector('#page > article');
-        if (article && article.parentNode) {
-          article.parentNode.insertBefore(hero, article);
-        } else {
-          var page = document.querySelector('#page');
-          if (page && page.firstChild) {
-            page.insertBefore(hero, page.firstChild);
-          }
+        // Insert directly after the header inside #siteWrapper
+        // so the banner sits edge-to-edge, outside the blog content
+        // wrappers that have section padding.
+        var header = document.querySelector('#header');
+        var siteWrapper = document.querySelector('#siteWrapper');
+        if (header && header.nextSibling) {
+          siteWrapper.insertBefore(hero, header.nextSibling);
+        } else if (siteWrapper) {
+          siteWrapper.appendChild(hero);
         }
 
         // Hide the original title and back breadcrumb (now in the banner)

@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-13T20:20:37.024Z */
+/* Auto-built: 2026-04-13T20:22:46.328Z */
 
 /* === variables.css === */
 /* ============================================
@@ -434,13 +434,12 @@ strong[data-ngin-label-icon="done"] {
    full-width background image + dark overlay.
    ============================================ */
 
-/* The banner is injected before the article. Pull it up so
-   it sits behind the header (position:absolute) and extends
-   edge-to-edge from the crosslink bar down. */
+/* Injected into #siteWrapper after #header.
+   The header is position:absolute so it overlays this banner.
+   No extra margin/padding needed — it naturally fills full width. */
 .ngin-resource-hero {
   position: relative;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
   min-height: 480px;
   display: flex;
   align-items: center;
