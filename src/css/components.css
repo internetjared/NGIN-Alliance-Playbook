@@ -207,10 +207,7 @@
    ============================================ */
 
 .ngin-resource-back {
-  padding: 24px 0 0;
-  /* Match header logo alignment — same horizontal padding as the Squarespace header */
-  padding-left: var(--sqs-site-gutter, 4vw);
-  padding-right: var(--sqs-site-gutter, 4vw);
+  padding: 24px 0 8px;
 }
 
 .ngin-resource-back__link {

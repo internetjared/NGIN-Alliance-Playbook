@@ -688,12 +688,12 @@
         !document.body.classList.contains('view-item')) return;
     if (document.querySelector('.ngin-resource-back')) return;
 
-    // Insert as the first child of #page so it sits outside the narrower
-    // blog-item wrapper and can align with the header logo edge.
-    var pageEl = document.querySelector('#page') ||
-                 document.querySelector('main') ||
-                 document.querySelector('#content');
-    if (!pageEl) return;
+    // Insert above the blog post title, inside the blog content wrapper
+    // so it inherits the same centering/max-width as the article content.
+    var target = document.querySelector('.blog-item-top-wrapper') ||
+                 document.querySelector('.blog-item-inner-wrapper') ||
+                 document.querySelector('article');
+    if (!target) return;
 
     var nav = document.createElement('div');
     nav.className = 'ngin-resource-back';
@@ -703,12 +703,7 @@
         'Back to Resource Bank' +
       '</a>';
 
-    // Insert before the first child of #page
-    if (pageEl.firstChild) {
-      pageEl.insertBefore(nav, pageEl.firstChild);
-    } else {
-      pageEl.appendChild(nav);
-    }
+    target.parentNode.insertBefore(nav, target);
   }
   window.NGIN.addResourceBackNav = addResourceBackNav;
   window.NGIN.initCrossSiteLink = initCrossSiteLink;
