@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-13T14:36:36.101Z */
+/* Auto-built: 2026-04-13T14:40:01.663Z */
 
 /* === variables.css === */
 /* ============================================
@@ -434,7 +434,9 @@ strong[data-ngin-label-icon="done"] {
 
 .ngin-resource-back {
   padding: 24px 0 0;
-  margin-left: var(--sqs-site-gutter, 4vw);
+  /* Match header logo alignment — same horizontal padding as the Squarespace header */
+  padding-left: var(--sqs-site-gutter, 4vw);
+  padding-right: var(--sqs-site-gutter, 4vw);
 }
 
 .ngin-resource-back__link {
