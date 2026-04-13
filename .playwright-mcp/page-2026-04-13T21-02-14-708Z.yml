@@ -1,0 +1,225 @@
+- generic [active] [ref=e1]:
+  - complementary "Related site" [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - text: You’re viewing the Alliance Playbook, part of
+        - strong [ref=e6]: New Growth Innovation Network
+      - link "Visit NGIN" [ref=e7] [cursor=pointer]:
+        - /url: https://newgrowth.org/
+        - text: Visit NGIN
+        - generic [ref=e8]: →
+      - button "Dismiss" [ref=e9] [cursor=pointer]: ×
+  - generic [ref=e10]:
+    - banner:
+      - generic [ref=e11]:
+        - link "Skip to Content" [ref=e12] [cursor=pointer]:
+          - /url: "#page"
+        - generic [ref=e16]:
+          - link "NGIN Alliance Playbook" [ref=e19] [cursor=pointer]:
+            - /url: /
+            - img "NGIN Alliance Playbook" [ref=e20]
+          - navigation [ref=e23]:
+            - link "Home" [ref=e25] [cursor=pointer]:
+              - /url: /
+            - link "Core Insights" [ref=e27] [cursor=pointer]:
+              - /url: /core-insights
+            - link "Case Studies" [ref=e29] [cursor=pointer]:
+              - /url: /case-studies
+            - link "Resource Bank" [ref=e31] [cursor=pointer]:
+              - /url: /resource-bank
+            - link "About" [ref=e33] [cursor=pointer]:
+              - /url: /about
+            - link "Contact" [ref=e35] [cursor=pointer]:
+              - /url: /contact
+    - main [ref=e36]:
+      - article [ref=e37]:
+        - generic [ref=e43]:
+          - heading "Economic Partnership Alliance Playbook" [level=1] [ref=e49]
+          - paragraph [ref=e55]: A practical guide and resource hub for leaders working at the intersection of community and economic development.
+          - link "Explore Core Insights" [ref=e60] [cursor=pointer]:
+            - /url: /core-insights
+            - text: Explore Core Insights
+            - generic [ref=e61]: explore
+          - link "Browse the Resource Bank" [ref=e66] [cursor=pointer]:
+            - /url: /resource-bank
+            - text: Browse the Resource Bank
+            - generic [ref=e67]: menu_book
+        - generic [ref=e77]:
+          - generic:
+            - img "Screenshot 2026-03-18 at 11.45.21 AM.png" [ref=e81]
+            - img "Screenshot 2026-03-18 at 11.45.16 AM.png" [ref=e85]
+            - img "Screenshot 2026-03-18 at 11.45.13 AM.png" [ref=e89]
+            - img "Screenshot 2026-03-18 at 11.45.10 AM.png" [ref=e93]
+            - img "Screenshot 2026-03-18 at 11.45.06 AM.png" [ref=e97]
+        - generic [ref=e108]:
+          - paragraph [ref=e109]:
+            - strong [ref=e110]: Built for Long-Term Impact
+          - heading "Building Civic Infrastructure That Lasts" [level=2] [ref=e111]:
+            - strong [ref=e113]: Building Civic Infrastructure That Lasts
+          - paragraph [ref=e114]: Economic transformation of a community or neighborhood is a result of intentional work of leaders uniting behind a shared, bold vision, and working together to make that vision a reality. Community and economic leaders are catalysts for opportunity – sparking growth and investment, creating jobs, supporting small businesses, building childcare centers or whatever other gaps exist in the community. They know how to design initiatives, secure funding, and deliver visible results.
+          - paragraph [ref=e115]: What is harder, and what this Playbook addresses, is the behind-the-scenes work that makes those results possible - building and sustaining the civic infrastructure that keeps progress moving long after a single grant or project ends. Achieving lasting economic progress, especially in communities facing persistent distress demands collaboration, not just good programs. It requires durable cross sector partnerships built on shared decision making, mutual accountability, and the agility to adapt as conditions change.
+          - paragraph [ref=e116]: Cross sector partnerships are force multipliers and essential to long term local and regional prosperity. They can multiply impact, build economic stability and strength, and drive innovation in ways that no single organization can accomplish alone. These partnerships between organizations that usually work in different domains, such as local governments, economic development agencies, nonprofit service providers, workforce development organizations, and neighborhood associations bring together different resources and perspectives. Together, they can take on challenges that are too complex for one type of organization to solve on its own.
+        - generic [ref=e135]:
+          - paragraph [ref=e136]:
+            - strong [ref=e137]: Progress Starts Here
+          - heading "Start Where You Are" [level=2] [ref=e138]:
+            - strong [ref=e140]: Start Where You Are
+          - paragraph [ref=e141]: Whether you're launching a new coalition or strengthening an existing one, the Playbook meets you where you are.
+        - list [ref=e147]:
+          - listitem [ref=e148]:
+            - generic [ref=e151]:
+              - generic [ref=e152]:
+                - heading "New to partnerships?" [level=2] [ref=e153]
+                - paragraph [ref=e155]: Start with Core Insights to learn the four building blocks of durable cross-sector collaboration.
+              - link "Core Insights" [ref=e158] [cursor=pointer]:
+                - /url: /core-insights
+                - text: Core Insights
+                - generic [ref=e159]: lightbulb
+          - listitem [ref=e160]:
+            - generic [ref=e163]:
+              - generic [ref=e164]:
+                - heading "Looking for Practical Tools?" [level=2] [ref=e165]
+                - paragraph [ref=e167]: Go to the Resource Bank for 15 downloadable templates, worksheets, and guides you can adapt today.
+              - link "Resource Bank" [ref=e170] [cursor=pointer]:
+                - /url: /resource-bank
+                - text: Resource Bank
+                - generic [ref=e171]: library_books
+          - listitem [ref=e172]:
+            - generic [ref=e175]:
+              - generic [ref=e176]:
+                - heading "Want to See Real Examples?" [level=2] [ref=e177]
+                - paragraph [ref=e179]: Explore 9 City Case Studies from communities across the country that have built alliances.
+              - link "Case Studies" [ref=e182] [cursor=pointer]:
+                - /url: /case-studies
+                - text: Case Studies
+                - generic [ref=e183]: cases
+        - generic [ref=e189]:
+          - generic [ref=e194]:
+            - paragraph [ref=e195]:
+              - strong [ref=e196]: Four Core Sections
+            - heading "What's Inside the Playbook?" [level=2] [ref=e197]:
+              - strong [ref=e198]: What's Inside the Playbook?
+            - paragraph [ref=e199]: "The Economic Partnership Alliance Playbook distills the experience of these partnerships into a set of lessons, tools, and examples that others can learn from and apply. It is organized into three sections:"
+          - generic [ref=e204]:
+            - paragraph [ref=e205]:
+              - strong [ref=e206]:
+                - generic [ref=e207]: lightbulb
+                - text: core insights
+            - heading "Four Building Blocks of Durable Partnerships" [level=3] [ref=e208]:
+              - strong [ref=e210]: Four Building Blocks of Durable Partnerships
+            - paragraph [ref=e211]: Trust, Shared Narrative, Facilitation & Project Management, and Structure & Shared Practice — practical patterns from 24 coalitions.
+            - paragraph [ref=e212]:
+              - link "Explore Framework" [ref=e213] [cursor=pointer]:
+                - /url: /core-insights
+                - text: Explore Framework
+                - generic [ref=e214]: north_east
+          - generic [ref=e219]:
+            - paragraph [ref=e220]:
+              - strong [ref=e221]:
+                - generic [ref=e222]: menu_book
+                - text: Resource bank
+            - heading "15 Tools & Templates" [level=3] [ref=e223]:
+              - strong [ref=e225]: 15 Tools & Templates
+            - paragraph [ref=e226]: Continuity frameworks, action planning templates, MOA packs, conflict protocols, and more — all free to download and adapt.
+            - paragraph [ref=e227]:
+              - link "View Resource Bank" [ref=e228] [cursor=pointer]:
+                - /url: /resource-bank
+                - text: View Resource Bank
+                - generic [ref=e229]: north_east
+          - generic [ref=e234]:
+            - paragraph [ref=e235]:
+              - strong [ref=e236]:
+                - generic [ref=e237]: cases
+                - text: case studies
+            - heading "9 Communities. 9 Stories." [level=3] [ref=e238]:
+              - strong [ref=e240]: 9 Communities. 9 Stories.
+            - paragraph [ref=e241]: From rural Maine to urban Detroit to coastal Hawaiʻi — profiles of how partnerships formed and what they learned.
+            - paragraph [ref=e242]:
+              - link "Browse Case Studies" [ref=e243] [cursor=pointer]:
+                - /url: /case-studies
+                - text: Browse Case Studies
+                - generic [ref=e244]: north_east
+          - generic [ref=e249]:
+            - paragraph [ref=e250]:
+              - strong [ref=e251]:
+                - generic [ref=e252]: hub
+                - text: About the Alliance
+            - heading "The National Initiative Behind This Playbook" [level=3] [ref=e253]:
+              - strong [ref=e255]: The National Initiative Behind This Playbook
+            - paragraph [ref=e256]: Led by NGIN with IEDC, LISC, and HBCU CDAC, with support from the U.S. EDA — 24 coalitions across 22 communities.
+            - paragraph [ref=e257]:
+              - link "Learn More" [ref=e258] [cursor=pointer]:
+                - /url: /about
+                - text: Learn More
+                - generic [ref=e259]: north_east
+        - generic [ref=e265]:
+          - generic [ref=e270]:
+            - paragraph [ref=e271]:
+              - strong [ref=e272]: The Alliance by the Numbers
+            - heading "Program at a Glance" [level=2] [ref=e273]:
+              - strong [ref=e275]: Program at a Glance
+            - paragraph [ref=e276]: Since 2023, the Economic Partnership Alliance has connected communities across the country with the training, tools, and peer networks they need to build durable cross-sector partnerships. Here's the impact so far.
+          - iframe [ref=e282]
+          - generic [ref=e287]:
+            - generic [ref=e288]:
+              - paragraph [ref=e289]: "0"
+              - paragraph [ref=e290]: Coalitions
+            - generic [ref=e291]:
+              - paragraph [ref=e292]: "0"
+              - paragraph [ref=e293]: Communities
+            - generic [ref=e294]:
+              - paragraph [ref=e295]: "0"
+              - paragraph [ref=e296]: Core Organizations
+            - generic [ref=e297]:
+              - paragraph [ref=e298]: "0"
+              - paragraph [ref=e299]: Orgs Trained
+            - generic [ref=e300]:
+              - paragraph [ref=e301]: "0"
+              - paragraph [ref=e302]: Tools
+            - generic [ref=e303]:
+              - paragraph [ref=e304]: "0"
+              - paragraph [ref=e305]: Case Studies
+          - link "Browse Case Studies" [ref=e310] [cursor=pointer]:
+            - /url: /case-studies
+            - text: Browse Case Studies
+            - generic [ref=e311]: menu_book
+        - generic [ref=e317]:
+          - generic [ref=e322]:
+            - paragraph [ref=e323]:
+              - strong [ref=e324]: Take the Next Step
+            - heading "Turn shared vision into lasting community impact." [level=2] [ref=e325]:
+              - strong [ref=e326]: Turn shared vision into lasting community impact.
+            - paragraph [ref=e327]: Use the Playbook to strengthen collaboration across sectors, align around common goals, and build the foundation for progress that lasts beyond any single initiative.
+          - link "Explore the Playbook" [ref=e332] [cursor=pointer]:
+            - /url: /res
+            - text: Explore the Playbook
+            - generic [ref=e333]: explore
+    - contentinfo [ref=e334]:
+      - generic [ref=e340]:
+        - paragraph [ref=e353]:
+          - link "Core Insights" [ref=e354] [cursor=pointer]:
+            - /url: /core-insights
+        - paragraph [ref=e360]:
+          - link "Case Studies" [ref=e361] [cursor=pointer]:
+            - /url: /case-studies
+        - paragraph [ref=e367]:
+          - link "Resource Bank" [ref=e368] [cursor=pointer]:
+            - /url: /resource-bank
+        - paragraph [ref=e374]:
+          - link "About" [ref=e375] [cursor=pointer]:
+            - /url: /about
+        - paragraph [ref=e381]:
+          - link "Contact" [ref=e382] [cursor=pointer]:
+            - /url: /contact
+        - navigation [ref=e388]:
+          - link "Facebook" [ref=e389] [cursor=pointer]:
+            - /url: http://www.facebook.com
+            - img [ref=e391]
+          - link "Instagram" [ref=e394] [cursor=pointer]:
+            - /url: http://www.instagram.com
+            - img [ref=e396]
+          - link "LinkedIn" [ref=e399] [cursor=pointer]:
+            - /url: http://www.linkedin.com
+            - img [ref=e401]
+        - separator [ref=e407]
+        - paragraph [ref=e413]: Funded by EDA, thoughts/insights are those of NGIN and its partners

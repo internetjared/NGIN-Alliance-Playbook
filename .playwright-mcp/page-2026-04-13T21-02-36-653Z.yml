@@ -1,0 +1,92 @@
+- generic [active] [ref=e1]:
+  - complementary "Related site" [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - text: You’re viewing the Alliance Playbook, part of
+        - strong [ref=e6]: New Growth Innovation Network
+      - link "Visit NGIN" [ref=e7] [cursor=pointer]:
+        - /url: https://newgrowth.org/
+        - text: Visit NGIN
+        - generic [ref=e8]: →
+      - button "Dismiss" [ref=e9] [cursor=pointer]: ×
+  - generic [ref=e10]:
+    - banner:
+      - generic [ref=e11]:
+        - link "Skip to Content" [ref=e12] [cursor=pointer]:
+          - /url: "#page"
+        - generic [ref=e16]:
+          - link "NGIN Alliance Playbook" [ref=e19] [cursor=pointer]:
+            - /url: /
+            - img "NGIN Alliance Playbook" [ref=e20]
+          - navigation [ref=e23]:
+            - link "Home" [ref=e25] [cursor=pointer]:
+              - /url: /
+            - link "Core Insights" [ref=e27] [cursor=pointer]:
+              - /url: /core-insights
+            - link "Case Studies" [ref=e29] [cursor=pointer]:
+              - /url: /case-studies
+            - link "Resource Bank" [ref=e31] [cursor=pointer]:
+              - /url: /resource-bank
+            - link "About" [ref=e33] [cursor=pointer]:
+              - /url: /about
+            - link "Contact" [ref=e35] [cursor=pointer]:
+              - /url: /contact
+    - main [ref=e36]:
+      - article [ref=e37]:
+        - article [ref=e43]:
+          - generic [ref=e44]:
+            - link "Back to Resource Bank" [ref=e46] [cursor=pointer]:
+              - /url: /resource-bank
+              - generic [ref=e47]: arrow_back
+              - text: Back to Resource Bank
+            - generic [ref=e48]:
+              - heading "Rapid Action Planning Template" [level=1] [ref=e50]
+              - generic: ••
+            - generic [ref=e55]:
+              - paragraph [ref=e60]: "Coalitions often get stuck between idea and implementation. The Rapid Action Planning Template helps teams move from discussion to action by designing short-term projects, typically 3 to 6 months, which build momentum, test ideas, and produce visible progress. It is intentionally lightweight: fast enough to pilot, structured enough to ensure clarity, accountability, and learning. Bring this tool to coalition or community meetings when a new idea emerges or a project needs to restart. Complete it collectively with at least two partner organizations and, if possible, resident voices. Keep pilots manageable, no more than three to five activities and one to three clear outputs. Treat it as a living plan that can adjust mid-project and be debriefed at the end."
+              - link "Download Tool" [ref=e64] [cursor=pointer]:
+                - /url: ""
+                - text: Download Tool
+                - generic [ref=e65]: download
+      - generic [ref=e66]:
+        - link "Previous Positionality Statement Development" [ref=e67] [cursor=pointer]:
+          - /url: /resource-bank/positionality-statement-development
+          - img [ref=e69]
+          - generic [ref=e71]:
+            - generic [ref=e72]: Previous
+            - heading "Positionality Statement Development" [level=2] [ref=e73]
+        - link "Next Coalition Continuity Framework" [ref=e74] [cursor=pointer]:
+          - /url: /resource-bank/coalition-continuity-framework
+          - generic [ref=e75]:
+            - generic [ref=e76]: Next
+            - heading "Coalition Continuity Framework" [level=2] [ref=e77]
+          - img [ref=e79]
+    - contentinfo [ref=e81]:
+      - generic [ref=e87]:
+        - paragraph [ref=e100]:
+          - link "Core Insights" [ref=e101] [cursor=pointer]:
+            - /url: /core-insights
+        - paragraph [ref=e107]:
+          - link "Case Studies" [ref=e108] [cursor=pointer]:
+            - /url: /case-studies
+        - paragraph [ref=e114]:
+          - link "Resource Bank" [ref=e115] [cursor=pointer]:
+            - /url: /resource-bank
+        - paragraph [ref=e121]:
+          - link "About" [ref=e122] [cursor=pointer]:
+            - /url: /about
+        - paragraph [ref=e128]:
+          - link "Contact" [ref=e129] [cursor=pointer]:
+            - /url: /contact
+        - navigation [ref=e135]:
+          - link "Facebook" [ref=e136] [cursor=pointer]:
+            - /url: http://www.facebook.com
+            - img [ref=e138]
+          - link "Instagram" [ref=e141] [cursor=pointer]:
+            - /url: http://www.instagram.com
+            - img [ref=e143]
+          - link "LinkedIn" [ref=e146] [cursor=pointer]:
+            - /url: http://www.linkedin.com
+            - img [ref=e148]
+        - separator [ref=e154]
+        - paragraph [ref=e160]: Funded by EDA, thoughts/insights are those of NGIN and its partners

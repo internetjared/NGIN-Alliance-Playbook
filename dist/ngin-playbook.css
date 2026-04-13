@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-13T20:40:58.267Z */
+/* Auto-built: 2026-04-13T21:12:52.660Z */
 
 /* === variables.css === */
 /* ============================================
@@ -1430,6 +1430,11 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
   background-color: #142c53;
   border-color: #142c53;
   transform: translateY(-1px);
+}
+
+/* --- Resource Bank listing: hide thumbnail images from cards --- */
+body[class*="collection-type-blog"].view-list .blog-basic-grid--container .image-wrapper {
+  display: none !important;
 }
 
 /* --- Resource Bank tool pages: white nav + hamburger over hero banner --- */

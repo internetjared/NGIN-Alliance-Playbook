@@ -1,0 +1,87 @@
+- generic [active] [ref=e1]:
+  - complementary "Related site" [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - text: You’re viewing the Alliance Playbook, part of
+        - strong [ref=e6]: New Growth Innovation Network
+      - link "Visit NGIN" [ref=e7] [cursor=pointer]:
+        - /url: https://newgrowth.org/
+        - text: Visit NGIN
+        - generic [ref=e8]: →
+      - button "Dismiss" [ref=e9] [cursor=pointer]: ×
+  - generic [ref=e10]:
+    - banner:
+      - generic [ref=e11]:
+        - link "Skip to Content" [ref=e12] [cursor=pointer]:
+          - /url: "#page"
+        - generic [ref=e16]:
+          - link "NGIN Alliance Playbook" [ref=e19] [cursor=pointer]:
+            - /url: /
+            - img "NGIN Alliance Playbook" [ref=e20]
+          - navigation [ref=e23]:
+            - link "Home" [ref=e25] [cursor=pointer]:
+              - /url: /
+            - link "Core Insights" [ref=e27] [cursor=pointer]:
+              - /url: /core-insights
+            - link "Case Studies" [ref=e29] [cursor=pointer]:
+              - /url: /case-studies
+            - link "Resource Bank" [ref=e31] [cursor=pointer]:
+              - /url: /resource-bank
+            - link "About" [ref=e33] [cursor=pointer]:
+              - /url: /about
+            - link "Contact" [ref=e35] [cursor=pointer]:
+              - /url: /contact
+    - main [ref=e36]:
+      - article [ref=e37]:
+        - article [ref=e43]:
+          - generic [ref=e44]:
+            - link "Back to Resource Bank" [ref=e46] [cursor=pointer]:
+              - /url: /resource-bank
+              - generic [ref=e47]: arrow_back
+              - text: Back to Resource Bank
+            - generic [ref=e48]:
+              - heading "Coalition Continuity Framework" [level=1] [ref=e50]
+              - generic: •
+            - generic [ref=e55]:
+              - generic [ref=e59]:
+                - heading "About this Tool" [level=3] [ref=e60]
+                - paragraph [ref=e61]: "Coalitions are vulnerable to disruption when leaders leave, staff turn over, or funding shifts. The Coalition Continuity Framework helps partnerships document their purpose, roles, agreements, and deliverables so that institutional knowledge survives transitions. It should be completed collectively during a coalition retreat or facilitated session, with every lead partner contributing and smaller partners consulted. The framework is meant to be revisited routinely -- at launch, annually, and whenever leadership, staff, or funding changes occur. One master copy should live in a shared cloud folder, with the convener or fiscal sponsor managing updates. The key reflection question: \"What would continue if our lead left tomorrow, and what would stop?\""
+              - link "Download Tool" [ref=e65] [cursor=pointer]:
+                - /url: ""
+                - text: Download Tool
+                - generic [ref=e66]: download
+      - link "Previous Rapid Action Planning Template" [ref=e68] [cursor=pointer]:
+        - /url: /resource-bank/coalition-continuity-framework-s35ky
+        - img [ref=e70]
+        - generic [ref=e72]:
+          - generic [ref=e73]: Previous
+          - heading "Rapid Action Planning Template" [level=2] [ref=e74]
+    - contentinfo [ref=e75]:
+      - generic [ref=e81]:
+        - paragraph [ref=e94]:
+          - link "Core Insights" [ref=e95] [cursor=pointer]:
+            - /url: /core-insights
+        - paragraph [ref=e101]:
+          - link "Case Studies" [ref=e102] [cursor=pointer]:
+            - /url: /case-studies
+        - paragraph [ref=e108]:
+          - link "Resource Bank" [ref=e109] [cursor=pointer]:
+            - /url: /resource-bank
+        - paragraph [ref=e115]:
+          - link "About" [ref=e116] [cursor=pointer]:
+            - /url: /about
+        - paragraph [ref=e122]:
+          - link "Contact" [ref=e123] [cursor=pointer]:
+            - /url: /contact
+        - navigation [ref=e129]:
+          - link "Facebook" [ref=e130] [cursor=pointer]:
+            - /url: http://www.facebook.com
+            - img [ref=e132]
+          - link "Instagram" [ref=e135] [cursor=pointer]:
+            - /url: http://www.instagram.com
+            - img [ref=e137]
+          - link "LinkedIn" [ref=e140] [cursor=pointer]:
+            - /url: http://www.linkedin.com
+            - img [ref=e142]
+        - separator [ref=e148]
+        - paragraph [ref=e154]: Funded by EDA, thoughts/insights are those of NGIN and its partners

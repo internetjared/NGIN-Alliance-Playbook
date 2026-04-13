@@ -615,6 +615,11 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
   transform: translateY(-1px);
 }
 
+/* --- Resource Bank listing: hide thumbnail images from cards --- */
+body[class*="collection-type-blog"].view-list .blog-basic-grid--container .image-wrapper {
+  display: none !important;
+}
+
 /* --- Resource Bank tool pages: white nav + hamburger over hero banner --- */
 body[class*="collection-type-blog"].view-item .header-nav-list a {
   color: #ffffff !important;
