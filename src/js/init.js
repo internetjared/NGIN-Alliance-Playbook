@@ -63,6 +63,11 @@
       window.NGIN.addResourceBackNav();
     }
 
+    // Resource bank tool page hero banner
+    if (window.NGIN && window.NGIN.addResourceHeroBanner) {
+      window.NGIN.addResourceHeroBanner();
+    }
+
     // Cross-site context bar (Playbook ↔ main NGIN)
     if (window.NGIN && window.NGIN.initCrossSiteLink) {
       window.NGIN.initCrossSiteLink();

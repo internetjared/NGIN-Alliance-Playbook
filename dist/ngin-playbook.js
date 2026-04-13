@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-04-13T16:32:39.004Z */
+/* Auto-built: 2026-04-13T20:17:42.995Z */
 
 /* === components.js === */
 /* ============================================
@@ -727,6 +727,79 @@
     target.parentNode.insertBefore(nav, target);
   }
   window.NGIN.addResourceBackNav = addResourceBackNav;
+
+  /* --- Resource Tool Hero Banner ---
+     On resource-bank item pages, fetches the post's thumbnail
+     (assetUrl) via Squarespace JSON and builds a full-width
+     hero banner with the title centered on top — matching the
+     case study page style.
+     -------------------------------------------------------- */
+  function addResourceHeroBanner() {
+    if (!document.body.className.match(/collection-type-blog/) ||
+        !document.body.classList.contains('view-item')) return;
+    if (document.querySelector('.ngin-resource-hero')) return;
+
+    var titleEl = document.querySelector('.blog-item-top-wrapper h1, h1.blog-title');
+    if (!titleEl) return;
+    var titleText = titleEl.textContent.trim();
+
+    // Fetch the post JSON for the thumbnail image
+    fetch(window.location.pathname + '?format=json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var item = data.item || data;
+        var imgUrl = item.assetUrl;
+        if (!imgUrl) return;
+
+        // Squarespace image service — request a decent size
+        if (imgUrl.indexOf('?') === -1) {
+          imgUrl += '?format=2500w';
+        }
+
+        // Build the hero banner
+        var hero = document.createElement('div');
+        hero.className = 'ngin-resource-hero';
+        hero.innerHTML =
+          '<div class="ngin-resource-hero__bg">' +
+            '<img src="' + imgUrl + '" alt="" loading="eager" />' +
+          '</div>' +
+          '<div class="ngin-resource-hero__overlay"></div>' +
+          '<div class="ngin-resource-hero__content">' +
+            '<a href="/resource-bank" class="ngin-resource-hero__back">' +
+              '<span class="ngin-resource-hero__back-icon" aria-hidden="true">arrow_back</span>' +
+              'Back to Resource Bank' +
+            '</a>' +
+            '<h1 class="ngin-resource-hero__title">' + titleText + '</h1>' +
+          '</div>';
+
+        // Insert before the blog article content
+        var article = document.querySelector('article.hentry') ||
+                      document.querySelector('.blog-item-wrapper') ||
+                      document.querySelector('#page > article');
+        if (article && article.parentNode) {
+          article.parentNode.insertBefore(hero, article);
+        } else {
+          var page = document.querySelector('#page');
+          if (page && page.firstChild) {
+            page.insertBefore(hero, page.firstChild);
+          }
+        }
+
+        // Hide the original title and back breadcrumb (now in the banner)
+        titleEl.style.display = 'none';
+        var origBack = document.querySelector('.ngin-resource-back');
+        if (origBack) origBack.style.display = 'none';
+
+        // Hide the blog-item-top-wrapper since it just had the title
+        var topWrapper = document.querySelector('.blog-item-top-wrapper');
+        if (topWrapper) topWrapper.style.display = 'none';
+      })
+      .catch(function () {
+        // Silently fail — page will show the default title layout
+      });
+  }
+  window.NGIN.addResourceHeroBanner = addResourceHeroBanner;
+
   window.NGIN.initCrossSiteLink = initCrossSiteLink;
 
   /* --- Strip leading digits from Building Blocks h4 titles ---
@@ -825,6 +898,11 @@
     // Resource bank back breadcrumb
     if (window.NGIN && window.NGIN.addResourceBackNav) {
       window.NGIN.addResourceBackNav();
+    }
+
+    // Resource bank tool page hero banner
+    if (window.NGIN && window.NGIN.addResourceHeroBanner) {
+      window.NGIN.addResourceHeroBanner();
     }
 
     // Cross-site context bar (Playbook ↔ main NGIN)

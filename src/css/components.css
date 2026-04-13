@@ -203,6 +203,102 @@
 
 
 /* ============================================
+   Resource Bank — Hero Banner (tool pages)
+   Matches the case study hero style with a
+   full-width background image + dark overlay.
+   ============================================ */
+
+.ngin-resource-hero {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ngin-resource-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.ngin-resource-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.ngin-resource-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(29, 42, 53, 0.55);
+}
+
+.ngin-resource-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 5vw 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.ngin-resource-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ngin-resource-hero__back:hover {
+  color: #ffffff;
+}
+
+.ngin-resource-hero__back-icon {
+  font-family: 'Material Symbols Outlined' !important;
+  font-size: 18px;
+  font-weight: normal !important;
+  font-style: normal !important;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ngin-resource-hero__title {
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffffff;
+  margin: 0;
+  text-wrap: balance;
+}
+
+@media (max-width: 767px) {
+  .ngin-resource-hero {
+    min-height: 320px;
+  }
+  .ngin-resource-hero__content {
+    padding: 60px 6vw 48px;
+    gap: 16px;
+  }
+}
+
+/* ============================================
    Resource Bank — Back Breadcrumb
    ============================================ */
 
