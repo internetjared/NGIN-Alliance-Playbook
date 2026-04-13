@@ -262,11 +262,16 @@
 }
 
 /* The crosslink bar is position:fixed with a high z-index.
-   It overlays the page naturally — no body padding or header
-   offset needed. The bar is thin enough that the nav remains
-   fully usable beneath it. */
+   Only offset the header so it sits just below the bar.
+   No body padding — the hero runs edge-to-edge beneath the bar. */
 html.ngin-has-crosslink {
   scroll-padding-top: var(--ngin-crosslink-h, 0px);
+}
+
+html.ngin-has-crosslink #header,
+html.ngin-has-crosslink .header,
+html.ngin-has-crosslink .Header {
+  margin-top: var(--ngin-crosslink-h, 0px);
 }
 
 @keyframes nginCrosslinkFade {
