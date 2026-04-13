@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-13T20:35:24.400Z */
+/* Auto-built: 2026-04-13T20:40:58.267Z */
 
 /* === variables.css === */
 /* ============================================
@@ -476,8 +476,8 @@ strong[data-ngin-label-icon="done"] {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  /* Top padding accounts for header + crosslink bar */
-  padding: calc(120px + var(--ngin-crosslink-h, 0px)) 5vw 60px;
+  /* Top padding accounts for header + crosslink bar clearance */
+  padding: calc(140px + var(--ngin-crosslink-h, 0px)) 5vw 60px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -537,11 +537,18 @@ strong[data-ngin-label-icon="done"] {
 
 @media (max-width: 767px) {
   .ngin-resource-hero {
-    min-height: 360px;
+    min-height: 380px;
   }
   .ngin-resource-hero__content {
-    padding: calc(100px + var(--ngin-crosslink-h, 0px)) 6vw 48px;
-    gap: 16px;
+    padding: calc(120px + var(--ngin-crosslink-h, 0px)) 6vw 40px;
+    gap: 14px;
+  }
+  .ngin-resource-hero__title {
+    font-size: clamp(1.6rem, 6vw, 2.25rem);
+  }
+  .ngin-resource-hero__tool-pill {
+    font-size: 12px;
+    padding: 4px 12px;
   }
 }
 
@@ -1425,13 +1432,29 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
   transform: translateY(-1px);
 }
 
-/* --- Resource Bank tool pages: white nav links over hero banner --- */
+/* --- Resource Bank tool pages: white nav + hamburger over hero banner --- */
 body[class*="collection-type-blog"].view-item .header-nav-list a {
   color: #ffffff !important;
 }
 
 body[class*="collection-type-blog"].view-item .header-nav-list a::after {
   background-color: #ffffff;
+}
+
+/* White hamburger icon on mobile */
+body[class*="collection-type-blog"].view-item .header-burger .burger-inner .top-bun,
+body[class*="collection-type-blog"].view-item .header-burger .burger-inner .patty,
+body[class*="collection-type-blog"].view-item .header-burger .burger-inner .bottom-bun,
+body[class*="collection-type-blog"].view-item .header-menu-btn-icon .top-bun,
+body[class*="collection-type-blog"].view-item .header-menu-btn-icon .patty,
+body[class*="collection-type-blog"].view-item .header-menu-btn-icon .bottom-bun {
+  background-color: #ffffff !important;
+}
+
+/* Also catch generic hamburger line selectors */
+body[class*="collection-type-blog"].view-item [class*="burger"] [class*="bun"],
+body[class*="collection-type-blog"].view-item [class*="burger"] [class*="patty"] {
+  background-color: #ffffff !important;
 }
 
 /* Remove the section and article top-padding on tool item pages —

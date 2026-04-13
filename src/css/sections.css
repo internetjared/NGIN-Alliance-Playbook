@@ -615,13 +615,29 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
   transform: translateY(-1px);
 }
 
-/* --- Resource Bank tool pages: white nav links over hero banner --- */
+/* --- Resource Bank tool pages: white nav + hamburger over hero banner --- */
 body[class*="collection-type-blog"].view-item .header-nav-list a {
   color: #ffffff !important;
 }
 
 body[class*="collection-type-blog"].view-item .header-nav-list a::after {
   background-color: #ffffff;
+}
+
+/* White hamburger icon on mobile */
+body[class*="collection-type-blog"].view-item .header-burger .burger-inner .top-bun,
+body[class*="collection-type-blog"].view-item .header-burger .burger-inner .patty,
+body[class*="collection-type-blog"].view-item .header-burger .burger-inner .bottom-bun,
+body[class*="collection-type-blog"].view-item .header-menu-btn-icon .top-bun,
+body[class*="collection-type-blog"].view-item .header-menu-btn-icon .patty,
+body[class*="collection-type-blog"].view-item .header-menu-btn-icon .bottom-bun {
+  background-color: #ffffff !important;
+}
+
+/* Also catch generic hamburger line selectors */
+body[class*="collection-type-blog"].view-item [class*="burger"] [class*="bun"],
+body[class*="collection-type-blog"].view-item [class*="burger"] [class*="patty"] {
+  background-color: #ffffff !important;
 }
 
 /* Remove the section and article top-padding on tool item pages —

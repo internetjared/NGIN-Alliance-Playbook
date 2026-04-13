@@ -250,8 +250,8 @@
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  /* Top padding accounts for header + crosslink bar */
-  padding: calc(120px + var(--ngin-crosslink-h, 0px)) 5vw 60px;
+  /* Top padding accounts for header + crosslink bar clearance */
+  padding: calc(140px + var(--ngin-crosslink-h, 0px)) 5vw 60px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -311,11 +311,18 @@
 
 @media (max-width: 767px) {
   .ngin-resource-hero {
-    min-height: 360px;
+    min-height: 380px;
   }
   .ngin-resource-hero__content {
-    padding: calc(100px + var(--ngin-crosslink-h, 0px)) 6vw 48px;
-    gap: 16px;
+    padding: calc(120px + var(--ngin-crosslink-h, 0px)) 6vw 40px;
+    gap: 14px;
+  }
+  .ngin-resource-hero__title {
+    font-size: clamp(1.6rem, 6vw, 2.25rem);
+  }
+  .ngin-resource-hero__tool-pill {
+    font-size: 12px;
+    padding: 4px 12px;
   }
 }
 
