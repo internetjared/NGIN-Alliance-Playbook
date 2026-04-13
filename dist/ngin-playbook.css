@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-13T20:27:46.824Z */
+/* Auto-built: 2026-04-13T20:29:56.689Z */
 
 /* === variables.css === */
 /* ============================================
@@ -1419,9 +1419,13 @@ body[class*="collection-type-blog"].view-item .header-nav-list a::after {
   background-color: #ffffff;
 }
 
-/* Remove the section top-padding on tool item pages —
+/* Remove the section and article top-padding on tool item pages —
    the injected hero banner handles the header clearance. */
 body[class*="collection-type-blog"].view-item .page-section {
+  padding-top: 0 !important;
+}
+
+body[class*="collection-type-blog"].view-item .page-section article.hentry {
   padding-top: 0 !important;
 }
 

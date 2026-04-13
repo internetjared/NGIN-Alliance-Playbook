@@ -624,9 +624,13 @@ body[class*="collection-type-blog"].view-item .header-nav-list a::after {
   background-color: #ffffff;
 }
 
-/* Remove the section top-padding on tool item pages —
+/* Remove the section and article top-padding on tool item pages —
    the injected hero banner handles the header clearance. */
 body[class*="collection-type-blog"].view-item .page-section {
+  padding-top: 0 !important;
+}
+
+body[class*="collection-type-blog"].view-item .page-section article.hentry {
   padding-top: 0 !important;
 }
 
