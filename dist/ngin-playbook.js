@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-04-13T22:14:56.144Z */
+/* Auto-built: 2026-04-13T22:17:00.751Z */
 
 /* === components.js === */
 /* ============================================
@@ -271,9 +271,7 @@
     // Skip in editing contexts so content stays editable
     if (document.body.classList.contains('sqs-is-page-editing') ||
         document.body.classList.contains('sqs-edit-mode-active') ||
-        document.documentElement.classList.contains('squarespace-damask') ||
-        document.querySelector('.sqs-editing') ||
-        window.self !== window.top) return;
+        document.querySelector('.sqs-editing')) return;
 
     // Inject critical hide CSS directly (cannot rely on external stylesheet timing)
     if (!document.getElementById('ngin-filter-css')) {
@@ -748,9 +746,7 @@
     // Skip in any editing context so titles remain editable
     if (document.body.classList.contains('sqs-is-page-editing') ||
         document.body.classList.contains('sqs-edit-mode-active') ||
-        document.documentElement.classList.contains('squarespace-damask') ||
-        document.querySelector('.sqs-editing') ||
-        window.self !== window.top) return;
+        document.querySelector('.sqs-editing')) return;
 
     var titleEl = document.querySelector('.blog-item-top-wrapper h1, h1.blog-title');
     if (!titleEl) return;
