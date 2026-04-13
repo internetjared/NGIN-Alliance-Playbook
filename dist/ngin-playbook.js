@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-04-13T21:17:15.183Z */
+/* Auto-built: 2026-04-13T22:02:02.683Z */
 
 /* === components.js === */
 /* ============================================
@@ -268,6 +268,12 @@
     if (window.location.pathname.indexOf('/resource-bank') !== 0) return;
     // Don't run on individual post pages
     if (document.body.classList.contains('view-item')) return;
+    // Skip in editing contexts so content stays editable
+    if (document.body.classList.contains('sqs-is-page-editing') ||
+        document.body.classList.contains('sqs-edit-mode-active') ||
+        document.documentElement.classList.contains('squarespace-damask') ||
+        document.querySelector('.sqs-editing') ||
+        window.self !== window.top) return;
 
     // Inject critical hide CSS directly (cannot rely on external stylesheet timing)
     if (!document.getElementById('ngin-filter-css')) {
@@ -738,6 +744,13 @@
     if (!document.body.className.match(/collection-type-blog/) ||
         !document.body.classList.contains('view-item')) return;
     if (document.querySelector('.ngin-resource-hero')) return;
+
+    // Skip in any editing context so titles remain editable
+    if (document.body.classList.contains('sqs-is-page-editing') ||
+        document.body.classList.contains('sqs-edit-mode-active') ||
+        document.documentElement.classList.contains('squarespace-damask') ||
+        document.querySelector('.sqs-editing') ||
+        window.self !== window.top) return;
 
     var titleEl = document.querySelector('.blog-item-top-wrapper h1, h1.blog-title');
     if (!titleEl) return;
