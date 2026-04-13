@@ -208,10 +208,14 @@
    full-width background image + dark overlay.
    ============================================ */
 
+/* The banner is injected before the article. Pull it up so
+   it sits behind the header (position:absolute) and extends
+   edge-to-edge from the crosslink bar down. */
 .ngin-resource-hero {
   position: relative;
-  width: 100%;
-  min-height: 420px;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -245,7 +249,7 @@
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 80px 5vw 60px;
+  padding: 120px 5vw 60px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -290,10 +294,10 @@
 
 @media (max-width: 767px) {
   .ngin-resource-hero {
-    min-height: 320px;
+    min-height: 360px;
   }
   .ngin-resource-hero__content {
-    padding: 60px 6vw 48px;
+    padding: 100px 6vw 48px;
     gap: 16px;
   }
 }

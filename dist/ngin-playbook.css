@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-13T20:17:42.992Z */
+/* Auto-built: 2026-04-13T20:20:37.024Z */
 
 /* === variables.css === */
 /* ============================================
@@ -434,10 +434,14 @@ strong[data-ngin-label-icon="done"] {
    full-width background image + dark overlay.
    ============================================ */
 
+/* The banner is injected before the article. Pull it up so
+   it sits behind the header (position:absolute) and extends
+   edge-to-edge from the crosslink bar down. */
 .ngin-resource-hero {
   position: relative;
-  width: 100%;
-  min-height: 420px;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -471,7 +475,7 @@ strong[data-ngin-label-icon="done"] {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 80px 5vw 60px;
+  padding: 120px 5vw 60px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -516,10 +520,10 @@ strong[data-ngin-label-icon="done"] {
 
 @media (max-width: 767px) {
   .ngin-resource-hero {
-    min-height: 320px;
+    min-height: 360px;
   }
   .ngin-resource-hero__content {
-    padding: 60px 6vw 48px;
+    padding: 100px 6vw 48px;
     gap: 16px;
   }
 }
@@ -1395,16 +1399,13 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
   transform: translateY(-1px);
 }
 
-/* --- Resource Bank tool pages: swap header logo to NGIN logo ---
-   Targets blog item (view-item) pages under the resource-bank collection.
-   -------------------------------------------- */
-body[class*="collection-type-blog"].view-item .header-title-logo img {
-  content: url('https://static1.squarespace.com/static/69bac4ee1264074d6b59d99f/t/69dc0fe813de4b38c85c3768/1776029672534/NGIN%2BLOGO.webp');
+/* --- Resource Bank tool pages: white nav links over hero banner --- */
+body[class*="collection-type-blog"].view-item .header-nav-list a {
+  color: #ffffff !important;
 }
 
-/* Fallback: if header uses background-image instead of img */
-body[class*="collection-type-blog"].view-item .header-title-logo {
-  background-image: url('https://static1.squarespace.com/static/69bac4ee1264074d6b59d99f/t/69dc0fe813de4b38c85c3768/1776029672534/NGIN%2BLOGO.webp') !important;
+body[class*="collection-type-blog"].view-item .header-nav-list a::after {
+  background-color: #ffffff;
 }
 
 /* --- Blog / Resource Bank pagination — match paragraph font size --- */
