@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-13T21:23:20.657Z */
+/* Auto-built: 2026-04-13T22:12:28.408Z */
 
 /* === variables.css === */
 /* ============================================
@@ -1444,43 +1444,65 @@ body[class*="collection-type-blog"].view-list .blog-basic-grid--container {
 }
 
 /* --- Resource Bank tool pages: white nav + hamburger over hero banner --- */
-body[class*="collection-type-blog"].view-item .header-nav-list a {
+/* Only apply when NOT editing — in edit mode, use default colors so header is usable */
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .header-nav-list a {
   color: #ffffff !important;
 }
 
-body[class*="collection-type-blog"].view-item .header-nav-list a::after {
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .header-nav-list a::after {
   background-color: #ffffff;
 }
 
 /* White hamburger icon on mobile */
-body[class*="collection-type-blog"].view-item .header-burger .burger-inner .top-bun,
-body[class*="collection-type-blog"].view-item .header-burger .burger-inner .patty,
-body[class*="collection-type-blog"].view-item .header-burger .burger-inner .bottom-bun,
-body[class*="collection-type-blog"].view-item .header-menu-btn-icon .top-bun,
-body[class*="collection-type-blog"].view-item .header-menu-btn-icon .patty,
-body[class*="collection-type-blog"].view-item .header-menu-btn-icon .bottom-bun {
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .header-burger .burger-inner .top-bun,
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .header-burger .burger-inner .patty,
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .header-burger .burger-inner .bottom-bun,
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .header-menu-btn-icon .top-bun,
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .header-menu-btn-icon .patty,
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .header-menu-btn-icon .bottom-bun {
   background-color: #ffffff !important;
 }
 
 /* Also catch generic hamburger line selectors */
-body[class*="collection-type-blog"].view-item [class*="burger"] [class*="bun"],
-body[class*="collection-type-blog"].view-item [class*="burger"] [class*="patty"] {
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) [class*="burger"] [class*="bun"],
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) [class*="burger"] [class*="patty"] {
   background-color: #ffffff !important;
 }
 
 /* Remove the section and article top-padding on tool item pages —
    the injected hero banner handles the header clearance. */
-body[class*="collection-type-blog"].view-item .page-section {
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .page-section {
   padding-top: 0 !important;
 }
 
-body[class*="collection-type-blog"].view-item .page-section article.hentry {
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .page-section article.hentry {
   padding-top: 0 !important;
 }
 
 /* Give blog content a comfortable top margin below the hero */
-body[class*="collection-type-blog"].view-item .blog-item-inner-wrapper {
+body[class*="collection-type-blog"].view-item:not(.sqs-is-page-editing):not(.sqs-edit-mode-active) .blog-item-inner-wrapper {
   padding-top: 40px;
+}
+
+/* --- Edit mode: restore normal header + title so content is editable --- */
+body[class*="collection-type-blog"].view-item.sqs-is-page-editing #header,
+body[class*="collection-type-blog"].view-item.sqs-edit-mode-active #header {
+  position: relative !important;
+  z-index: auto !important;
+}
+
+body[class*="collection-type-blog"].view-item.sqs-is-page-editing .header-nav-list a,
+body[class*="collection-type-blog"].view-item.sqs-edit-mode-active .header-nav-list a {
+  color: inherit !important;
+}
+
+body[class*="collection-type-blog"].view-item.sqs-is-page-editing .header-burger .burger-inner .top-bun,
+body[class*="collection-type-blog"].view-item.sqs-is-page-editing .header-burger .burger-inner .patty,
+body[class*="collection-type-blog"].view-item.sqs-is-page-editing .header-burger .burger-inner .bottom-bun,
+body[class*="collection-type-blog"].view-item.sqs-edit-mode-active .header-burger .burger-inner .top-bun,
+body[class*="collection-type-blog"].view-item.sqs-edit-mode-active .header-burger .burger-inner .patty,
+body[class*="collection-type-blog"].view-item.sqs-edit-mode-active .header-burger .burger-inner .bottom-bun {
+  background-color: inherit !important;
 }
 
 /* --- Blog / Resource Bank pagination — match paragraph font size --- */
