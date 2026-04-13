@@ -617,16 +617,13 @@ section[data-section-id="69baf822077df3202166c679"] .sqs-block-code .sqs-block-c
 
 /* --- Resource Bank listing: hide thumbnail images from cards --- */
 body[class*="collection-type-blog"].view-list .blog-basic-grid--container .image-wrapper {
-  height: 0 !important;
-  min-height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  overflow: hidden !important;
-  visibility: hidden !important;
+  display: none !important;
 }
 
-body[class*="collection-type-blog"].view-list .blog-basic-grid--container .image-wrapper img {
-  display: none !important;
+/* Force cards visible — hiding .image-wrapper prevents Squarespace's
+   preFade animation from triggering, leaving cards at opacity:0 */
+body[class*="collection-type-blog"].view-list .blog-basic-grid--container {
+  opacity: 1 !important;
 }
 
 /* --- Resource Bank tool pages: white nav + hamburger over hero banner --- */
