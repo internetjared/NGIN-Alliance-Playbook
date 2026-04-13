@@ -408,9 +408,11 @@
       dot.addEventListener('click', function () {
         var slug = dot.getAttribute('data-slug');
         if (slug) {
-          // Navigate parent frame if in iframe, else current window
           if (window.parent !== window) {
-            window.parent.location.href = slug;
+            // Post message to parent so it can navigate (cross-origin safe)
+            window.parent.postMessage({ nginMapNavigate: slug }, '*');
+            // Also try direct assignment as fallback
+            try { window.parent.location.href = slug; } catch (e) {}
           } else {
             window.location.href = slug;
           }

@@ -727,4 +727,14 @@
     });
   }
   window.NGIN.stripBuildingBlockNumbers = stripBuildingBlockNumbers;
+
+  /* --- Coalition Map navigation listener ---
+     The map iframe posts { nginMapNavigate: "/slug" } when a
+     case-study city is clicked. Navigate the parent page.
+     -------------------------------------------------------- */
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.nginMapNavigate) {
+      window.location.href = e.data.nginMapNavigate;
+    }
+  });
 })();

@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-04-13T14:52:09.646Z */
+/* Auto-built: 2026-04-13T15:12:53.184Z */
 
 /* === components.js === */
 /* ============================================
@@ -731,6 +731,16 @@
     });
   }
   window.NGIN.stripBuildingBlockNumbers = stripBuildingBlockNumbers;
+
+  /* --- Coalition Map navigation listener ---
+     The map iframe posts { nginMapNavigate: "/slug" } when a
+     case-study city is clicked. Navigate the parent page.
+     -------------------------------------------------------- */
+  window.addEventListener('message', function (e) {
+    if (e.data && e.data.nginMapNavigate) {
+      window.location.href = e.data.nginMapNavigate;
+    }
+  });
 })();
 
 
