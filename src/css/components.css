@@ -284,6 +284,21 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.ngin-resource-hero__tool-pill {
+  display: inline-block;
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  padding: 5px 16px;
+  border-radius: 100px;
+  background: #caddbb;
+  color: var(--ngin-navy, #1B3A6B);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 .ngin-resource-hero__title {
   font-family: Lato, 'Helvetica Neue', sans-serif;
   font-size: clamp(2rem, 5vw, 3.25rem);

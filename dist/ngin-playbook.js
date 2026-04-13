@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Scripts */
-/* Auto-built: 2026-04-13T20:29:56.691Z */
+/* Auto-built: 2026-04-13T20:35:24.403Z */
 
 /* === components.js === */
 /* ============================================
@@ -756,6 +756,14 @@
           imgUrl += '?format=2500w';
         }
 
+        // Extract tool number from the excerpt (bold prefix like "Tool 14")
+        var toolLabel = '';
+        var excerpt = (item.excerpt || '').replace(/<[^>]+>/g, ' ').trim();
+        var toolMatch = excerpt.match(/^(Tool\s*\d+)/i);
+        if (toolMatch) {
+          toolLabel = toolMatch[1];
+        }
+
         // Build the hero banner
         var hero = document.createElement('div');
         hero.className = 'ngin-resource-hero';
@@ -765,11 +773,14 @@
           '</div>' +
           '<div class="ngin-resource-hero__overlay"></div>' +
           '<div class="ngin-resource-hero__content">' +
+            (toolLabel
+              ? '<span class="ngin-resource-hero__tool-pill">' + toolLabel + '</span>'
+              : '') +
+            '<h1 class="ngin-resource-hero__title">' + titleText + '</h1>' +
             '<a href="/resource-bank" class="ngin-resource-hero__back">' +
               '<span class="ngin-resource-hero__back-icon" aria-hidden="true">arrow_back</span>' +
               'Back to Resource Bank' +
             '</a>' +
-            '<h1 class="ngin-resource-hero__title">' + titleText + '</h1>' +
           '</div>';
 
         // Insert directly after the header inside #siteWrapper
