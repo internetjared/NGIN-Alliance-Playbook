@@ -584,19 +584,38 @@
       }
 
       // Measure and expose height so CSS can offset body + sticky header
+      var barRemoved = false;
       function applyHeight() {
+        if (barRemoved) return;
+        // Ensure bar is still in the DOM
+        if (!bar.parentNode) { cleanupBar(); return; }
         var h = bar.offsetHeight;
         if (h > 0) {
           document.documentElement.style.setProperty('--ngin-crosslink-h', h + 'px');
           document.documentElement.classList.add('ngin-has-crosslink');
         }
       }
-      applyHeight();
+
+      function cleanupBar() {
+        barRemoved = true;
+        if (bar.parentNode) bar.parentNode.removeChild(bar);
+        document.documentElement.classList.remove('ngin-has-crosslink');
+        document.documentElement.style.removeProperty('--ngin-crosslink-h');
+        window.removeEventListener('resize', applyHeight);
+      }
+
+      // Defer initial measurement to next frame so the bar has rendered
+      requestAnimationFrame(function () {
+        applyHeight();
+      });
+
       // Re-measure after the logo image loads (it changes height)
       var logoImg = bar.querySelector('img');
       if (logoImg) {
-        if (logoImg.complete) applyHeight();
-        else logoImg.addEventListener('load', applyHeight);
+        if (logoImg.complete) requestAnimationFrame(applyHeight);
+        else logoImg.addEventListener('load', function () {
+          requestAnimationFrame(applyHeight);
+        });
       }
       window.addEventListener('resize', applyHeight);
 
@@ -607,9 +626,7 @@
         bar.style.opacity = '0';
         bar.style.transform = 'translateY(-100%)';
         setTimeout(function () {
-          if (bar.parentNode) bar.parentNode.removeChild(bar);
-          document.documentElement.classList.remove('ngin-has-crosslink');
-          document.documentElement.style.removeProperty('--ngin-crosslink-h');
+          cleanupBar();
           renderChip();
         }, 240);
       });
