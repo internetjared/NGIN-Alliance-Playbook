@@ -265,14 +265,12 @@ body[class*="collection-type-blog"] .blog-item .blog-basic-grid--text > div {
 
 body[class*="collection-type-blog"] .blog-item {
   cursor: pointer;
-}
-
-body[class*="collection-type-blog"] .blog-item {
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease !important;
+  transform: none !important;
 }
 
 body[class*="collection-type-blog"] .blog-item:hover {
-  transform: scale(1.015);
+  transform: scale(1.02) !important;
 }
 
 /* Card text area */
