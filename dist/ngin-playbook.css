@@ -1,5 +1,5 @@
 /* NGIN Alliance Playbook — Custom Styles */
-/* Auto-built: 2026-04-14T12:38:26.925Z */
+/* Auto-built: 2026-04-14T12:40:05.060Z */
 
 /* === variables.css === */
 /* ============================================
@@ -1082,8 +1082,8 @@ body[class*="collection-type-blog"] .blog-item .blog-basic-grid--text > div {
 
 body[class*="collection-type-blog"] .blog-item {
   cursor: pointer;
-  transition: transform 0.2s ease !important;
-  transform: none !important;
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transform: scale(1) !important;
 }
 
 body[class*="collection-type-blog"] .blog-item:hover {
